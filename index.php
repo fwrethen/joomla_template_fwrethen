@@ -11,6 +11,8 @@
 
 // no direct access
 defined( '_JEXEC' ) or die( 'Restricted access' );
+//* The following line loads the MooTools JavaScript Library */
+JHtml::_('behavior.framework', true);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->language; ?>" lang="<?php echo $this->language; ?>" >
@@ -19,14 +21,14 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 
 <link rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/system/css/system.css" type="text/css" />
 <link rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/system/css/general.css" type="text/css" />
-<link rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/fwrethen_template/css/template.css" type="text/css" />
-<link rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/fwrethen_template/css/<?php echo $this->params->get('colorVariation'); ?>.css" type="text/css" />
-<link rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/fwrethen_template/css/<?php echo $this->params->get('backgroundVariation'); ?>_bg.css" type="text/css" />
+<link rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/css/template.css" type="text/css" />
+<link rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/css/<?php echo $this->params->get('colorVariation'); ?>.css" type="text/css" />
+<link rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/css/<?php echo $this->params->get('backgroundVariation'); ?>_bg.css" type="text/css" />
 <!--[if lte IE 6]>
 <link href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/css/ieonly.css" rel="stylesheet" type="text/css" />
 <![endif]-->
 <?php if($this->direction == 'rtl') : ?>
-	<link href="<?php echo $this->baseurl ?>/templates/fwrethen_template/css/template_rtl.css" rel="stylesheet" type="text/css" />
+	<link href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/css/template_rtl.css" rel="stylesheet" type="text/css" />
 <?php endif; ?>
 
 </head>
@@ -39,12 +41,12 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 				<div id="header_l">
 					<div id="header_r">
 						<div id="logo">
-						  <table border="0" cellpadding="0" cellspacing="0" width="100%"><!-- height="100"--->
+						  <table height="100" border="0" cellpadding="0" cellspacing="0" width="100%">
 						   <tr>
-						      <td width="235" height="86"  valign="bottom" vspace=0 hspace=0><img border="0" src="<?php echo $this->baseurl ?>/templates/fwrethen_template/images/balken_top1.gif" width="235" height="86"></td>
+						      <td width="235" height="86"  valign="bottom" vspace=0 hspace=0><img border="0" src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/images/balken_top1.gif" width="235" height="86"></td>
 						      <td valign="bottom" width="100%">
-						      <img border="0" src="<?php echo $this->baseurl ?>/templates/fwrethen_template/images/balken_top2.gif" width="100%" height="86"></td>
-						      <td width="119" height="86" valign="bottom"><img border="0" src="<?php echo $this->baseurl ?>/templates/fwrethen_template/images/balken_top3.gif" width="119" height="86"></td>
+						      <img border="0" src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/images/balken_top2.gif" width="100%" height="86"></td>
+						      <td width="119" height="86" valign="bottom"><img border="0" src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/images/balken_top3.gif" width="119" height="86"></td>
 						    </tr>
 						  </table>
 						</div>

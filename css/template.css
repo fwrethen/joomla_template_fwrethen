@@ -130,6 +130,12 @@ div#footer_r a:link, div#footer_r a:visited  {
 	color: #999;
 }
 
+div#footer_r ul, div#footer_r li {
+  display:inline;
+  list-style-type:none;
+  padding-right:8px;
+}
+
 div#footerspacer {
 	height: 10px;
 }

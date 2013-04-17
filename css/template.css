@@ -806,6 +806,11 @@ td.key {
 	padding: 2px 0;
 }
 
+/*Änderungen für Phoceguestbook*/
 div.sectiontablefooter li {
   display: inline;
+}
+
+.pgcontent {
+  color: #000000;
 }

@@ -805,3 +805,7 @@ td.key {
 #component-contact table td {
 	padding: 2px 0;
 }
+
+div.sectiontablefooter li {
+  display: inline;
+}

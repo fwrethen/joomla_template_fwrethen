@@ -12,6 +12,7 @@
 	<description>TPL_FW_RETHEN</description>
 	<files>
 		<folder>css</folder>
+		<folder>html</folder>
 		<folder>images</folder>
 		<filename>index.php</filename>
 		<filename>templateDetails.xml</filename>
@@ -36,7 +37,7 @@
 	<config>
 		<fields name="params">
 			<fieldset name="advanced">
-				<field name="colorVariation" type="list" default="white" label="Color Variation" description="Color variation to use">
+				<field name="colorVariation" type="list" default="fwblue" label="Color Variation" description="Color variation to use">
 					<option value="fwblue">Fw-Blue</option>
 					<!--option value="blue">Blue</option>
 					<option value="red">Red</option>
@@ -45,7 +46,7 @@
 					<option value="black">Black</option>
 					<option value="white">White</option-->
 				</field>
-				<field name="backgroundVariation" type="list" default="blue" label="Background Variation" description="Background color variation to use">
+				<field name="backgroundVariation" type="list" default="fwblue" label="Background Variation" description="Background color variation to use">
 					<option value="fwblue">Fw-Blue</option>
 					<!--option value="blue">Blue</option>
 					<option value="red">Red</option>

@@ -2,13 +2,13 @@
 <!DOCTYPE install PUBLIC "-//Joomla! 1.5//DTD template 1.0//EN" "http://www.joomla.org/xml/dtd/1.5/template-install.dtd">
 <extension version="2.5" type="template" client="site">
 	<name>fwrethen_2.5</name>
-	<creationDate>April 2013</creationDate>
+	<creationDate>May 2013</creationDate>
 	<author>Florian Paetz</author>
 	<authorEmail>Paetzy@fw-rethen.de</authorEmail>
 	<authorUrl>http://www.fw-rethen.de</authorUrl>
 	<copyright></copyright>
 	<license>GNU/GPL</license>
-	<version>1.0.2</version>
+	<version>1.0.3</version>
 	<description>TPL_FW_RETHEN</description>
 	<files>
 		<folder>css</folder>

@@ -375,16 +375,16 @@ if ($monat == $Monat or $Monat == 0)
 		{
 			?>
             <table class="homeview" width=<?php echo $config->hometab;?> bgcolor="#<?php echo $config->farbe3;?>" cellspacing="0" cellpadding="5">
-			<tr><th class="homeview" height="30px" bgcolor="#<?php echo $config->farbe1;?>" colspan="6" style="font-size:140%"><?php echo $monate[$monat];?>&nbsp;<?php echo $curYear;?></th></tr>
-			<tr bgcolor="#<?php echo $config->farbe2;?>"><th class="homeview"><?php echo JText::_('COM_REPORTS2_H_ITEM'); ?></th><th class="homeview"><?php echo JText::_('COM_REPORTS2_H_ALERTING'); ?></th>  <th class="homeview" colspan=1><?php echo JText::_('COM_REPORTS2_H_DESCRIPTION'); ?></th> <th class="homeview"><?php echo JText::_('COM_REPORTS2_H_LOCATION'); ?></th> <th class="homeview">&nbsp;</th> <th class="homeview"><?php echo JTEXT::_('COM_REPORTS2_H_VIEWS') ?></th> </tr>
+			<tr><th class="homeview" height="30px" bgcolor="#<?php echo $config->farbe1;?>" colspan="7" style="font-size:140%"><?php echo $monate[$monat];?>&nbsp;<?php echo $curYear;?></th></tr>
+			<tr bgcolor="#<?php echo $config->farbe2;?>"><th class="homeview"><?php echo JText::_('COM_REPORTS2_H_ITEM'); ?></th><th class="homeview"><?php echo JText::_('COM_REPORTS2_H_ALERTING'); ?></th>  <th class="homeview" colspan=2><?php echo JText::_('COM_REPORTS2_H_DESCRIPTION'); ?></th> <th class="homeview"><?php echo JText::_('COM_REPORTS2_H_LOCATION'); ?></th> <th class="homeview">&nbsp;</th> <th class="homeview"><?php echo JTEXT::_('COM_REPORTS2_H_VIEWS') ?></th> </tr>
             <?php
 			}
 			else
 			{
 			?>
 			<table class="homeview" width=<?php echo $config->hometab;?> bgcolor="#<?php echo $config->farbe3;?>" cellspacing="0" cellpadding="4">
-			<tr><th class="homeview" height="30px" bgcolor="#<?php echo $config->farbe1;?>" colspan="5" style="font-size:24px"><?php echo $monate[$monat];?>&nbsp;<?php echo $curYear;?></th></tr>
-			<tr bgcolor="#<?php echo $config->farbe2;?>"><th class="homeview" ><?php echo JText::_('COM_REPORTS2_H_ITEM'); ?></th><th class="homeview" ><?php echo JText::_('COM_REPORTS2_H_ALERTING'); ?></th>  <th class="homeview" colspan=1><?php echo JText::_('COM_REPORTS2_H_DESCRIPTION'); ?></th> <th class="homeview"><?php echo JText::_('COM_REPORTS2_H_LOCATION'); ?></th> <th class="homeview"><?php echo JTEXT::_('COM_REPORTS2_H_VIEWS') ?></th> </tr>
+			<tr><th class="homeview" height="24px" bgcolor="#<?php echo $config->farbe1;?>" colspan="6" style="font-size:20px"><?php echo $monate[$monat];?>&nbsp;<?php echo $curYear;?></th></tr>
+			<tr bgcolor="#<?php echo $config->farbe2;?>"><th class="homeview" ><?php echo JText::_('COM_REPORTS2_H_ITEM'); ?></th><th class="homeview" ><?php echo JText::_('COM_REPORTS2_H_ALERTING'); ?></th>  <th class="homeview" colspan=2><?php echo JText::_('COM_REPORTS2_H_DESCRIPTION'); ?></th> <th class="homeview"><?php echo JText::_('COM_REPORTS2_H_LOCATION'); ?></th> <th class="homeview"><?php echo JTEXT::_('COM_REPORTS2_H_VIEWS') ?></th> </tr>
             <?php
 			}
 			}
@@ -394,16 +394,16 @@ if ($monat == $Monat or $Monat == 0)
 			{
 			?>
 			<table class="homeview" width=<?php echo $config->hometab;?> bgcolor="#<?php echo $config->farbe3;?>" cellspacing="0" cellpadding="4">
-			<tr><th class="homeview" height="30px" bgcolor="#<?php echo $config->farbe1;?>" colspan="5" style="font-size:24px"><?php echo $monate[$monat];?>&nbsp;<?php echo $curYear;?></th></tr>
-			<tr bgcolor="#<?php echo $config->farbe2;?>"><th class="homeview"><?php echo JText::_('COM_REPORTS2_H_ITEM'); ?></th><th class="homeview" ><?php echo JText::_('COM_REPORTS2_H_ALERTING'); ?></th>  <th class="homeview" colspan=1><?php echo JText::_('COM_REPORTS2_H_DESCRIPTION'); ?></th> <th class="homeview" ><?php echo JText::_('COM_REPORTS2_H_LOCATION'); ?></th> <th class="homeview" >&nbsp;</th> </tr>
+			<tr><th class="homeview" height="24px" bgcolor="#<?php echo $config->farbe1;?>" colspan="6" style="font-size:20px"><?php echo $monate[$monat];?>&nbsp;<?php echo $curYear;?></th></tr>
+			<tr bgcolor="#<?php echo $config->farbe2;?>"><th class="homeview"><?php echo JText::_('COM_REPORTS2_H_ITEM'); ?></th><th class="homeview" ><?php echo JText::_('COM_REPORTS2_H_ALERTING'); ?></th>  <th class="homeview" colspan=2><?php echo JText::_('COM_REPORTS2_H_DESCRIPTION'); ?></th> <th class="homeview" ><?php echo JText::_('COM_REPORTS2_H_LOCATION'); ?></th> <th class="homeview" >&nbsp;</th> </tr>
             <?php
 			}
 			else
 			{
 			?>
 			<table class="homeview" width=<?php echo $config->hometab;?> bgcolor="#<?php echo $config->farbe3;?>" cellspacing="0" cellpadding="3">
-			<tr><th class="homeview" height="30px" bgcolor="#<?php echo $config->farbe1;?>" colspan="4" style="font-size:24px"><?php echo $monate[$monat];?>&nbsp;<?php echo $curYear;?></th></tr>
-			<tr bgcolor="#<?php echo $config->farbe2;?>"><th class="homeview" ><?php echo JText::_('COM_REPORTS2_H_ITEM'); ?></th><th class="homeview" ><?php echo JText::_('COM_REPORTS2_H_ALERTING'); ?></th>  <th class="homeview" colspan=1><?php echo JText::_('COM_REPORTS2_H_DESCRIPTION'); ?></th> <th class="homeview"><?php echo JText::_('COM_REPORTS2_H_LOCATION'); ?></th> </tr>
+			<tr><th class="homeview" height="24px" bgcolor="#<?php echo $config->farbe1;?>" colspan="6" style="font-size:20px"><?php echo $monate[$monat];?>&nbsp;<?php echo $curYear;?></th></tr>
+			<tr bgcolor="#<?php echo $config->farbe2;?>"><th class="homeview" ><?php echo JText::_('COM_REPORTS2_H_ITEM'); ?></th><th class="homeview" ><?php echo JText::_('COM_REPORTS2_H_ALERTING'); ?></th>  <th class="homeview" colspan=2><?php echo JText::_('COM_REPORTS2_H_DESCRIPTION'); ?></th> <th class="homeview"><?php echo JText::_('COM_REPORTS2_H_LOCATION'); ?></th> <th class="homeview" >&nbsp;</th> </tr>
             <?php
 			}
 			}
@@ -451,17 +451,10 @@ if ($monat == $Monat or $Monat == 0)
 				?>
 				
 		        </td>
-                <?php
-if ($config->homeeinsatzartfarbe == 1)
-{
-echo  '<td class="homelink" width=50%><a class="link" id="link2" href="'.JRoute::_('index.php?option='.$option.'&view=show&Itemid='.$menuid->id.'&id='.$reports[$i]->id).'&Monat='.$Monat.'&department='.$selectedDepartment.'&data='.$selectedData.'&all='.$all.'"><font color="#'.$marker.'"> '.$reports[$i]->data1.'</font></a><br/>'.$rSummary.'</td>'; // ###111020 <p></p> durch <br/> ersetzt
-}
-else
-{
-echo  '<td class="homelink"  width=50%><a class="link" id="link" href="'.JRoute::_('index.php?option='.$option.'&view=show&Itemid='.$menuid->id.'&id='.$reports[$i]->id).'&Monat='.$Monat.'&department='.$selectedDepartment.'&data='.$selectedData.'&all='.$all.'">'.$reports[$i]->data1.'</a><br/>'.$rSummary.'</td>';###111020 <p></p> durch <br/> ersetzt
-}
-?>
-<td  class="homeaddress" width=30%><?php echo $reports[$i]->address;?></td>
+<td class="homelink" width=20%><?php echo $reports[$i]->data1;?></td>
+<td class="homelink" width=40%><?php echo $reports[$i]->summary;?></td>
+<td class="homeaddress" width=25%><?php echo $reports[$i]->address;?></td>
+<td class="homelink"><?php echo '<a href="'.JRoute::_('index.php?option='.$option.'&view=show&Itemid='.$menuid->id.'&id='.$reports[$i]->id).'&Monat='.$Monat.'&department='.$selectedDepartment.'&data='.$selectedData.'&all='.$all.'">Details</a>';?></td>
 <?php
 			
 //----wenn Fotos vorhanden, dann das 1.Bild aus Gallerie als Thumbnail anzeigen----------------------------------------------------
@@ -853,7 +846,7 @@ $db->setQuery('SELECT manifest_cache FROM #__extensions WHERE name = "reports2"'
 $params = json_decode( $db->loadResult(), true );
 
 ?>
-<!-- Link protected. DO NOT REMOVE! --><p class="homefooter"><a target="_blank" href="http://www.einsatzkomponente.de/" style="color:#000000;font-size:10px;">Einsatzkomponente <?php echo $params[version];?> (www.einsatzkomponente.de)</a></p>';
+<!-- Link protected. DO NOT REMOVE! --><p class="homefooter"><a target="_blank" href="http://www.einsatzkomponente.de/" style="color:#000000;font-size:10px;">Einsatzkomponente <?php echo $params[version];?> (www.einsatzkomponente.de)</a></p>
 
 <?php
 

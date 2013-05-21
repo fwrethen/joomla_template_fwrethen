@@ -414,9 +414,9 @@ if ($display->summary != 0) { ?>
        <td class="showtab" style="padding: 10px;"><?php echo JText::_('COM_REPORTS2_S_ABRIDGEREPORT') ?></td>
        <td class="showtab" style="padding: 10px;" colspan="2"><?php echo $rSummary; ?></td>
        </tr>
-       <tr>
-       <td style="border-style:solid; border-width:0px 0px 0px 1px; border-color:#999;" rowspan="6" height="112"></td>
-       </tr>
+       <!--<tr>
+       <td style="border-style:solid; border-width:0px 0px 1px 1px; border-color:#999;" rowspan="6" height="112"></td>
+       </tr>-->
 <?php     }} ?>
   
 <?php
@@ -424,6 +424,7 @@ if ($config->show1 == 1)
 {
 if ($display->data1 != 0) { ?>
        <tr style="background-color:#<?php echo $config->farbe7 ?>;">
+       <td style="border-style:solid; border-width:0px 0px 0px 1px; border-color:#999;"></td>
        <td class="showtab" ><?php echo JText::_('COM_REPORTS2_S_MISSIONDESCRIPTION') ?></td>
 <?php
 if ($config->showeinsatzartfarbe == 0)
@@ -446,6 +447,7 @@ if ($config->show2 == 1)
 {
 if ($display->address != 0) { ?>
        <tr style="background-color:#<?php echo $config->farbe7 ?>;">
+       <td style="border-style:solid; border-width:0px 0px 0px 1px; border-color:#999;"></td>
        <td class="showtab"><?php echo JText::_('COM_REPORTS2_S_MISSIONLOCATION') ?></td>
        <td class="showtab"><?php echo $rAddress; ?></td>
        </tr>
@@ -456,6 +458,7 @@ if ($config->show7 == 1)
 {
 if ($display->date1 != 0) { ?>
        <tr style="background-color:#<?php echo $config->farbe7 ?>;">
+       <td style="border-style:solid; border-width:0px 0px 0px 1px; border-color:#999;"></td>
        <td class="showtab"><?php echo JText::_('COM_REPORTS2_S_ALERTING1'); ?>:</td>
        <td class="showtab"><?php
              if(strtotime($rDate1) == "-62169987600")
@@ -479,7 +482,7 @@ Alarmierung per&nbsp;<img src="'.$path.$config->alertingupload.'/'.$alertimage->
 
 				}
  		        
-			   echo 'am '.date('d.m.Y', strtotime($rDate1)).' um';	 
+			   echo date('d.m.Y', strtotime($rDate1)).', ';	 
                echo date(' H:i', strtotime($rDate1)).' Uhr';
 		 
 }			 
@@ -495,6 +498,7 @@ Alarmierung per&nbsp;<img src="'.$path.$config->alertingupload.'/'.$alertimage->
 if ($config->show8 == 1) {
 if ($display->date2 != 0) { ?>
        <tr style="background-color:#<?php echo $config->farbe7 ?>;">
+       <td style="border-style:solid; border-width:0px 0px 0px 1px; border-color:#999;"></td>
        <td class="showtab"><?php echo JText::_('COM_REPORTS2_S_ALERTING6'); ?></td>
        <td class="showtab"><?php
              if(strtotime($rDate2) == "-62169987600")
@@ -513,6 +517,7 @@ if ($display->date2 != 0) { ?>
 if ($config->show9 == 1) {
 if ($display->date3 != 0) { ?>
        <tr style="background-color:#<?php echo $config->farbe7 ?>;">
+       <td style="border-style:solid; border-width:0px 0px 0px 1px; border-color:#999;"></td>
        <td class="showtab"><?php echo JText::_('COM_REPORTS2_S_ALERTING7'); ?></td>
        <td class="showtab"> <?php
             if(strtotime($rDate3) == "-62169987600")
@@ -538,6 +543,7 @@ if ($display->dauer != 0) {
             else
             {?>
        <tr style="background-color:#<?php echo $config->farbe7 ?>;">
+       <td style="border-style:solid; border-width:0px 0px 0px 1px; border-color:#999;"></td>
        <td class="showtab"><?php echo JText::_('COM_REPORTS2_S_ALERTING8'); ?></td>
        <td class="showtab"> <?php
             
@@ -572,6 +578,7 @@ if ($display->dauer != 0) {
 if ($config->show12 == 1) {
 if ($display->boss2 != 0) { ?>
        <tr style="background-color:#<?php echo $config->farbe7 ?>;">
+       <td style="border-style:solid; border-width:0px 0px 0px 1px; border-color:#999;"></td>
        <td class="showtab"><?php echo JText::_('COM_REPORTS2_S_LEADER'); ?></td>
        <td class="showtab"> <?php
             if($rBoss2 == "")
@@ -590,6 +597,7 @@ if ($display->boss2 != 0) { ?>
 if ($config->show13 == 1) {
 if ($display->boss != 0) { ?>
        <tr style="background-color:#<?php echo $config->farbe7 ?>;">
+       <td style="border-style:solid; border-width:0px 0px 0px 1px; border-color:#999;"></td>
        <td class="showtab"><?php echo JText::_('COM_REPORTS2_S_MISSIONSQUADLEADER'); ?></td>
        <td class="showtab"> <?php
             if($rBoss == "")
@@ -608,6 +616,7 @@ if ($display->boss != 0) { ?>
  if ($config->show14 == 1) {
  if ($display->people != 0) { ?>
         <tr style="background-color:#<?php echo $config->farbe7 ?>;">
+        <td style="border-style:solid; border-width:0px 0px 0px 1px; border-color:#999;"></td>
         <td class="showtab"><?php echo JText::_('COM_REPORTS2_S_CREW'); ?></td>
         <td class="showtab"> <?php
             if($rPeople == "0")
@@ -622,13 +631,14 @@ if ($display->boss != 0) { ?>
        </tr>
 <?php    } } ?>
 
+<tr><td colspan="3" height="36px" style="border-style:solid; border-width:0px 0px 1px 1px; border-color:#999;"></td></tr>
 
  <?php  
  if ($config->show15 == 1) {
  if ($display->vehicle != 0) { ?>
         <tr style="background-color:#<?php echo $config->farbe7 ?>;">
-        <td class="showtab" style="border-width:1px 0px 1px 1px;"><?php echo JText::_('COM_REPORTS2_S_VEHICLE'); ?></td>
-        <td class="showtab" style="border-width:1px 0px 1px 1px;" colspan="2"><?php
+        <td class="showtab"><?php echo JText::_('COM_REPORTS2_S_VEHICLE'); ?></td>
+        <td class="showtab" colspan="2"><?php
 		
         if (count($rVehicles))
         {
@@ -1086,7 +1096,7 @@ google.maps.event.addDomListener(window, 'load', FFVMOD.init);
 } // end of map, if nor logged in
 else
 {
-echo JTEXT::_('COM_REPORTS2_S_ALLOWMAP');
+echo ''; //JTEXT::_('COM_REPORTS2_S_ALLOWMAP');
 
 	}
 ?>

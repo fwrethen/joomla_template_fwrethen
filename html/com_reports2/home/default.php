@@ -312,7 +312,7 @@ echo '</table>';
 if($selectedYear == '0' or $totalRecords < '1')
 {
 ?>
-<div style="font-size:14px;color:#000000;background-color:#ff0000;"><?php echo JTEXT::_('COM_REPORTS2_H_TEXT1').' '.$selectedYear.' '.JTEXT::_('COM_REPORTS2_H_TEXT2').' '.$config->feuerwehr.' '.JTEXT::_('COM_REPORTS2_H_TEXT3') ?></div>
+<div style="font-size:14px;text-align:center;"><?php echo JTEXT::_('COM_REPORTS2_H_TEXT1').' '.$selectedYear.' '.JTEXT::_('COM_REPORTS2_H_TEXT2').' '.$config->feuerwehr.' '.JTEXT::_('COM_REPORTS2_H_TEXT3') ?></div>
 <?php	
 }
 else

@@ -62,7 +62,7 @@ body.width_small div#wrapper {
 }
 
 body.width_fmax div#wrapper {
-	min-width: 750px;
+	min-width: 900px;
 	max-width: 1050px;
 }
 

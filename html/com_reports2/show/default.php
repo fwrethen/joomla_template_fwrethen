@@ -424,7 +424,11 @@ if ($config->show1 == 1)
 {
 if ($display->data1 != 0) { ?>
        <tr style="background-color:#<?php echo $config->farbe7 ?>;">
-       <td style="border-style:solid; border-width:0px 0px 0px 1px; border-color:#999;"></td>
+       <td style="border-style:solid; border-width:0px 0px 0px 1px; border-color:#999;">
+       <div style="height:10px; overflow:visible; margin:5px 0px; text-align:center;">
+       <img style="max-width:150px; max-height:120px;" src="templates/fwrethen_2.5/html/com_reports2/assets/default_image.jpg">
+       </div>
+       </td>
        <td class="showtab" ><?php echo JText::_('COM_REPORTS2_S_MISSIONDESCRIPTION') ?></td>
 <?php
 if ($config->showeinsatzartfarbe == 0)

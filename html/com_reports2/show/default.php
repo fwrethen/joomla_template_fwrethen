@@ -1,8 +1,8 @@
 <?php
 defined('_JEXEC') or die('Illegal Access');
 
-
-
+$app = & JFactory::getApplication();
+$template = $app->getTemplate();
 
 $option = JRequest::getCMD('option');        // ### 110420 +
 $link= JRoute::_('index.php?option='.$option);
@@ -11,22 +11,16 @@ $task='task=home';
 $gmaplink = JRequest::getVar('gmaplink', 0);
 if ($gmaplink == '1')
 { $task = 'view=gmap';}
-JHTML::_('stylesheet','report.css',$path.'templates/fwrethen_2.5/html/com_reports2/assets/css/');
-JHTML::_('stylesheet', 'highslide.css',$path.'components/'.$option.'/assets/highslide/');
-JHTML::_('script', 'highslide-with-gallery.js',$path.'components/'.$option.'/assets/highslide/');
-JHTML::_('script', 'highslide.config.js',$path.'components/'.$option.'/assets/highslide/');
+JHTML::_('stylesheet','report.css',$path.'templates/'.$template.'/html/com_reports2/assets/css/');
+JHTML::_('stylesheet', 'lightbox.css',$path.'templates/'.$template.'/html/com_reports2/assets/lightbox/');
+JHTML::_('script', 'jquery-1.7.2.min.js',$path.'templates/'.$template.'/html/com_reports2/assets/lightbox/');
+JHTML::_('script', 'lightbox.js',$path.'templates/'.$template.'/html/com_reports2/assets/lightbox/');
 ?>
 
 
 <script type="text/javascript" src="<?php echo $path; ?>components/com_reports2/js/wz_tooltip.js"></script>
 
 
-
-    <script type="text/javascript">
-// override Highslide settings here
-    // instead of editing the highslide.js file
-    hs.graphicsDir = '<?php echo $path; ?>components/com_reports2/assets/highslide/graphics/';
-    </script>
 <?php
 
 // Funktion : GMap-Konigurationsdaten abrufen
@@ -773,8 +767,8 @@ for ($i = 0; $i < count($rImages); ++$i)
 	//list($width, $height) = getimagesize($baseUploadDir.'/'.$rImagesName[$i]);   
 	//$correctHeight = ceil($config->imggw * $height / $width);
 	
-	echo '<td class="showimage" class="highslide-gallery" >';
-    echo '<a href="'.$baseUploadDir.'/'.$rImagesName[$i].'"class="highslide" onclick="return hs.expand(this, config1 )">';
+	echo '<td class="showimage">';
+    echo '<a href="'.$baseUploadDir.'/'.$rImagesName[$i].'"rel="lightbox[gallery]">';
 	echo  '<img src="'.$path.$baseUploadDir.'/'.$rImagesName[$i].'" width='.$config->imggtw.'px alt="'.$rData1.' vom '.date('d.m.Y', strtotime($rDate1)).'  |  '.$config->copyright.' ('.date('Y', strtotime($rDate1)).')" title=""/>';
 	echo '</a>';
 	echo '</td>';

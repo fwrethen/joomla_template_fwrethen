@@ -21,11 +21,6 @@
   font-family: "lucida grande", tahoma, verdana, arial, sans-serif;
   font-weight: normal;
 }
-/* line 24, ../sass/lightbox.sass */
-#lightbox img {
-  width: auto;
-  height: auto;
-}
 /* line 27, ../sass/lightbox.sass */
 #lightbox a img {
   border: none;

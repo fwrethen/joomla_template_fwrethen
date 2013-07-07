@@ -436,7 +436,7 @@ if ($monat == $Monat or $Monat == 0)
 				else
 				{
 				?>
-		        <td class="homealarm"><?php echo date('d.m.Y H:i', $curTime); ?> 
+		        <td class="homealarm" width=16%><?php echo date('d.m.Y H:i', $curTime); ?> 
                 <?php
 		        }
 				if(($reports_display->alerting !='0') and ($reports[$i]->alerting !=''))
@@ -454,7 +454,7 @@ if ($monat == $Monat or $Monat == 0)
 <td class="homelink" width=20%><?php echo $reports[$i]->data1;?></td>
 <td class="homelink" width=40%><?php echo $reports[$i]->summary;?></td>
 <td class="homeaddress" width=25%><?php echo $reports[$i]->address;?></td>
-<td class="homelink"><?php echo '<a href="'.JRoute::_('index.php?option='.$option.'&view=show&Itemid='.$menuid->id.'&id='.$reports[$i]->id).'&Monat='.$Monat.'&department='.$selectedDepartment.'&data='.$selectedData.'&all='.$all.'">Details</a>';?></td>
+<td class="homelink"><?php echo '<a href="'.JRoute::_('index.php?option='.$option.'&view=show&Itemid='.$menuid->id.'&id='.$reports[$i]->id).'&Monat='.$Monat.'&department='.$selectedDepartment.'&data='.$selectedData.'&all='.$all.'">Details'; /*if($foto[$i] > '0') {echo '&#x00A0;&#x274f;';};*/?></a></td>
 <?php
 			
 //----wenn Fotos vorhanden, dann das 1.Bild aus Gallerie als Thumbnail anzeigen----------------------------------------------------

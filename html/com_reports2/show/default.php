@@ -720,31 +720,27 @@ if ($display->department != 0) { ?>
         ?></td>
         </tr>
 <?php    } } ?>
+
 <?php 
 if ($config->show17 == 1) {
 if ($presse != '' or $presse2 != '' or $presse3 != '')
 {
 	echo '<tr style="background-color:#'.$config->farbe7.';">';
-	echo '<td class="showpresse" colspan = 2>';
-	//echo ''.JText::_('COM_REPORTS2_S_PRESS');
-
-if ($presse != '')
-{
-	echo '<a href="'.$presse.'" target="_blank"><img border=0 src="'.$path.'components/'.$option.'/images/presse1.png" title="'.$presse.'" width="80" height="40" style=" padding:1px;margin:2px;" /></a>';
+	echo '<td class="showtab" colspan = 1>';
+	echo ''.JText::_('COM_REPORTS2_S_PRESS');
+	echo '</td><td class="showtab" colspan = 2>';
+for ($i=1;$i<=3;$i++) {
+	$var = 'presse'.$i;
+	if ($var == 'presse1') {$var = 'presse';}
+	if ($$var != '') {
+		echo '<p style="margin: 3px 0px;"><a href="'.$$var.'" target="_blank"><img src="https://plus.google.com/_/favicon?domain='.parse_url($$var, PHP_URL_HOST).'" style="margin: 0px 8px 0px 0px; vertical-align: bottom;" />'.parse_url($$var, PHP_URL_HOST).'</a></p>';
+	}
 }
-if ($presse2 != '')
-{
-	echo '<a href="'.$presse2.'" target="_blank"><img border=0 src="'.$path.'components/'.$option.'/images/presse2.png" title="'.$presse2.'" width="80" height="40" style=" padding:1px;margin:2px;" /></a>';
-}
-if ($presse3 != '')
-{
-	echo '<a href="'.$presse3.'" target="_blank"><img border=0 src="'.$path.'components/'.$option.'/images/presse3.png" title="'.$presse3.'" width="80" height="40" style=" padding:1px;margin:2px;" /></a>';
-}
-
 echo '</td></tr>';
 }
 }
 ?>
+
 <?php  
 if ($config->show3 == 1) {
 if ($display->desc != 0) { if ($rDesc != '') {?>

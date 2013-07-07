@@ -201,13 +201,28 @@ lightbox = new Lightbox options
       preloader = new Image;
       preloader.onload = function() {
 		$image.attr('src', _this.album[_this.currentImageIndex].link);
-		if (preloader.width > window.innerWidth * 0.9) {
-			preloader.height = (window.innerWidth * 0.9 * preloader.height) / preloader.width;
-			preloader.width = window.innerWidth * 0.9;
+		var winW = 630, winH = 460;
+		if (document.body && document.body.offsetWidth) {
+			winW = document.body.offsetWidth;
+			winH = document.body.offsetHeight;
 		}
-		if (preloader.height > window.innerHeight * 0.8) {
-			preloader.width = (window.innerHeight * 0.8 * preloader.width) / preloader.height;
-			preloader.height = window.innerHeight * 0.8;
+		if (document.compatMode=='CSS1Compat' &&
+		    document.documentElement &&
+		    document.documentElement.offsetWidth ) {
+			winW = document.documentElement.offsetWidth;
+			winH = document.documentElement.offsetHeight;
+		}
+		if (window.innerWidth && window.innerHeight) {
+			winW = window.innerWidth;
+			winH = window.innerHeight;
+		}
+		if (preloader.width > winW * 0.9) {
+			preloader.height = (winW * 0.9 * preloader.height) / preloader.width;
+			preloader.width = winW * 0.9;
+		}
+		if (preloader.height > winH * 0.8) {
+			preloader.width = (winH * 0.8 * preloader.width) / preloader.height;
+			preloader.height = winH * 0.8;
 		}
 		$image.width = preloader.width;
 		$image.height = preloader.height;

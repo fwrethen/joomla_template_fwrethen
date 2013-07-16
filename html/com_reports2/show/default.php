@@ -61,7 +61,7 @@ WHERE `link` LIKE "%index.php?option=com_reports2&view=home&hauptlink=1%" AND `p
 $db->setQuery($query);
 $menuid = $db->loadObject();
 
-//Daten für GMap vorbereiten
+//Daten fï¿½r GMap vorbereiten
 $db =& JFactory::getDBO();
 $query = 'SELECT * FROM `#__reports_gmap` LIMIT 1';
 $db->setQuery($query);
@@ -89,7 +89,7 @@ $stralarmarea=$stralarmarea.' ],"#f33f00", 3, 1, "#ff0000", 0.2);';
 
 
 
-//----Monat-Parameter aus Übergabe auslesen----
+//----Monat-Parameter aus ï¿½bergabe auslesen----
 $selectedDepartment = $_GET['department'];
 $selectedData = $_GET['data'];
 $Monat = $_GET['Monat'];
@@ -144,7 +144,7 @@ if ($reportData)
 	$presse2 = $reportData->presse2;
 	$presse3 = $reportData->presse3;
 	
-    //----Jahr Parameter aus Alarmierungsdatum für Link-Variabeln übergabe vorbereiten
+    //----Jahr Parameter aus Alarmierungsdatum fï¿½r Link-Variabeln ï¿½bergabe vorbereiten
 $all = JRequest::getVar('all');
     if ($all !='1')
     { list($jahr) = explode("-", $rDate1); }
@@ -168,20 +168,20 @@ $count=$reportData->counter;
 ?>
 <?php
 
-//----------------------------- URL-Daten für Twitterlink ---------------------------------------
+//----------------------------- URL-Daten fï¿½r Twitterlink ---------------------------------------
         $url = JURI::base();
         $url = new JURI($url);
         $root= $url->getScheme() ."://" . $url->getHost();
         
         $url = JRoute::_('index.php?option='.$option.'&Itemid='.$menuid->id.'&view=show&id=').$reportData->id;
         $url = $root.$url;
-//--------------- Seitentitel und Beschreibung im Metadaten ändern (für Facebook notwendig !!) --------------------
+//--------------- Seitentitel und Beschreibung im Metadaten ï¿½ndern (fï¿½r Facebook notwendig !!) --------------------
        $document = & JFactory::getDocument();
        $document->setTitle('Einsatzinfo: '.$rData1);
        //$document->setTitle('Einsatzinfo: '.$rData1.' ( '.$config->feuerwehr.' )');
        $document->setMetadata( 'description' , 'Am '.date('d.m.Y', strtotime($rDate1)).' '.$rSummary.' in '.$rAddress);
        $document->setGenerator('Einsatzkomponente f&uuml;r Joomla 2.5');
-//----------------------------- Navigationsflächen ---------------------------------------
+//----------------------------- Navigationsflï¿½chen ---------------------------------------
 //$params2 = &JComponentHelper::getParams(com_reports2); ### 110521 -
 $menus  = &JApplication::getMenu('site', array());
 $menuparam = $menus->getActive();
@@ -190,17 +190,17 @@ $selectedDepartment = $_GET['department'];
 
 if ($selectedDepartment != 0)
 {
-// Abfrage: Wechen Einsatz hatte eine Wehr X VOR dem momentan ausgwählten
-$query = 'SELECT * FROM `#__reports` LEFT JOIN `#__reports_departments_link` ON #__reports_departments_link.report_id=#__reports.id   WHERE `date1` < "'.$rDate1.'"  AND `department_id` LIKE "'.$selectedDepartment.'" AND `#__reports`.`published`="1" ORDER BY `#__reports`.`date1` desc LIMIT 1' ;//## 110302 published hinzugefügt
+// Abfrage: Wechen Einsatz hatte eine Wehr X VOR dem momentan ausgwï¿½hlten
+$query = 'SELECT * FROM `#__reports` LEFT JOIN `#__reports_departments_link` ON #__reports_departments_link.report_id=#__reports.id   WHERE `date1` < "'.$rDate1.'"  AND `department_id` LIKE "'.$selectedDepartment.'" AND `#__reports`.`published`="1" ORDER BY `#__reports`.`date1` desc LIMIT 1' ;//## 110302 published hinzugefï¿½gt
 $db->setQuery($query);
 $prev = $db->loadobject();
 
 }
 else
 {
-// Abfrage: Falls keine Wehr ausgewählt ist, dann wird der Einsatz der genau vor diesem Einsatz stattgefunden hat, ohne Beachtung der Wehrbeteiligung
+// Abfrage: Falls keine Wehr ausgewï¿½hlt ist, dann wird der Einsatz der genau vor diesem Einsatz stattgefunden hat, ohne Beachtung der Wehrbeteiligung
 $db =& JFactory::getDBO();
-$query = "SELECT * FROM `#__reports` WHERE `date1` < '".$rDate1."' AND `published`='1' ORDER BY `#__reports`.`date1` DESC LIMIT 1";//## 110302 published hinzugefügt
+$query = "SELECT * FROM `#__reports` WHERE `date1` < '".$rDate1."' AND `published`='1' ORDER BY `#__reports`.`date1` DESC LIMIT 1";//## 110302 published hinzugefï¿½gt
 $db->setQuery($query);
 $prev = $db->loadobject();
 }
@@ -213,16 +213,16 @@ echo '<a title="zur&uuml;ck" class="readon" href='.JRoute::_('index.php?option='
 echo '<a title="&Uuml;bersicht" class="readon" href='.JRoute::_('index.php?option='.$option.'&'.$task.'&Itemid='.$menuid->id.'&selectedYear=').$jahr.'&year='.$jahr.'&Monat='.$Monat.'&data='.$selectedData.'&department='.$selectedDepartment.'&gmaplink='.$gmaplink.'>&Uuml;bersicht</a> ';
 if ($selectedDepartment != 0)
 {
-// Abfrage: Welchen Einsatz hatte eine Wehr X NACH dem momentan ausgwählten
-$query = 'SELECT * FROM `#__reports` LEFT JOIN `#__reports_departments_link` ON #__reports_departments_link.report_id=#__reports.id   WHERE `date1` > "'.$rDate1.'"  AND `department_id` LIKE "'.$selectedDepartment.'" AND `published`="1" ORDER BY `#__reports`.`date1` asc LIMIT 1' ;//## 110302 published hinzugefügt
+// Abfrage: Welchen Einsatz hatte eine Wehr X NACH dem momentan ausgwï¿½hlten
+$query = 'SELECT * FROM `#__reports` LEFT JOIN `#__reports_departments_link` ON #__reports_departments_link.report_id=#__reports.id   WHERE `date1` > "'.$rDate1.'"  AND `department_id` LIKE "'.$selectedDepartment.'" AND `published`="1" ORDER BY `#__reports`.`date1` asc LIMIT 1' ;//## 110302 published hinzugefï¿½gt
 $db->setQuery($query);
 $next = $db->loadobject();
 }
 else
 {
-// Abfrage: Falls keine Wehr ausgewählt ist, dann wird der Einsatz der genau nach diesem Einsatz stattgefunden hat, ohne Beachtung der Wehrbeteiligung
+// Abfrage: Falls keine Wehr ausgewï¿½hlt ist, dann wird der Einsatz der genau nach diesem Einsatz stattgefunden hat, ohne Beachtung der Wehrbeteiligung
 $db =& JFactory::getDBO();
-			$query = "SELECT * FROM `#__reports` WHERE `date1` > '".$rDate1."' AND `published`='1' ORDER BY `#__reports`.`date1` asc LIMIT 1"; //## 110302 published hinzugefügt
+			$query = "SELECT * FROM `#__reports` WHERE `date1` > '".$rDate1."' AND `published`='1' ORDER BY `#__reports`.`date1` asc LIMIT 1"; //## 110302 published hinzugefï¿½gt
 			$db->setQuery($query);
 			$next = $db->loadobject();
 }			
@@ -297,7 +297,7 @@ $selectedYear = ''.date('Y', strtotime($rDate1)).'';
 }
 
 $database			=& JFactory::getDBO();
-// Anzahl der bisherigen Einsätze im Jahr x
+// Anzahl der bisherigen Einsï¿½tze im Jahr x
 $query = 'SELECT COUNT(id) as total FROM #__reports WHERE date1 LIKE "'.$selectedYear.'%" AND published = "1" ' ;
 $database->setQuery( $query );
 $total = $database->loadObjectList();	
@@ -307,7 +307,7 @@ $query = 'SELECT COUNT(id) as total FROM #__reports WHERE date1  <= "'.$rDate1.'
 $database->setQuery( $query );
 $total = $database->loadObjectList();	
 $totalRecords2 = $total[0]->total;
-// Anzahl aller Einsätze einer bestimmten Wehr in diesem Jahr
+// Anzahl aller Einsï¿½tze einer bestimmten Wehr in diesem Jahr
 $query = 'SELECT COUNT(id) as total FROM `#__reports` LEFT JOIN `#__reports_departments_link` ON #__reports_departments_link.report_id=#__reports.id WHERE date1 LIKE "'.$selectedYear.'%" AND published = "1" AND `department_id` LIKE "'.$selectedDepartment.'"' ;
 $database->setQuery( $query );
 $total = $database->loadObjectList();	
@@ -317,7 +317,7 @@ $query = 'SELECT COUNT(id) as total FROM `#__reports` LEFT JOIN `#__reports_depa
 $database->setQuery( $query );
 $total = $database->loadObjectList();	
 $totalRecords4 = $total[0]->total;
-// Ausgabe welche Wehr im Menü verlinkt ist (um von der ID auf den Namen zu kommen)
+// Ausgabe welche Wehr im Menï¿½ verlinkt ist (um von der ID auf den Namen zu kommen)
 $query = "SELECT * FROM `#__reports_departments` WHERE `id` LIKE '".$selectedDepartment."'";
 $db->setQuery($query);
 $selectedWehr = $db->loadobject();
@@ -721,26 +721,6 @@ if ($display->department != 0) { ?>
         </tr>
 <?php    } } ?>
 
-<?php 
-if ($config->show17 == 1) {
-if ($presse != '' or $presse2 != '' or $presse3 != '')
-{
-	echo '<tr style="background-color:#'.$config->farbe7.';">';
-	echo '<td class="showtab" colspan = 1>';
-	echo ''.JText::_('COM_REPORTS2_S_PRESS');
-	echo '</td><td class="showtab" colspan = 2>';
-for ($i=1;$i<=3;$i++) {
-	$var = 'presse'.$i;
-	if ($var == 'presse1') {$var = 'presse';}
-	if ($$var != '') {
-		echo '<p style="margin: 3px 0px;"><a href="'.$$var.'" target="_blank"><img src="https://plus.google.com/_/favicon?domain='.parse_url($$var, PHP_URL_HOST).'" style="margin: 0px 8px 0px 0px; vertical-align: bottom;" />'.parse_url($$var, PHP_URL_HOST).'</a></p>';
-	}
-}
-echo '</td></tr>';
-}
-}
-?>
-
 <?php  
 if ($config->show3 == 1) {
 if ($display->desc != 0) { if ($rDesc != '') {?>
@@ -750,8 +730,31 @@ if ($display->desc != 0) { if ($rDesc != '') {?>
        <tr>
        <td class="showtab" colspan="3"  bgcolor="#<?php echo $config->farbe6 ?>"><?php echo '<p></p><b>'.JText::_('COM_REPORTS2_S_REPORT').'</b><p></p><p></p>'.$rDesc; ?></td>
        </tr>
-<?php     }}}
-if ($config->show18 == 1) { ?>
+
+<?php     }}} ?>
+
+<?php
+if ($config->show17 == 1) {
+	if ($presse != '' or $presse2 != '' or $presse3 != '')
+	{
+		echo '<tr style="background-color:#'.$config->farbe7.';">';
+		echo '<td class="showtab" colspan = 1>';
+		echo ''.JText::_('COM_REPORTS2_S_PRESS');
+		echo '</td><td class="showtab" colspan = 2>';
+		for ($i=1;$i<=3;$i++) {
+			$var = 'presse'.$i;
+			if ($var == 'presse1') {$var = 'presse';}
+			if ($$var != '') {
+				echo '<p style="margin: 3px 0px;"><a href="'.$$var.'" target="_blank"><img src="https://plus.google.com/_/favicon?domain='.parse_url($$var, PHP_URL_HOST).'" style="margin: 0px 8px 0px 0px; vertical-align: bottom;" />'.parse_url($$var, PHP_URL_HOST).'</a></p>';
+			}
+		}
+		echo '</td></tr>';
+	}
+}
+?>
+
+<?php
+if (($config->show18 == 1) && (count($rImages) > '0')) { ?>
 
   <tr style="background-color:#<?php echo $config->farbe8; ?>">
     <td class="showmaptd" colspan="3"><?php
@@ -1097,7 +1100,7 @@ echo ''; //JTEXT::_('COM_REPORTS2_S_ALLOWMAP');
 </table></td></tr></table>
 
 <?php
-// -------------------- COUNTER -------------------------------- ##110402 Counter->IP->SQL hinzugefügt
+// -------------------- COUNTER -------------------------------- ##110402 Counter->IP->SQL hinzugefï¿½gt
 $db =& JFactory::getDBO();
 $query = 'SELECT COUNT(counter_id) as total FROM #__reports_counter WHERE counter_ip = "' . $_SERVER['REMOTE_ADDR'] . '" AND counter_rp_id = "'.$reportData->id.'" AND counter_time > "'.(time() - $config->iptime).'" ' ;
 $db->setQuery($query);
@@ -1107,12 +1110,12 @@ $counter_check = $db->loadObjectList();
  
  if ($counter_check[0]->total > '0')
  {
- // Counter wird für Ip-Adresse auf bestimme Zeit gesperrt
+ // Counter wird fï¿½r Ip-Adresse auf bestimme Zeit gesperrt
  }
  else
  {
-// Ip-Adresse hat diesen Bericht noch nicht gelesen. Es folgt Counter-Zählung und Speicherung der IP für eine bestimmte Zeit
-// außerdem werden Zeit abgelaufende gesperrte Ip-Adressen wieder freigegeben.	 
+// Ip-Adresse hat diesen Bericht noch nicht gelesen. Es folgt Counter-Zï¿½hlung und Speicherung der IP fï¿½r eine bestimmte Zeit
+// auï¿½erdem werden Zeit abgelaufende gesperrte Ip-Adressen wieder freigegeben.	 
 $i=$count;
 $i=$i+1;
 global $option;

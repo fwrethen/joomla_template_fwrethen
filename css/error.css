@@ -1,0 +1,89 @@
+/**
+ * @copyright	Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+ */
+
+/* Start Common Styles */
+* {
+	font-family: helvetica, arial, sans-serif;
+	font-size: 11px;
+	color: #5F6565;
+}
+
+html {
+	height: 100%;
+	margin-bottom: 1px;
+}
+
+body {
+	margin: 0px;
+	padding: 0px;
+	height: 100%;
+	margin-bottom: 1px;
+	background: #0C3A6D;
+	font-family: helvetica, arial, sans-serif;
+	font-weight: normal;
+	padding-top: 0px;
+	margin-top: 0px;
+}
+
+.error {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+table, td, th, div, pre, blockquote, ul, ol, dl, address,.componentheading,.contentheading,.contentpagetitle,.sectiontableheader,.newsfeedheading {
+	font-family: helvetica, arial, sans-serif;
+	font-weight: normal;
+}
+
+#outline {
+	width: 960px;
+	margin: 25px auto;
+	padding: 4px;
+	background: #FFFFFF;
+	border: 0px solid #FFFFFF;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    background-clip: padding-box; /* useful if you don't want a bg color from leaking outside the border: */
+    box-shadow: 0px 0px 15px -5px #000000;
+    -webkit-box-shadow: 0px 0px 20px -5px #000000;
+}
+#errorboxoutline {
+	width: 958px;
+	margin: 0px;
+	padding: 0px;
+	border: 1px solid #BBBBBB;
+	border-radius: 10px;
+    -webkit-border-radius: 10px;
+    background-clip: padding-box; /* useful if you don't want a bg color from leaking outside the border: */
+}
+#errorboxheader {
+	width: 948px;
+	margin: 0px;
+	padding: 5px;
+	background: #A70606;
+	color: #FFFFFF;
+	font-weight: bold;
+	font-size: 12px;
+	line-height: 22px;
+	text-align: center;
+	border-bottom: 1px solid #BBBBBB;
+	border-radius: 9px 9px 0px 0px;
+    -webkit-border-radius: 9px 9px 0px 0px;
+}
+#errorboxbody {
+	margin: 0px;
+	padding: 10px;
+	text-align: left;
+}
+#techinfo {
+	margin: 10px;
+	padding: 10px;
+	text-align: left;
+	border: 1px solid #CCCCCC;
+	color: #CCCCCC;
+}
+#techinfo p {
+	color: #CCCCCC;
+}

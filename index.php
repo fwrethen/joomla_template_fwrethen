@@ -22,21 +22,17 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 <link rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/system/css/system.css" type="text/css" />
 <link rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/system/css/general.css" type="text/css" />
 <link rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/css/template.css" type="text/css" />
-<link rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/css/<?php echo $this->params->get('colorVariation'); ?>.css" type="text/css" />
-<link rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/css/<?php echo $this->params->get('backgroundVariation'); ?>_bg.css" type="text/css" />
 <!--[if lte IE 6]>
 <link href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/css/ieonly.css" rel="stylesheet" type="text/css" />
 <![endif]-->
 
 </head>
-<body id="page_bg" class="color_<?php echo $this->params->get('colorVariation'); ?> bg_<?php echo $this->params->get('backgroundVariation'); ?> width_<?php echo $this->params->get('widthStyle'); ?>">
+<body id="page_bg" class="width_<?php echo $this->params->get('widthStyle'); ?>">
 <a name="up" id="up"></a>
 <div class="center" align="center">
 	<div id="wrapper">
-		<div id="wrapper_r">
+		<div id="wrapper_shadow">
 			<div id="header">
-				<div id="header_l">
-					<div id="header_r">
 						<div id="logo">
 						  <table height="100" border="0" cellpadding="0" cellspacing="0" width="100%">
 						   <tr>
@@ -48,28 +44,12 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 						  </table>
 						</div>
 						<jdoc:include type="modules" name="top" />
-					</div>
-				</div>
 			</div>
 
 			<div id="tabarea">
-				<div id="tabarea_l">
-					<div id="tabarea_r">
-						<div id="tabmenu">
-						<table cellpadding="0" cellspacing="0" class="pill">
-							<tr>
-								<td class="pill_l">&nbsp;</td>
-								<td class="pill_m">
-								<div id="pillmenu">
-									<jdoc:include type="modules" name="user3" />
-								</div>
-								</td>
-								<td class="pill_r">&nbsp;</td>
-							</tr>
-							</table>
-						</div>
-					</div>
-				</div>
+        <nav id="pillmenu">
+          <jdoc:include type="modules" name="user3" />
+        </nav>
 			</div>
 
 			<div id="search">
@@ -83,19 +63,13 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 			<div class="clr"></div>
 
 			<div id="whitebox">
-				<div id="whitebox_t">
-					<div id="whitebox_tl">
-						<div id="whitebox_tr"></div>
-					</div>
-				</div>
 
-				<div id="whitebox_m">
 					<div id="area">
 									<jdoc:include type="message" />
 
 						<div id="leftcolumn">
 						<?php if($this->countModules('left')) : ?>
-							<jdoc:include type="modules" name="left" style="rounded" />
+							<jdoc:include type="modules" name="left" style="xhtml" />
 						<?php endif; ?>
 						</div>
 
@@ -146,31 +120,18 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 						<div class="clr"></div>
 					</div>
 					<div class="clr"></div>
-				</div>
-
-				<div id="whitebox_b">
-					<div id="whitebox_bl">
-						<div id="whitebox_br"></div>
-					</div>
-				</div>
 			</div>
 
 			<div id="footerspacer"></div>
-		</div>
+		
 
 		<div id="footer">
-			<div id="footer_l">
-				<div id="footer_r">
-					<p id="syndicate">
-						<jdoc:include type="modules" name="syndicate" />
-					</p>
-					<!--<p id="power_by">
-	 				 	<?php echo JText::_('Powered by') ?> <a href="http://www.joomla.org">Joomla!</a>.
-						<?php echo JText::_('Valid') ?> <a href="http://validator.w3.org/check/referer">XHTML</a> <?php echo JText::_('and') ?> <a href="http://jigsaw.w3.org/css-validator/check/referer">CSS</a>.
-					</p>-->
-				</div>
-			</div>
+      <p id="syndicate">
+        <jdoc:include type="modules" name="syndicate" />
+      </p>
 		</div>
+
+	</div>
 	</div>
 </div>
 <jdoc:include type="modules" name="debug" />

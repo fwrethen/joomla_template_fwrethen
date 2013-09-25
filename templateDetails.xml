@@ -2,7 +2,7 @@
 <!DOCTYPE install PUBLIC "-//Joomla! 1.5//DTD template 1.0//EN" "http://www.joomla.org/xml/dtd/1.5/template-install.dtd">
 <extension version="2.5" type="template" client="site">
 	<name>fwrethen_2.5</name>
-	<creationDate>May 2013</creationDate>
+	<creationDate>September 2013</creationDate>
 	<author>Florian Paetz</author>
 	<authorEmail>Paetzy@fw-rethen.de</authorEmail>
 	<authorUrl>http://www.fw-rethen.de</authorUrl>
@@ -37,24 +37,6 @@
 	<config>
 		<fields name="params">
 			<fieldset name="advanced">
-				<field name="colorVariation" type="list" default="fwblue" label="Color Variation" description="Color variation to use">
-					<option value="fwblue">Fw-Blue</option>
-					<!--option value="blue">Blue</option>
-					<option value="red">Red</option>
-					<option value="green">Green</option>
-					<option value="orange">Orange</option>
-					<option value="black">Black</option>
-					<option value="white">White</option-->
-				</field>
-				<field name="backgroundVariation" type="list" default="fwblue" label="Background Variation" description="Background color variation to use">
-					<option value="fwblue">Fw-Blue</option>
-					<!--option value="blue">Blue</option>
-					<option value="red">Red</option>
-					<option value="green">Green</option>
-					<option value="orange">Orange</option>
-					<option value="black">Black</option>
-					<option value="white">White</option-->
-				</field>
 				<field name="widthStyle" type="list" default="fmax" label="Template Width" description="Width style of the template">
 					<option value="fmax">Fluid with maximum</option>
 					<option value="medium">Medium</option>

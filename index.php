@@ -25,6 +25,9 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 <!--[if lte IE 6]>
 <link href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/css/ieonly.css" rel="stylesheet" type="text/css" />
 <![endif]-->
+<!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js"></script>
+<![endif]-->
 
 </head>
 <body id="page_bg" class="width_<?php echo $this->params->get('widthStyle'); ?>">

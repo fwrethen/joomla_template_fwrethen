@@ -224,16 +224,14 @@ nav#pillmenu ul, nav#pillmenu li {
   margin: 0px;
   height: 100%;
   float: left;
+  border: 1px solid #ccc;
+  border-width: 0px 0px 0px 1px;
 }
 
 nav#pillmenu li {
   padding: 0px 20px;
   border: 1px solid #ccc;
   border-width: 0px 1px 0px 0px;
-}
-
-nav#pillmenu li:first-of-type {
-  border-width: 0px 1px 0px 1px;
 }
 
 nav#pillmenu a {
@@ -261,7 +259,7 @@ nav#pillmenu a:hover {
 #maincolumn_full {
 	margin-left: 20%;
 	padding-left: 15px;
-	width: 79%;
+	/*width: 79%;*/
 }
 
 #maincolumn_full {

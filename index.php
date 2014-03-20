@@ -51,12 +51,12 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 
 			<div id="tabarea">
         <nav id="pillmenu">
-          <jdoc:include type="modules" name="user3" />
+          <jdoc:include type="modules" name="pillmenu" />
         </nav>
 			</div>
 
 			<div id="search">
-				<jdoc:include type="modules" name="user4" />
+				<jdoc:include type="modules" name="search" />
 			</div>
 
 			<div id="pathway">
@@ -82,20 +82,58 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 
 						<div id="maincolumn_full">
 						<?php endif; ?>
-							<?php if($this->countModules('user1 or user2')) : ?>
-								<table class="nopad user1user2">
+							<?php if($this->countModules('user11 or user12 or user13')) : ?>
+								<table class="nopad userx">
 									<tr valign="top">
-										<?php if($this->countModules('user1')) : ?>
+										<?php if($this->countModules('user11')) : ?>
 											<td>
-												<jdoc:include type="modules" name="user1" style="xhtml" />
+												<jdoc:include type="modules" name="user11" style="xhtml" />
 											</td>
 										<?php endif; ?>
-										<?php if($this->countModules('user1 and user2')) : ?>
+										<?php if($this->countModules('user11 and user12')) : ?>
 											<td class="greyline">&nbsp;</td>
 										<?php endif; ?>
-										<?php if($this->countModules('user2')) : ?>
+										<?php if($this->countModules('user12')) : ?>
 											<td>
-												<jdoc:include type="modules" name="user2" style="xhtml" />
+												<jdoc:include type="modules" name="user12" style="xhtml" />
+											</td>
+										<?php endif; ?>
+										<?php if($this->countModules('user12 and user13') or $this->countModules('user11 and user13')) : ?>
+											<td class="greyline">&nbsp;</td>
+										<?php endif; ?>
+										<?php if($this->countModules('user13')) : ?>
+											<td>
+												<jdoc:include type="modules" name="user13" style="xhtml" />
+											</td>
+										<?php endif; ?>
+									</tr>
+								</table>
+
+								<div id="maindivider"></div>
+							<?php endif; ?>
+							
+							<?php if($this->countModules('user21 or user22 or user23')) : ?>
+								<table class="nopad userx">
+									<tr valign="top">
+										<?php if($this->countModules('user21')) : ?>
+											<td>
+												<jdoc:include type="modules" name="user21" style="xhtml" />
+											</td>
+										<?php endif; ?>
+										<?php if($this->countModules('user21 and user22')) : ?>
+											<td class="greyline">&nbsp;</td>
+										<?php endif; ?>
+										<?php if($this->countModules('user22')) : ?>
+											<td>
+												<jdoc:include type="modules" name="user22" style="xhtml" />
+											</td>
+										<?php endif; ?>
+										<?php if($this->countModules('user22 and user23') or $this->countModules('user21 and user23')) : ?>
+											<td class="greyline">&nbsp;</td>
+										<?php endif; ?>
+										<?php if($this->countModules('user23')) : ?>
+											<td>
+												<jdoc:include type="modules" name="user23" style="xhtml" />
 											</td>
 										<?php endif; ?>
 									</tr>
@@ -118,10 +156,71 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 									<?php endif; ?>
 								</tr>
 							</table>
+							
+							<?php if($this->countModules('user31 or user32 or user33')) : ?>
+								<div id="maindivider"></div>
+
+								<table class="nopad userx">
+									<tr valign="top">
+										<?php if($this->countModules('user31')) : ?>
+											<td>
+												<jdoc:include type="modules" name="user31" style="xhtml" />
+											</td>
+										<?php endif; ?>
+										<?php if($this->countModules('user31 and user32')) : ?>
+											<td class="greyline">&nbsp;</td>
+										<?php endif; ?>
+										<?php if($this->countModules('user32')) : ?>
+											<td>
+												<jdoc:include type="modules" name="user32" style="xhtml" />
+											</td>
+										<?php endif; ?>
+										<?php if($this->countModules('user32 and user33') or $this->countModules('user31 and user33')) : ?>
+											<td class="greyline">&nbsp;</td>
+										<?php endif; ?>
+										<?php if($this->countModules('user33')) : ?>
+											<td>
+												<jdoc:include type="modules" name="user33" style="xhtml" />
+											</td>
+										<?php endif; ?>
+									</tr>
+								</table>
+							<?php endif; ?>
 
 						</div>
 						<div class="clr"></div>
 					</div>
+					
+					<?php if($this->countModules('user41 or user42 or user43')) : ?>
+						<div id="maindivider"></div>
+
+						<table class="nopad userx">
+							<tr valign="top">
+								<?php if($this->countModules('user41')) : ?>
+									<td>
+										<jdoc:include type="modules" name="user41" style="xhtml" />
+									</td>
+								<?php endif; ?>
+								<?php if($this->countModules('user41 and user42')) : ?>
+									<td class="greyline">&nbsp;</td>
+								<?php endif; ?>
+								<?php if($this->countModules('user42')) : ?>
+									<td>
+										<jdoc:include type="modules" name="user42" style="xhtml" />
+									</td>
+								<?php endif; ?>
+								<?php if($this->countModules('user42 and user43') or $this->countModules('user41 and user43')) : ?>
+									<td class="greyline">&nbsp;</td>
+								<?php endif; ?>
+								<?php if($this->countModules('user43')) : ?>
+									<td>
+										<jdoc:include type="modules" name="user43" style="xhtml" />
+									</td>
+								<?php endif; ?>
+							</tr>
+						</table>
+					<?php endif; ?>
+					
 					<div class="clr"></div>
 			</div>
 

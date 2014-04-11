@@ -30,7 +30,7 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 <![endif]-->
 
 </head>
-<body id="page_bg" class="width_<?php echo $this->params->get('widthStyle'); ?>">
+<body class="width_<?php echo $this->params->get('widthStyle'); ?>">
 <a name="up" id="up"></a>
 <div class="center" align="center">
 	<div id="wrapper">

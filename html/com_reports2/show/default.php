@@ -13,8 +13,8 @@ if ($gmaplink == '1')
 { $task = 'view=gmap';}
 JHTML::_('stylesheet','report.css',$path.'templates/'.$template.'/html/com_reports2/assets/css/');
 JHTML::_('stylesheet', 'lightbox.css',$path.'templates/'.$template.'/html/com_reports2/assets/lightbox/');
-JHTML::_('script', 'jquery-1.7.2.min.js',$path.'templates/'.$template.'/html/com_reports2/assets/lightbox/');
-JHTML::_('script', 'lightbox.js',$path.'templates/'.$template.'/html/com_reports2/assets/lightbox/');
+JHTML::_('script', 'jquery-1.11.0.min.js',$path.'templates/'.$template.'/html/com_reports2/assets/lightbox/');
+JHTML::_('script', 'lightbox.min.js',$path.'templates/'.$template.'/html/com_reports2/assets/lightbox/');
 ?>
 
 

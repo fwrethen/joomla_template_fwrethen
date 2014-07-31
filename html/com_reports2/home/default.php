@@ -120,7 +120,7 @@ $link= JRoute::_('index.php?option='.$option);
 //$params = &JComponentHelper::getParams(com_reports2); // ### 110521 -  Parameter werden jetzt über $menuid->query[anzeigejahr]; geholt
 $menus  = &JApplication::getMenu('site', array());
 $menuid = $menus->getActive();
-JHTML::_('stylesheet','report.css',$path.'templates/fwrethen_2.5/html/com_reports2/assets/css/');
+JHTML::_('stylesheet','report.css',$path.'templates/fwrethen_2.5/css/');
 
 $prevMonth ='';
 

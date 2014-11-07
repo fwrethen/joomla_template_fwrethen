@@ -47,7 +47,7 @@ $template_dir = JURI::base() . 'templates/' . JFactory::getApplication()->getTem
 
 <!--RSS-Feed Imag-->
 <?php if ($this->params->get('display_home_rss','1')) : ?>
-<div style="float:right;" class="eiko_rss" ><a href="<?php JURI::base();?>index.php?option=com_einsatzkomponente&view=einsatzberichte&format=feed&type=rss"><img src="<?php echo $template_dir;?>/images/feed3.svg" alt="RSS-Feed abonieren" height="16px" width="16px"></a></div>
+<div style="float:right;" class="eiko_rss" ><a href="<?php JURI::base();?>index.php?option=com_einsatzkomponente&view=einsatzberichte&format=feed&type=rss"><img src="<?php echo $template_dir;?>/images/rss.svg" alt="RSS-Feed abonieren" height="16px" width="16px"></a></div>
 <?php endif; ?>
 
 

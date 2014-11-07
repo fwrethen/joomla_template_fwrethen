@@ -23,6 +23,8 @@ else:
 	$image = $this->item->image;
 endif;
 
+$images = '';
+$image_full = '';
 for ($i=0; $i<count($this->images); $i++):
 	$img_thumb = $this->images[$i]->thumb;
 	$img_full = $this->images[$i]->image;

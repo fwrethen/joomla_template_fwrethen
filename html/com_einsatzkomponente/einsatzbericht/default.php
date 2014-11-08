@@ -44,7 +44,7 @@ endif;
 $images = $image . $images;
 
 $array = array();
-foreach((array)$this->item->auswahlorga as $value): 
+foreach((array)$this->item->auswahlorga as $value):
 	if(!is_array($value)):
 		$array[] = $value;
 	endif;
@@ -95,7 +95,7 @@ $presse1 = $this->item->presse;
 $presse2 = $this->item->presse2;
 $presse3 = $this->item->presse3;
 $data = array();
-for ($i=1;$i<=3;$i++):		
+for ($i=1;$i<=3;$i++):
 	$var = 'presse'.$i;
 	if ($$var):
 		$data[] = '<a href="'.$$var.'" target="_blank"><img src="https://plus.google.com/_/favicon?domain='.parse_url($$var, PHP_URL_HOST).'" style="margin: 0px 8px 0px 0px; vertical-align: bottom;" />'.parse_url($$var, PHP_URL_HOST).'</a>';

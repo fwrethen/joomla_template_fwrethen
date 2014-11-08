@@ -73,17 +73,17 @@ if (!$this->params->get('anzeigejahr','0') and $this->params->get('display_filte
 	
     <?php
 endif;
-if ($this->params->get('display_filter_einsatzarten','1')) : 
+if ($this->params->get('display_filter_einsatzarten','1')) :
 	$einsatzarten[] = JHTML::_('select.option', '', JTEXT::_('alle Einsatzarten')  , 'title', 'title');
 	$einsatzarten = array_merge($einsatzarten, (array)$this->einsatzarten);
-	?><?php 
+	?><?php
 	echo JHTML::_('select.genericlist',  $einsatzarten, 'selectedEinsatzart', ' onchange=submit(); ', 'title', 'title', $this->selectedEinsatzart);?>
     <?php
 	endif;
-	if (!$this->params->get('abfragewehr','0') and $this->params->get('display_filter_organisationen','1')) : 
+	if (!$this->params->get('abfragewehr','0') and $this->params->get('display_filter_organisationen','1')) :
 	$organisationen[] = JHTML::_('select.option', '', JTEXT::_('alle Organisationen')  , 'name', 'name');
 	$organisationen = array_merge($organisationen, (array)$this->organisationen);
-	?><?php 
+	?><?php
 	echo JHTML::_('select.genericlist',  $organisationen, 'selectedOrga', ' onchange=submit(); ', 'name', 'name', $this->selectedOrga);
 	endif;?>
 	</form></div>
@@ -129,8 +129,8 @@ endif;
     </thead>
     
  <tbody>
-	 <?php 
-$show = false;	 
+	 <?php
+$show = false;
 if ($this->params->get('display_home_pagination')) :
      $i=$this->pagination->total - $this->pagination->limitstart+1;
 	 else:
@@ -139,7 +139,7 @@ if ($this->params->get('display_home_pagination')) :
 	 $m = '';
      foreach ($this->reports as $item) :
 		   $i--; //print_r ($item);
-		   $curTime = strtotime($item->date1); 
+		   $curTime = strtotime($item->date1);
 		   ?>
           <?php /* -- Filter Einsatzart -- */ ?>
 		  <?php if(strpos($item->auswahlorga,$this->selectedOrga)!==false or $this->selectedOrga == 'alle Organisationen'): ?>
@@ -155,7 +155,7 @@ if ($this->params->get('display_home_pagination')) :
            <?php echo $this->monate[$m];?>
 		   <?php if ($this->selectedYear == '9999') : echo date('Y', $curTime); endif;?>
            <?php echo '</h3>';?>
-           </td></tr>           
+           </td></tr>
            <?php echo $theader; ?>
            <?php endif;?>
            <?php endif;?>
@@ -165,7 +165,7 @@ if ($this->params->get('display_home_pagination')) :
 		   <tr class="link" onClick="parent.location='<?php echo JRoute::_('index.php?option=com_einsatzkomponente'.$this->layout_detail_link.'&view=einsatzbericht&id=' . (int)$item->id); ?>'">
 		   <?php else:?>
 		   <tr>
-           <?php endif;?>		   
+           <?php endif;?>
 
            <?php if ($this->params->get('display_home_number','1') or $this->params->get('display_home_alertimage_num','0')) : ?>
            <?php if ($this->params->get('display_home_marker','1')) : ?>
@@ -183,13 +183,13 @@ if ($this->params->get('display_home_pagination')) :
            <?php endif;?>
            
            <?php if ($this->params->get('display_home_alertimage','0')) : ?>
-		   <td style=" text-align:center;" > 
+		   <td style=" text-align:center;" >
            <img class="img-rounded" style="width:50px; height:50px;margin-right:2px;" src="<?php echo JURI::Root();?><?php echo $item->image;?>" title="<?php echo $item->alarmierungsart;?>" />
            </td>
            <?php endif;?>
            
            <?php if ($this->params->get('display_home_date_image')) : ?>
-		   <td> 
+		   <td>
 			<div class="home_cal_icon">
 			<div class="home_cal_monat"><?php echo date('M', $curTime);?></div>
 			<div class="home_cal_tag"><?php echo date('d', $curTime);?></div>
@@ -220,7 +220,7 @@ if ($this->params->get('display_home_pagination')) :
 				{
         		jQuery(query).slideToggle("5000");
 				jQuery("#tr<?php echo $item->id;?>").fadeToggle("fast");
-				}   
+				}
 			</script>
             <?php endif;?>
             
@@ -289,7 +289,7 @@ if ($this->params->get('display_home_pagination')) :
            <?php if ($this->params->get('display_home_links','1')) : ?>
             <a class="btn-home" href="<?php echo JRoute::_('index.php?option=com_einsatzkomponente'.$this->layout_detail_link.'&view=einsatzbericht&id=' . (int)$item->id); ?>">zur Detailansicht</a>
            <?php endif;?>
-           </div> 
+           </div>
            </td>
            </tr>
             <?php endif;?>
@@ -320,7 +320,7 @@ if ($this->params->get('display_home_pagination')) :
             <?php endif;?>
             </td></tr>
     <?php endif;?>
- </tbody>   
+ </tbody>
     
     
     <tfoot>
@@ -331,7 +331,7 @@ if ($this->params->get('display_home_pagination')) :
 					<tr><td colspan="<?php echo $col;?>">
                     	<form action="#" method=post>
 						<?php echo $this->pagination->getListFooter(); ?><!--Pagination anzeigen-->
-						</form> 
+						</form>
 					</td></tr>
 		   			<?php endif;?><!--Prüfen, ob Einsatzart ausgwählt ist ENDE-->
 		   			<?php endif;?><!--Prüfen, ob Pagination angezeigt wrden soll   ENDE -->
@@ -345,13 +345,13 @@ if ($this->params->get('display_home_pagination')) :
 	<?php endif; ?>
 	
     
-    <?php function hex2rgba($color, $opacity = false) {  // Farbe von HEX zu RGBA umwandeln 
+    <?php function hex2rgba($color, $opacity = false) {  // Farbe von HEX zu RGBA umwandeln
 
 	$default = 'rgb(0,0,0)';
 	//Return default if no color provided
 	if(empty($color))
-          return $default; 
-	//Sanitize $color if "#" is provided 
+          return $default;
+	//Sanitize $color if "#" is provided
         if ($color[0] == '#' ) {
         	$color = substr( $color, 1 );
         }
@@ -376,4 +376,4 @@ if ($this->params->get('display_home_pagination')) :
         //Return rgb(a) color string
         return $output;
 		
-}?> 
+}?>

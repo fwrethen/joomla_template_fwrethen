@@ -182,7 +182,7 @@ $presse = implode('<br />',$data); ?>
 		<dd><?php echo $this->item->people; ?></dd>
 	</dl>
 	<dl class="einsatz half">
-		<dt><?php echo JText::_('COM_EINSATZKOMPONENTE_FORM_LBL_EINSATZBERICHT_AUSWAHLORGA'); ?></dt>
+		<dt><?php echo 'alarmierte Einheiten'; ?></dt>
 		<dd><?php echo $auswahlorga; ?></dd>
 		<dt><?php echo JText::_('COM_EINSATZKOMPONENTE_FORM_LBL_EINSATZBERICHT_VEHICLES'); ?></dt>
 		<dd><?php echo $vehicles; ?></dd>
@@ -191,7 +191,7 @@ $presse = implode('<br />',$data); ?>
 	<?php if ($presse): ?>
 	<hr class="einsatz" />
 	<dl class="einsatz">
-		<dt><?php echo JText::_('COM_EINSATZKOMPONENTE_FORM_LBL_EINSATZBERICHT_PRESSE'); ?></dt>
+		<dt><?php echo 'Presseberichte'; ?></dt>
 		<dd><?php echo $presse; ?></dd>
 	</dl>
 	<?php endif; ?>

@@ -14,7 +14,7 @@ $lang->load('com_einsatzkomponente', JPATH_ADMINISTRATOR);
 
 $template_dir = JURI::base() . 'templates/' . JFactory::getApplication()->getTemplate('template')->template;
 JHtml::_('stylesheet', $template_dir.'/css/lightbox.css');
-JHtml::_('script', $template_dir.'/js/jquery-1.11.0.min.js');
+JHtml::_('jquery.framework', false);
 JHtml::_('script', $template_dir.'/js/lightbox.min.js');
 
 if (substr_count($this->item->image, 'nopic.png')):

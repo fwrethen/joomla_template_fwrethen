@@ -17,7 +17,7 @@ JHtml::_('stylesheet', $template_dir.'/css/lightbox.css');
 JHtml::_('jquery.framework', false);
 JHtml::_('script', $template_dir.'/js/lightbox.min.js');
 
-if (substr_count($this->item->image, 'nopic.png')):
+if ((substr_count($this->item->image, 'nopic.png')) or !($this->item->image)):
 	$image = $template_dir .'/images/default_image.jpg';
 else:
 	$image = $this->item->image;

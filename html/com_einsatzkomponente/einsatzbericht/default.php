@@ -155,10 +155,7 @@ $presse = implode('<br />',$data); ?>
 		hr.einsatz {
 			border: 0;
 			height: 1px;
-			background-image: -webkit-linear-gradient(left, #eee, #999, #eee);
-			background-image:    -moz-linear-gradient(left, #eee, #999, #eee);
-			background-image:     -ms-linear-gradient(left, #eee, #999, #eee);
-			background-image:      -o-linear-gradient(left, #eee, #999, #eee);
+			background-color: #CCC;
 		}
 
 		section.einsatz {
@@ -195,8 +192,10 @@ $presse = implode('<br />',$data); ?>
 		<dd><?php echo $presse; ?></dd>
 	</dl>
 	<?php endif; ?>
+	<?php if ($this->item->desc): ?>
 	<hr class="einsatz" />
 	<section class="einsatz"><?php echo $this->item->desc; ?></section>
+	<?php endif; ?>
 	<div>
 	<div class="clr"></div>
 

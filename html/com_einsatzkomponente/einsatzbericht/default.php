@@ -200,6 +200,8 @@ $presse = implode('<br />',$data); ?>
 	<div>
 	<div class="clr"></div>
 
+	<script>document.getElementById("einsatzChart").parentNode.style.display = "none";</script>
+
 
 <?php else: ?>
     Could not load the item

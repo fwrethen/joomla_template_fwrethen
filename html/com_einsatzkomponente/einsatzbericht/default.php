@@ -17,31 +17,45 @@ JHtml::_('stylesheet', $template_dir.'/css/lightbox.css');
 JHtml::_('jquery.framework', false);
 JHtml::_('script', $template_dir.'/js/lightbox.min.js');
 
-if ((substr_count($this->item->image, 'nopic.png')) or !($this->item->image)):
-	$image = $template_dir .'/images/default_image.jpg';
-else:
-	$image = $this->item->image;
+$images = array();
+$thumbs = array();
+// wenn Einsatz ein Attribut image hat, kommt dieses an die erste Stelle des Arrays
+if (!(substr_count($this->item->image, 'nopic.png')) and !($this->item->image)):
+	$images[] = $this->item->image;
 endif;
-
-$images = '';
-$image_full = '';
+// zugeordnete Bilder durchgehen
 for ($i=0; $i<count($this->images); $i++):
-	$img_thumb = $this->images[$i]->thumb;
-	$img_full = $this->images[$i]->image;
-	if ($image == $img_thumb):
-		$image_full = $img_full;
-	elseif ($image == $img_full):
-		$image = $img_thumb;
+	$img = $this->images[$i]->image;
+	$thumb = $this->images[$i]->thumb;
+	// wenn Einsatzbild darunter ist, volles Bild oder Thumb entspr zuordnen
+	if (($images[0] == $img) or ($images[0] == $thumb)):
+		$images[0] = $img;
+		$thumbs[0] = $thumb;
+	// ansonsten Bild an Array anhängen und Thumb in anderen Array mit gleichem Index
 	else:
-		$images = $images .'<a rel="lightbox[gallery]" href="'. $img_full .'"><img src="'. $img_thumb .'" /></a>';
+		//array_push returns size after push
+		$thumbs[array_push($images, $img)-1] = $thumb;
 	endif;
 endfor;
-if ($image_full):
-	$image = '<a rel="lightbox[gallery]" href="'. $image_full .'"><img src="'. $image .'" id="title_image" /></a>';
+
+// HTML basteln
+$img_html = '';
+// wenn kein erstes Element im Array, Platzhalterbild nutzen
+if (!$images[0]):
+	$img_html = '<img src="'. $template_dir .'/images/default_image.jpg" id="title_image" />';
 else:
-	$image = '<img src="'. $image .'" id="title_image" />';
+	foreach($images as $i=>$img):
+		$class = '';
+		if ($i == 0):
+			$class = ' id="title_image"';
+		endif;
+		if ($thumbs[$i]):
+			$img_html .= '<a rel="lightbox[gallery]" href="'. $img .'"><img src="'. $thumbs[$i] .'" '. $class .' /></a>';
+		else:
+			$img_html .= '<a rel="lightbox[gallery]" href="'. $img .'"><img src="'. $img .'" '. $class .' /></a>';
+		endif;
+	endforeach;
 endif;
-$images = $image . $images;
 
 $array = array();
 foreach((array)$this->item->auswahlorga as $value):
@@ -164,7 +178,7 @@ $presse = implode('<br />',$data); ?>
 	</style>
 
 	<h3><?php echo $this->item->summary; ?></h3>
-	<div id="einsatz_images"><?php echo $images; ?></div>
+	<div id="einsatz_images"><?php echo $img_html; ?></div>
 	<div class="einsatz">
 	<dl class="einsatz half">
 		<dt><?php echo JText::_('COM_EINSATZKOMPONENTE_FORM_LBL_EINSATZBERICHT_DATA1'); ?></dt>

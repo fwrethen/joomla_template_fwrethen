@@ -19,18 +19,21 @@ JHtml::_('script', $template_dir.'/js/lightbox.min.js');
 
 $images = array();
 $thumbs = array();
+$titlepic = false;
 // wenn Einsatz ein Attribut image hat, kommt dieses an die erste Stelle des Arrays
-if (!(substr_count($this->item->image, 'nopic.png')) and !($this->item->image)):
+if (!(substr_count($this->item->image, 'nopic.png')) and ($this->item->image)):
 	$images[] = $this->item->image;
+	$titlepic = true;
 endif;
 // zugeordnete Bilder durchgehen
 for ($i=0; $i<count($this->images); $i++):
 	$img = $this->images[$i]->image;
 	$thumb = $this->images[$i]->thumb;
-	// wenn Einsatzbild darunter ist, volles Bild oder Thumb entspr zuordnen
-	if (($images[0] == $img) or ($images[0] == $thumb)):
+	// wenn Titelbild darunter ist, volles Bild oder Thumb entspr zuordnen
+	if (($titlepic) && (($images[0] == $img) or ($images[0] == $thumb))):
 		$images[0] = $img;
 		$thumbs[0] = $thumb;
+		$titlepic = false;
 	// ansonsten Bild an Array anhängen und Thumb in anderen Array mit gleichem Index
 	else:
 		//array_push returns size after push
@@ -41,7 +44,7 @@ endfor;
 // HTML basteln
 $img_html = '';
 // wenn kein erstes Element im Array, Platzhalterbild nutzen
-if (!$images[0]):
+if (!$images):
 	$img_html = '<img src="'. $template_dir .'/images/default_image.jpg" id="title_image" />';
 else:
 	foreach($images as $i=>$img):
@@ -97,6 +100,7 @@ foreach($array as $value):
 		->where('id = "' .$value.'" AND state="1" ORDER BY ordering');
 	$db->setQuery($query);
 	$results = $db->loadObjectList();
+	if (!$results) break;
 	if (($results[0]->link) && ($this->params->get('display_detail_fhz_links','1'))):
 		$data[] = '<a target="_blank" href="'. $results[0]->link .'">'. $results[0]->name .'</a>';
 	else:

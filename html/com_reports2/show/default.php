@@ -742,7 +742,7 @@ if ($config->show17 == 1) {
 			$var = 'presse'.$i;
 			if ($var == 'presse1') {$var = 'presse';}
 			if ($$var != '') {
-				echo '<p style="margin: 3px 0px;"><a href="'.$$var.'" target="_blank"><img src="https://plus.google.com/_/favicon?domain='.parse_url($$var, PHP_URL_HOST).'" style="margin: 0px 8px 0px 0px; vertical-align: bottom;" />'.parse_url($$var, PHP_URL_HOST).'</a></p>';
+				echo '<p style="margin: 3px 0px;"><a href="'.$$var.'" target="_blank" rel="nofollow"><img src="https://plus.google.com/_/favicon?domain='.parse_url($$var, PHP_URL_HOST).'" style="margin: 0px 8px 0px 0px; vertical-align: bottom;" />'.parse_url($$var, PHP_URL_HOST).'</a></p>';
 			}
 		}
 		echo '</td></tr>';

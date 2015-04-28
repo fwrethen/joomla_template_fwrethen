@@ -111,7 +111,7 @@ $data = array();
 for ($i=1;$i<=3;$i++):
 	$var = 'presse'.$i;
 	if ($$var):
-		$data[] = '<a href="'.$$var.'" target="_blank"><img src="https://plus.google.com/_/favicon?domain='.parse_url($$var, PHP_URL_HOST).'" style="margin: 0px 8px 0px 0px; vertical-align: bottom;" />'.parse_url($$var, PHP_URL_HOST).'</a>';
+		$data[] = '<a href="'.$$var.'" target="_blank" rel="nofollow"><img src="https://plus.google.com/_/favicon?domain='.parse_url($$var, PHP_URL_HOST).'" style="margin: 0px 8px 0px 0px; vertical-align: bottom;" />'.parse_url($$var, PHP_URL_HOST).'</a>';
 	endif;
 endfor;
 $presse = implode('<br />',$data); ?>
@@ -173,6 +173,7 @@ $presse = implode('<br />',$data); ?>
 
 		section.einsatz {
 			margin-top: 1em;
+			text-align: justify;
 		}
 	</style>
 

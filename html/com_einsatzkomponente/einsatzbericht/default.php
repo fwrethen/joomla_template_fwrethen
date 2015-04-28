@@ -12,11 +12,6 @@ defined('_JEXEC') or die;
 $lang = JFactory::getLanguage();
 $lang->load('com_einsatzkomponente', JPATH_ADMINISTRATOR);
 
-$template_dir = JURI::base() . 'templates/' . JFactory::getApplication()->getTemplate('template')->template;
-JHtml::_('stylesheet', $template_dir.'/css/lightbox.css');
-JHtml::_('jquery.framework', false);
-JHtml::_('script', $template_dir.'/js/lightbox.min.js');
-
 $images = array();
 $thumbs = array();
 $titlepic = false;

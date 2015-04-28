@@ -12,9 +12,6 @@ $gmaplink = JRequest::getVar('gmaplink', 0);
 if ($gmaplink == '1')
 { $task = 'view=gmap';}
 JHTML::_('stylesheet','report.css',$path.'templates/'.$template.'/css/');
-JHTML::_('stylesheet', 'lightbox.css',$path.'templates/'.$template.'/css/');
-JHTML::_('script', 'jquery-1.11.0.min.js',$path.'templates/'.$template.'/js/');
-JHTML::_('script', 'lightbox.min.js',$path.'templates/'.$template.'/js/');
 ?>
 
 

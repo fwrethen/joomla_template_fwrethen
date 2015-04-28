@@ -13,6 +13,12 @@
 defined( '_JEXEC' ) or die( 'Restricted access' );
 //* The following line loads the MooTools JavaScript Library */
 //JHtml::_('behavior.framework', true);
+JHtml::_('jquery.framework', false);
+
+$doc = JFactory::getDocument();
+$doc->addStyleSheet($this->baseurl . '/templates/' . $this->template . '/css/lightbox.css', $type = 'text/css');
+$doc->addScript($this->baseurl . '/templates/' . $this->template . '/js/lightbox.min.js', 'text/javascript');
+
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->language; ?>" lang="<?php echo $this->language; ?>" >
@@ -22,6 +28,12 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 <link rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/system/css/system.css" type="text/css" />
 <link rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/system/css/general.css" type="text/css" />
 <link rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/css/template.css" type="text/css" />
+
+<script>
+jQuery(document).ready(function() {
+	jQuery('a[href*=".png"], a[href*=".gif"], a[href*=".jpg"]').not('[rel*="lightbox"]').attr('rel', 'lightbox');
+});
+</script>
 
 <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js"></script>

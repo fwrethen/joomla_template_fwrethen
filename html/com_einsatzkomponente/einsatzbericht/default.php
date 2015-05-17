@@ -12,6 +12,8 @@ defined('_JEXEC') or die;
 $lang = JFactory::getLanguage();
 $lang->load('com_einsatzkomponente', JPATH_ADMINISTRATOR);
 
+$template_dir = JURI::base() . 'templates/' . JFactory::getApplication()->getTemplate('template')->template;
+
 $images = array();
 $thumbs = array();
 $titlepic = false;

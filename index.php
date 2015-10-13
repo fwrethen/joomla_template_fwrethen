@@ -51,7 +51,7 @@ jQuery(document).ready(function() {
 						   <tr>
 						      <td width="235" height="86"  valign="bottom" vspace=0 hspace=0><img border="0" src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/images/balken_top1.gif" width="235" height="86"></td>
 						      <td valign="bottom" width="100%">
-						      <img border="0" src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/images/balken_top2.gif" width="100%" height="86"></td>
+						      <img border="0" src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/images/balken_top2.gif" style="height: 84px; width: 100%;"></td>
 						      <td width="119" height="86" valign="bottom"><img border="0" src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/images/balken_top3.gif" width="119" height="86"></td>
 						    </tr>
 						  </table>
@@ -121,7 +121,7 @@ jQuery(document).ready(function() {
 
 								<div id="maindivider"></div>
 							<?php endif; ?>
-							
+
 							<?php if($this->countModules('user21 or user22 or user23')) : ?>
 								<table class="nopad userx">
 									<tr valign="top">
@@ -166,7 +166,7 @@ jQuery(document).ready(function() {
 									<?php endif; ?>
 								</tr>
 							</table>
-							
+
 							<?php if($this->countModules('user31 or user32 or user33')) : ?>
 								<div id="maindivider"></div>
 
@@ -200,7 +200,7 @@ jQuery(document).ready(function() {
 						</div>
 						<div class="clr"></div>
 					</div>
-					
+
 					<?php if($this->countModules('user41 or user42 or user43')) : ?>
 						<div id="maindivider"></div>
 
@@ -230,12 +230,12 @@ jQuery(document).ready(function() {
 							</tr>
 						</table>
 					<?php endif; ?>
-					
+
 					<div class="clr"></div>
 			</div>
 
 			<div id="footerspacer"></div>
-		
+
 
 		<div id="footer">
       <p id="syndicate">

@@ -38,7 +38,10 @@ input.button { cursor: pointer; }
 
 p { margin-top: 0; margin-bottom: 5px; }
 
-img { border: 0 none; }
+img {
+  border: 0 none;
+  height: auto;
+}
 
 /*****************************************/
 /*** Template specific layout elements ***/
@@ -215,7 +218,7 @@ nav#pillmenu {
   background-image:         linear-gradient(to bottom, #fff, #eee, #fff);
 }
 
-nav#pillmenu ul, nav#pillmenu li {  
+nav#pillmenu ul, nav#pillmenu li {
   list-style-type: none;
   padding: 0px;
   margin: 0px;
@@ -261,7 +264,7 @@ nav#pillmenu a:hover {
 
 #maincolumn_full {
 	margin-left: 0;
-	padding: 0;	
+	padding: 0;
 	width: 100%;
 }
 
@@ -354,9 +357,28 @@ h3, .componentheading, table.moduletable th, legend {
 	text-align: left;
 }
 
+/* overwrite Joomla Bootstrap selectors begin */
+h1, h2, h3, li {
+  /* same line-height as set in body */
+  line-height: 1.3em;
+}
+
+.nav > li > a:hover, .nav > li > a:focus {
+  background-color: unset;
+}
+
+.moduletable_menu ul.nav {
+  list-style: disc outside;
+}
+
+.moduletable_menu ul.unstyled, .moduletable_menu ol.unstyled {
+  list-style: circle outside;
+}
+/* overwrite Joomla Bootstrap selectors end */
+
 /* small text */
 .small {
-	font-size: .90em;
+	font-size: 1.0em;
 	color: #999;
 	font-weight: normal;
 	text-align: left;

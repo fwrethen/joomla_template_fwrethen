@@ -127,6 +127,7 @@ div#footer div {
 
 div#footer a:link, div#footer a:visited  {
 	color: #999;
+	display: inline;
 }
 
 div#footer ul, div#footer li {

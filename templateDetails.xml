@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="2.5" type="template" client="site" method="upgrade">
 	<name>fwrethen_2.5</name>
-	<creationDate>April 2015</creationDate>
+	<creationDate>October 2015</creationDate>
 	<author>Florian Paetz</author>
 	<authorEmail>webmaster@fw-rethen.de</authorEmail>
 	<authorUrl>http://www.fw-rethen.de</authorUrl>
 	<copyright></copyright>
 	<license>GNU/GPL</license>
-	<version>1.2.2</version>
+	<version>1.2.3</version>
 	<description>Feuerwehr-Rethen-Template</description>
 	<files>
 		<folder>css</folder>

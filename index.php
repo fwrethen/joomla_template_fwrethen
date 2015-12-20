@@ -31,7 +31,7 @@ $doc->addScript($this->baseurl . '/templates/' . $this->template . '/js/lightbox
 
 <script>
 jQuery(document).ready(function() {
-	jQuery('a[href*=".png"], a[href*=".gif"], a[href*=".jpg"]').not('[rel*="lightbox"]').attr('rel', 'lightbox');
+	jQuery('a[href*=".png"], a[href*=".PNG"], a[href*=".gif"], a[href*=".GIF"], a[href*=".jpeg"], a[href*=".JPEG"], a[href*=".jpg"], a[href*=".JPG"]').not('[rel*="lightbox"]').attr('rel', 'lightbox');
 });
 </script>
 

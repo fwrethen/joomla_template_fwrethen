@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension version="2.5" type="template" client="site" method="upgrade">
-	<name>fwrethen_2.5</name>
+<extension version="3.0" type="template" client="site" method="upgrade">
+	<name>FwRethen3</name>
 	<creationDate>January 2016</creationDate>
-	<author>Florian Paetz</author>
+	<author>Martin Matthaei</author>
 	<authorEmail>webmaster@fw-rethen.de</authorEmail>
 	<authorUrl>http://www.fw-rethen.de</authorUrl>
-	<copyright></copyright>
-	<license>GNU/GPL</license>
-	<version>1.2.5</version>
+	<copyright>(C) 2016 Martin Matthaei</copyright>
+	<license>GNU GPLv2</license>
+	<version>0.1</version>
 	<description>Feuerwehr-Rethen-Template</description>
 	<files>
 		<folder>css</folder>
@@ -44,16 +44,4 @@
 		<position>debug</position>
 		<position>syndicate</position>
 	</positions>
-	<config>
-		<fields name="params">
-			<fieldset name="advanced">
-				<field name="widthStyle" type="list" default="fmax" label="Template Width" description="Width style of the template">
-					<option value="fmax">Fluid with maximum</option>
-					<option value="medium">Medium</option>
-					<option value="small">Small</option>
-					<option value="fluid">Fluid</option>
-				</field>
-			</fieldset>
-		</fields>
-	</config>
 </extension>

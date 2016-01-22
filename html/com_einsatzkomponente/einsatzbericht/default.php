@@ -57,9 +57,22 @@ else:
 	endforeach;
 endif;
 
+//get Einsatzart from database
+if ($this->item->data1):
+	$db = JFactory::getDbo();
+	$query	= $db->getQuery(true);
+	$query
+		->select('title')
+		->from('`#__eiko_einsatzarten`')
+		->where('id = "' .$this->item->data1.'" AND state="1" ORDER BY ordering');
+	$db->setQuery($query);
+	$results = $db->loadObjectList();
+	$einsatzart = $results[0]->title;
+endif;
+
 $array = array();
-foreach((array)$this->item->auswahlorga as $value):
-	if(!is_array($value)):
+foreach((array)$this->item->auswahl_orga as $value):
+	if($value && !is_array($value)):
 		$array[] = $value;
 	endif;
 endforeach;
@@ -70,7 +83,7 @@ foreach($array as $value):
 	$query
 		->select('name, link')
 		->from('`#__eiko_organisationen`')
-		->where('name = "' .$value.'" AND state="1" ORDER BY ordering');
+		->where('id = "' .$value.'" AND state="1" ORDER BY ordering');
 	$db->setQuery($query);
 	$results = $db->loadObjectList();
 	if (($results[0]->link) && ($this->params->get('display_detail_orga_links','1'))):
@@ -184,7 +197,7 @@ $presse = implode('<br />',$data); ?>
 	<div class="einsatz">
 	<dl class="einsatz half">
 		<dt><?php echo JText::_('COM_EINSATZKOMPONENTE_FORM_LBL_EINSATZBERICHT_DATA1'); ?></dt>
-		<dd><?php echo $this->item->data1; ?></dd>
+		<dd><?php echo $einsatzart; ?></dd>
 		<dt><?php echo JText::_('COM_EINSATZKOMPONENTE_FORM_LBL_EINSATZBERICHT_ADDRESS'); ?></dt>
 		<dd><?php echo $this->item->address; ?></dd>
 		<dt><?php echo JText::_('COM_EINSATZKOMPONENTE_FORM_LBL_EINSATZBERICHT_DATE1'); ?></dt>

@@ -60,7 +60,7 @@ $template_dir = JURI::base() . 'templates/' . JFactory::getApplication()->getTem
 
 
 <?php // Filter ------------------------------------------------------------------------------------
-	
+
 
 ?><div style="text-align: center; padding: 5px;"><form action="#" method=post><?php
 
@@ -68,9 +68,9 @@ $template_dir = JURI::base() . 'templates/' . JFactory::getApplication()->getTem
 if (!$this->params->get('anzeigejahr','0') and $this->params->get('display_filter_jahre','1')) :
 	$years[] = JHTML::_('select.option', '9999', JTEXT::_('- Alle Einsätze anzeigen -')  , 'id', 'title');
 	$years = array_merge($years, (array)$this->years);
-	 
+
 	echo JHTML::_('select.genericlist',  $years, 'year', ' onchange=submit(); ', 'id', 'title', $this->selectedYear);?>
-	
+
     <?php
 endif;
 if ($this->params->get('display_filter_einsatzarten','1')) :
@@ -89,7 +89,7 @@ if ($this->params->get('display_filter_einsatzarten','1')) :
 	</form></div>
 </div>
 <?php // Filter ENDE   -------------------------------------------------------------------------------
- 
+
 ?>
 
 <?php // Table-Header zusammenbasteln
@@ -127,7 +127,7 @@ endif;
     <thead style="display: none;">
 		<tr><?php echo $theader; ?></tr>
     </thead>
-    
+
  <tbody>
 	 <?php
 $show = false;
@@ -145,7 +145,7 @@ if ($this->params->get('display_home_pagination')) :
 		  <?php if(preg_match('/\b'.$this->selectedOrga.'\b/',$item->auswahl_orga)==true or $this->selectedOrga == '0'): ?>
 		  <?php if ($this->selectedEinsatzart == $item->data1 or $this->selectedEinsatzart == '' ) : ?>
           <?php $show = true;?>
-          
+
            <?php /* -- Anzeige des Monatsnamens -- */ ?>
 		   <?php if ($this->params->get('display_home_monat','1')) : ?>
            <?php if (date('n', $curTime) != $m) : ?>
@@ -160,7 +160,7 @@ if ($this->params->get('display_home_pagination')) :
            <?php endif;?>
            <?php endif;?>
            <?php /* -- Anzeige des Monatsnamens ENDE -- */ ?>
-           
+
 		   <?php if ($this->params->get('display_home_links','1')) : ?>
 		   <tr class="link" onClick="parent.location='<?php echo JRoute::_('index.php?option=com_einsatzkomponente'.$this->layout_detail_link.'&view=einsatzbericht&id=' . (int)$item->id); ?>'">
 		   <?php else:?>
@@ -181,13 +181,13 @@ if ($this->params->get('display_home_pagination')) :
            <?php endif;?>
             </td>
            <?php endif;?>
-           
+
            <?php if ($this->params->get('display_home_alertimage','0')) : ?>
 		   <td style=" text-align:center;" >
            <img class="img-rounded" style="width:50px; height:50px;margin-right:2px;" src="<?php echo JURI::Root();?><?php echo $item->image;?>" title="<?php echo $item->alarmierungsart;?>" />
            </td>
            <?php endif;?>
-           
+
            <?php if ($this->params->get('display_home_date_image')) : ?>
 		   <td>
 			<div class="home_cal_icon">
@@ -202,7 +202,7 @@ if ($this->params->get('display_home_pagination')) :
            <?php endif;?>
 
 		   <td>
-           
+
 		   <?php if ($this->params->get('display_list_icon')) : ?>
            <img class="img-rounded" style="float:<?php echo $this->params->get('float_list_icon');?>;width:50px; height:50px;margin-right:2px;" src="<?php echo JURI::Root();?><?php echo $item->list_icon;?>" />
            <?php endif;?>
@@ -223,7 +223,7 @@ if ($this->params->get('display_home_pagination')) :
 				}
 			</script>
             <?php endif;?>
-            
+
            </td>
 
 			<?php if ($this->params->get('display_home_links','1')) : ?>
@@ -235,9 +235,9 @@ if ($this->params->get('display_home_pagination')) :
 			<?php endif; ?>
 
 			<td><?php echo $item->address;?></td>
-           
+
            <?php if ($this->params->get('display_home_orga','0')) : ?>
-           <?php 					
+           <?php
 					$data = array();
 					foreach(explode(',',$item->auswahl_orga) as $value):
 						$db = JFactory::getDbo();
@@ -249,10 +249,10 @@ if ($this->params->get('display_home_pagination')) :
 						$db->setQuery($query);
 						$results = $db->loadObjectList();
 						if(count($results)){
-							$data[] = $results[0]->name; 
+							$data[] = $results[0]->name;
 						}
 					endforeach;
-					$auswahl_orga=  implode('</br>',$data); 
+					$auswahl_orga=  implode('</br>',$data);
 ?>
 		   <td nowrap> <?php echo $auswahl_orga;?></td>
            <?php endif;?>
@@ -270,7 +270,7 @@ if ($this->params->get('display_home_pagination')) :
            <?php endif;?>
            <?php endif;?>
 		   </tr>
-           
+
            <?php /*  Zusatzinformation */ ?>
 			<?php if ($this->params->get('display_home_info','1')) : ?>
 			<?php		$data = array();
@@ -284,12 +284,12 @@ if ($this->params->get('display_home_pagination')) :
 						$db->setQuery($query);
 						$results = $db->loadObjectList();
 						if(count($results)){
-							$data[] = $results[0]->name; 
+							$data[] = $results[0]->name;
 						}
 					endforeach;
-					$auswahl_orga=  implode(' +++ ',$data); ?> 
+					$auswahl_orga=  implode(' +++ ',$data); ?>
             <tr id="tr<?php echo $item->id;?>" style=" display:none;" >
-            
+
            <?php if ($this->params->get('display_home_marker','1')) : ?>
            <?php $rgba = hex2rgba($item->marker,0.7);?>
             <style>
@@ -323,16 +323,16 @@ if ($this->params->get('display_home_pagination')) :
            </td>
            </tr>
             <?php endif;?>
-            
+
            <?php endif;?><?php endif;?><?php /* -- Filter Einsatzart -- */ ?>
-		  
+
     <?php endforeach; ?>
-    
+
 <?php if(!$this->reports or !$show): ?>
 <span class="label label-info"><b>Es können zu dieser Auswahl keine Daten in der Datenbank gefunden werden</b></span>
 <?php endif; ?>
 
-    
+
     <?php if ($this->params->get('display_home_map')) : ?>
     <tr><td colspan="<?php echo $col;?>">
     <h4>Einsatzgebiet</h4>
@@ -345,14 +345,14 @@ if ($this->params->get('display_home_pagination')) :
 <body onLoad="drawmap();">
 				<!--<div id="descriptionToggle" onClick="toggleInfo()">Informationen zur Karte anzeigen</div>
 				<div id="description" class="">Einsatzkarte</div>-->
-   				<div id="map" style="width:100%; height:<?php echo $this->params->get('home_map_height','300px');?>;"></div> 
+   				<div id="map" style="width:100%; height:<?php echo $this->params->get('home_map_height','300px');?>;"></div>
     		<noscript>Dieser Teil der Seite erfordert die JavaScript Unterstützung Ihres Browsers!</noscript>
             <?php endif;?>
             </td></tr>
     <?php endif;?>
  </tbody>
-    
-    
+
+
     <tfoot>
     				<!--Prüfen, ob Pagination angezeigt wrden soll-->
     				<?php if ($this->params->get('display_home_pagination')) : ?>
@@ -366,15 +366,15 @@ if ($this->params->get('display_home_pagination')) :
 		   			<?php endif;?><!--Prüfen, ob Einsatzart ausgwählt ist ENDE-->
 		   			<?php endif;?><!--Prüfen, ob Pagination angezeigt wrden soll   ENDE -->
 
-    
+
 </tfoot>
 </table>
 
 
 <?php if(JFactory::getUser()->authorise('core.create','com_einsatzkomponente.einsatzbericht'.$item->id)): ?><a href="<?php echo JRoute::_('index.php?option=com_einsatzkomponente&view=einsatzberichtform&layout=edit&id=0'); ?>">Einsatz eintragen</a>
 	<?php endif; ?>
-	
-    
+
+
     <?php function hex2rgba($color, $opacity = false) {  // Farbe von HEX zu RGBA umwandeln
 
 	$default = 'rgb(0,0,0)';
@@ -405,5 +405,5 @@ if ($this->params->get('display_home_pagination')) :
         }
         //Return rgb(a) color string
         return $output;
-		
+
 }?>

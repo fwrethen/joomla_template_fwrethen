@@ -202,16 +202,22 @@ $presse = implode('<br />',$data); ?>
 		<dd><?php echo $this->item->address; ?></dd>
 		<dt><?php echo JText::_('COM_EINSATZKOMPONENTE_FORM_LBL_EINSATZBERICHT_DATE1'); ?></dt>
 		<dd><?php echo date('d.m.Y, H:i', strtotime($this->item->date1)); ?> Uhr</dd>
-		<dt><?php echo JText::_('COM_EINSATZKOMPONENTE_FORM_LBL_EINSATZBERICHT_BOSS'); ?></dt>
-		<dd><?php echo $this->item->boss; ?></dd>
-		<dt><?php echo JText::_('COM_EINSATZKOMPONENTE_FORM_LBL_EINSATZBERICHT_PEOPLE'); ?></dt>
-		<dd><?php echo $this->item->people; ?></dd>
+		<?php if ($this->item->boss): ?>
+			<dt><?php echo JText::_('COM_EINSATZKOMPONENTE_FORM_LBL_EINSATZBERICHT_BOSS'); ?></dt>
+			<dd><?php echo $this->item->boss; ?></dd>
+		<?php endif; ?>
+		<?php if ($this->item->people): ?>
+			<dt><?php echo JText::_('COM_EINSATZKOMPONENTE_FORM_LBL_EINSATZBERICHT_PEOPLE'); ?></dt>
+			<dd><?php echo $this->item->people; ?></dd>
+		<?php endif; ?>
 	</dl>
 	<dl class="einsatz half">
 		<dt><?php echo 'alarmierte Einheiten'; ?></dt>
 		<dd><?php echo $auswahlorga; ?></dd>
-		<dt><?php echo JText::_('COM_EINSATZKOMPONENTE_FORM_LBL_EINSATZBERICHT_VEHICLES'); ?></dt>
-		<dd><?php echo $vehicles; ?></dd>
+		<?php if ($vehicles): ?>
+			<dt><?php echo JText::_('COM_EINSATZKOMPONENTE_FORM_LBL_EINSATZBERICHT_VEHICLES'); ?></dt>
+			<dd><?php echo $vehicles; ?></dd>
+		<?php endif; ?>
 	</dl>
 	<div class="clr"></div>
 	<?php if ($presse): ?>

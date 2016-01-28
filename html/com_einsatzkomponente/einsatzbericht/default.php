@@ -94,27 +94,22 @@ foreach($array as $value):
 endforeach;
 $auswahlorga = implode('<br />',$data);
 
-$array = array();
-foreach((array)$this->item->vehicles as $value):
-	if(!is_array($value)):
-		$array[] = $value;
-	endif;
-endforeach;
+// $this->item->vehicles is a JObject. getProperties() returns its content.
+$vehicles = implode(',', $this->item->vehicles->getProperties());
+$db = JFactory::getDbo();
+$query	= $db->getQuery(true);
+$query
+	->select('name, link')
+	->from('`#__eiko_fahrzeuge`')
+	->where('id IN (' .$vehicles.') AND state="1" ORDER BY ordering');
+$db->setQuery($query);
+$results = $db->loadObjectList();
 $data = array();
-foreach($array as $value):
-	$db = JFactory::getDbo();
-	$query	= $db->getQuery(true);
-	$query
-		->select('name, link')
-		->from('`#__eiko_fahrzeuge`')
-		->where('id = "' .$value.'" AND state="1" ORDER BY ordering');
-	$db->setQuery($query);
-	$results = $db->loadObjectList();
-	if (!$results) break;
-	if (($results[0]->link) && ($this->params->get('display_detail_fhz_links','1'))):
-		$data[] = '<a target="_blank" href="'. $results[0]->link .'">'. $results[0]->name .'</a>';
+foreach($results as $result):
+	if (($result->link) && ($this->params->get('display_detail_fhz_links','1'))):
+		$data[] = '<a target="_blank" href="'. $result->link .'">'. $result->name .'</a>';
 	else:
-		$data[] = $results[0]->name;
+		$data[] = $result->name;
 	endif;
 endforeach;
 $vehicles = implode('<br />',$data);

@@ -70,45 +70,49 @@ if ($this->item->data1):
 	$einsatzart = $results[0]->title;
 endif;
 
-// $this->item->vehicles is a JObject. getProperties() returns its content.
-$orgas = implode(',', $this->item->auswahl_orga->getProperties());
-$db = JFactory::getDbo();
-$query	= $db->getQuery(true);
-$query
-	->select('name, link')
-	->from('`#__eiko_organisationen`')
-	->where('id IN (' .$orgas.') AND state="1" ORDER BY ordering');
-$db->setQuery($query);
-$results = $db->loadObjectList();
-$data = array();
-foreach($results as $result):
-	if (($result->link) && ($this->params->get('display_detail_orga_links','1'))):
-		$data[] = '<a target="_blank" href="'. $result->link .'">'. $result->name .'</a>';
-	else:
-		$data[] = $result->name;
-	endif;
-endforeach;
-$auswahlorga = implode('<br />',$data);
+if ($this->item->auswahl_orga):
+	// $this->item->auswahl_orga is a JObject. getProperties() returns its content.
+	$orgas = implode(',', $this->item->auswahl_orga->getProperties());
+	$db = JFactory::getDbo();
+	$query	= $db->getQuery(true);
+	$query
+		->select('name, link')
+		->from('`#__eiko_organisationen`')
+		->where('id IN (' .$orgas.') AND state="1" ORDER BY ordering');
+	$db->setQuery($query);
+	$results = $db->loadObjectList();
+	$data = array();
+	foreach($results as $result):
+		if (($result->link) && ($this->params->get('display_detail_orga_links','1'))):
+			$data[] = '<a target="_blank" href="'. $result->link .'">'. $result->name .'</a>';
+		else:
+			$data[] = $result->name;
+		endif;
+	endforeach;
+	$auswahlorga = implode('<br />',$data);
+endif;
 
-// $this->item->vehicles is a JObject. getProperties() returns its content.
-$vehicles = implode(',', $this->item->vehicles->getProperties());
-$db = JFactory::getDbo();
-$query	= $db->getQuery(true);
-$query
-	->select('name, link')
-	->from('`#__eiko_fahrzeuge`')
-	->where('id IN (' .$vehicles.') AND state="1" ORDER BY ordering');
-$db->setQuery($query);
-$results = $db->loadObjectList();
-$data = array();
-foreach($results as $result):
-	if (($result->link) && ($this->params->get('display_detail_fhz_links','1'))):
-		$data[] = '<a target="_blank" href="'. $result->link .'">'. $result->name .'</a>';
-	else:
-		$data[] = $result->name;
-	endif;
-endforeach;
-$vehicles = implode('<br />',$data);
+if ($this->item->vehicles):
+	// $this->item->vehicles is a JObject. getProperties() returns its content.
+	$vehicles = implode(',', $this->item->vehicles->getProperties());
+	$db = JFactory::getDbo();
+	$query	= $db->getQuery(true);
+	$query
+		->select('name, link')
+		->from('`#__eiko_fahrzeuge`')
+		->where('id IN (' .$vehicles.') AND state="1" ORDER BY ordering');
+	$db->setQuery($query);
+	$results = $db->loadObjectList();
+	$data = array();
+	foreach($results as $result):
+		if (($result->link) && ($this->params->get('display_detail_fhz_links','1'))):
+			$data[] = '<a target="_blank" href="'. $result->link .'">'. $result->name .'</a>';
+		else:
+			$data[] = $result->name;
+		endif;
+	endforeach;
+	$vehicles = implode('<br />',$data);
+endif;
 
 $presse1 = $this->item->presse;
 $presse2 = $this->item->presse2;
@@ -203,9 +207,11 @@ $presse = implode('<br />',$data); ?>
 		<?php endif; ?>
 	</dl>
 	<dl class="einsatz half">
-		<dt><?php echo 'alarmierte Einheiten'; ?></dt>
-		<dd><?php echo $auswahlorga; ?></dd>
-		<?php if ($vehicles): ?>
+		<?php if ($this->item->auswahl_orga): ?>
+			<dt><?php echo 'alarmierte Einheiten'; ?></dt>
+			<dd><?php echo $auswahlorga; ?></dd>
+		<?php endif; ?>
+		<?php if ($this->item->vehicles): ?>
 			<dt><?php echo JText::_('COM_EINSATZKOMPONENTE_FORM_LBL_EINSATZBERICHT_VEHICLES'); ?></dt>
 			<dd><?php echo $vehicles; ?></dd>
 		<?php endif; ?>

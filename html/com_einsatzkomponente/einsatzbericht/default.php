@@ -71,8 +71,11 @@ if ($this->item->data1):
 endif;
 
 if ($this->item->auswahl_orga):
-	// $this->item->auswahl_orga is a JObject. getProperties() returns its content.
-	$orgas = implode(',', $this->item->auswahl_orga->getProperties());
+	// if $this->item->auswahl_orga is a JObject, getProperties() returns its content.
+	if (is_a($this->item->auswahl_orga, 'JOBject'))
+		$orgas = implode(',', $this->item->auswahl_orga->getProperties());
+	else
+		$orgas = $this->item->auswahl_orga;
 	$db = JFactory::getDbo();
 	$query	= $db->getQuery(true);
 	$query
@@ -93,8 +96,11 @@ if ($this->item->auswahl_orga):
 endif;
 
 if ($this->item->vehicles):
-	// $this->item->vehicles is a JObject. getProperties() returns its content.
-	$vehicles = implode(',', $this->item->vehicles->getProperties());
+	// if $this->item->vehicles is a JObject, getProperties() returns its content.
+	if (is_a($this->item->vehicles, 'JObject'))
+		$vehicles = implode(',', $this->item->vehicles->getProperties());
+	else
+		$vehicles = $this->item->vehicles;
 	$db = JFactory::getDbo();
 	$query	= $db->getQuery(true);
 	$query

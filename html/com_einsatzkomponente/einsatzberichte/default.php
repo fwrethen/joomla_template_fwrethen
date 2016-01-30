@@ -142,7 +142,7 @@ if ($this->params->get('display_home_pagination')) :
 		   $curTime = strtotime($item->date1);
 		   ?>
           <?php /* -- Filter Einsatzart -- */ ?>
-		  <?php if(preg_match('/\b'.$this->selectedOrga.'\b/',$item->auswahl_orga)==true or $this->selectedOrga == ''): ?>
+		  <?php if(preg_match('/\b'.$this->selectedOrga.'\b/',$item->auswahl_orga)==true or $this->selectedOrga == '0' or $this->selectedOrga == ''): ?>
 		  <?php if ($this->selectedEinsatzart == $item->data1 or $this->selectedEinsatzart == '' ) : ?>
           <?php $show = true;?>
 

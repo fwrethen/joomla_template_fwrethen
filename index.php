@@ -11,9 +11,8 @@
 
 // no direct access
 defined( '_JEXEC' ) or die( 'Restricted access' );
-//* The following line loads the MooTools JavaScript Library */
-//JHtml::_('behavior.framework', true);
 JHtml::_('jquery.framework', false);
+JHtmlBootstrap::loadCss();
 
 $doc = JFactory::getDocument();
 $doc->addStyleSheet($this->baseurl . '/templates/' . $this->template . '/css/lightbox.css', $type = 'text/css');

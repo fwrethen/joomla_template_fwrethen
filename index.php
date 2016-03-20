@@ -74,6 +74,7 @@ $doc->addStyleSheet($this->baseurl . '/templates/' . $this->template . '/css/tem
 		<?php else: ?>
 			<main class="span12">
 		<?php endif; ?>
+				<jdoc:include type="modules" name="user11" style="xhtml" />
 				<jdoc:include type="message" />
 				<jdoc:include type="component" />
 				<jdoc:include type="modules" name="footer" style="xhtml" />
@@ -84,6 +85,27 @@ $doc->addStyleSheet($this->baseurl . '/templates/' . $this->template . '/css/tem
 			</aside>
 		<?php endif; ?>
 	</section>
+
+	<aside class="row-fluid">
+		<?php if ($this->countModules('user41 + user42 + user43') > 0) : ?>
+			<?php $span = 'span' . 12 / $this->countModules('user41 + user42 + user43'); ?>
+		<?php endif; ?>
+		<?php if ($this->countModules('user41')) : ?>
+			<div class="<?php echo $span; ?>">
+				<jdoc:include type="modules" name="user41" style="html5" />
+			</div>
+		<?php endif; ?>
+		<?php if ($this->countModules('user42')) : ?>
+			<div class="<?php echo $span; ?>">
+				<jdoc:include type="modules" name="user42" style="html5" />
+			</div>
+		<?php endif; ?>
+		<?php if ($this->countModules('user43')) : ?>
+			<div class="<?php echo $span; ?>">
+				<jdoc:include type="modules" name="user43" style="html5" />
+			</div>
+		<?php endif; ?>
+	</aside>
 
 	<footer class="span6 offset3">
 		<jdoc:include type="modules" name="syndicate" />

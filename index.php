@@ -27,6 +27,27 @@ JHtml::_('bootstrap.loadCss');
 $doc->addStyleSheet($this->baseurl . '/templates/' . $this->template . '/css/lightbox.css', $type = 'text/css');
 $doc->addStyleSheet($this->baseurl . '/templates/' . $this->template . '/css/template.css', $type = 'text/css');
 
+// Adjusting content width
+$span = 0;
+if ($this->countModules('user41'))
+{
+	$span++;
+}
+if ($this->countModules('user42'))
+{
+	$span++;
+}
+if ($this->countModules('user43'))
+{
+	$span++;
+}
+if ($span > 0)
+{
+	$span = "span" . 12 / $span;
+} else {
+	$span = "span12";
+}
+
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->language; ?>" lang="<?php echo $this->language; ?>"  dir="<?php echo $this->direction; ?>" >
@@ -46,66 +67,69 @@ $doc->addStyleSheet($this->baseurl . '/templates/' . $this->template . '/css/tem
 <body>
 <div id="page">
 	<header>
-		<div id="logo" unselectable="on">
-			<h1 id="sitename"><?php echo $sitename; ?></h1>
-		</div>
-		<jdoc:include type="modules" name="top" />
-		<nav id="headernav">
-			<jdoc:include type="modules" name="pillmenu" style="none" />
-		</nav>
-		<div id="search">
-			<jdoc:include type="modules" name="search" />
-		</div>
-		<div id="pathway">
-			<jdoc:include type="modules" name="breadcrumb" />
+		<div id="head-wrapper" style="margin: 0px auto; max-width: 1080px;">
+			<div id="logo" unselectable="on">
+				<h1 id="sitename"><?php echo $sitename; ?></h1>
+			</div>
+			<jdoc:include type="modules" name="top" />
+			<nav id="headernav">
+				<jdoc:include type="modules" name="pillmenu" style="none" />
+			</nav>
+			<div id="search">
+				<jdoc:include type="modules" name="search" />
+			</div>
+			<div id="pathway">
+				<jdoc:include type="modules" name="breadcrumb" />
+			</div>
 		</div>
 	</header>
 
-	<section class="row-fluid" style="max-width: 960px; margin: 0px auto;">
-		<?php if ($this->countModules('left')) : ?>
-			<nav class="span2">
-				<jdoc:include type="modules" name="left" style="html5" />
-			</nav>
-		<?php endif; ?>
-		<?php if ($this->countModules('left') && $this->countModules('right')) : ?>
-			<main class="span8">
-		<?php elseif ($this->countModules('left') || $this->countModules('right')) : ?>
-			<main class="span10">
-		<?php else: ?>
-			<main class="span12">
-		<?php endif; ?>
-				<jdoc:include type="modules" name="user11" style="xhtml" />
-				<jdoc:include type="message" />
-				<jdoc:include type="component" />
-				<jdoc:include type="modules" name="footer" style="xhtml" />
-			</main>
-		<?php if ($this->countModules('right')) : ?>
-			<aside class="span2">
-				<jdoc:include type="modules" name="right" style="xhtml" />
+	<div id="content-wrapper" style="max-width: 960px; margin: 0px auto;">
+		<section class="row-fluid">
+			<?php if ($this->countModules('left')) : ?>
+				<nav class="span2">
+					<jdoc:include type="modules" name="left" style="html5" />
+				</nav>
+			<?php endif; ?>
+			<?php if ($this->countModules('left') && $this->countModules('right')) : ?>
+				<main class="span8">
+			<?php elseif ($this->countModules('left') || $this->countModules('right')) : ?>
+				<main class="span10">
+			<?php else: ?>
+				<main class="span12">
+			<?php endif; ?>
+					<jdoc:include type="modules" name="user11" style="xhtml" />
+					<jdoc:include type="message" />
+					<jdoc:include type="component" />
+					<jdoc:include type="modules" name="footer" style="xhtml" />
+				</main>
+			<?php if ($this->countModules('right')) : ?>
+				<aside class="span2">
+					<jdoc:include type="modules" name="right" style="xhtml" />
+				</aside>
+			<?php endif; ?>
+		</section>
+
+		<?php if ($this->countModules('user41 + user42 + user43') > 0) : ?>
+			<aside class="row-fluid">
+				<?php if ($this->countModules('user41')) : ?>
+					<div class="<?php echo $span; ?>">
+						<jdoc:include type="modules" name="user41" style="html5" />
+					</div>
+				<?php endif; ?>
+				<?php if ($this->countModules('user42')) : ?>
+					<div class="<?php echo $span; ?>">
+						<jdoc:include type="modules" name="user42" style="html5" />
+					</div>
+				<?php endif; ?>
+				<?php if ($this->countModules('user43')) : ?>
+					<div class="<?php echo $span; ?>">
+						<jdoc:include type="modules" name="user43" style="html5" />
+					</div>
+				<?php endif; ?>
 			</aside>
 		<?php endif; ?>
-	</section>
-
-	<aside class="row-fluid">
-		<?php if ($this->countModules('user41 + user42 + user43') > 0) : ?>
-			<?php $span = 'span' . 12 / $this->countModules('user41 + user42 + user43'); ?>
-		<?php endif; ?>
-		<?php if ($this->countModules('user41')) : ?>
-			<div class="<?php echo $span; ?>">
-				<jdoc:include type="modules" name="user41" style="html5" />
-			</div>
-		<?php endif; ?>
-		<?php if ($this->countModules('user42')) : ?>
-			<div class="<?php echo $span; ?>">
-				<jdoc:include type="modules" name="user42" style="html5" />
-			</div>
-		<?php endif; ?>
-		<?php if ($this->countModules('user43')) : ?>
-			<div class="<?php echo $span; ?>">
-				<jdoc:include type="modules" name="user43" style="html5" />
-			</div>
-		<?php endif; ?>
-	</aside>
+	</div>
 
 	<footer class="span6 offset3">
 		<jdoc:include type="modules" name="syndicate" />

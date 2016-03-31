@@ -95,7 +95,7 @@ jQuery(document).ready(function() {
 								<table class="nopad userx">
 									<tr valign="top">
 										<?php if($this->countModules('user11')) : ?>
-											<td>
+											<td class="row-fluid">
 												<jdoc:include type="modules" name="user11" style="xhtml" />
 											</td>
 										<?php endif; ?>
@@ -103,7 +103,7 @@ jQuery(document).ready(function() {
 											<td class="greyline">&nbsp;</td>
 										<?php endif; ?>
 										<?php if($this->countModules('user12')) : ?>
-											<td>
+											<td class="row-fluid">
 												<jdoc:include type="modules" name="user12" style="xhtml" />
 											</td>
 										<?php endif; ?>
@@ -111,7 +111,7 @@ jQuery(document).ready(function() {
 											<td class="greyline">&nbsp;</td>
 										<?php endif; ?>
 										<?php if($this->countModules('user13')) : ?>
-											<td>
+											<td class="row-fluid">
 												<jdoc:include type="modules" name="user13" style="xhtml" />
 											</td>
 										<?php endif; ?>
@@ -125,7 +125,7 @@ jQuery(document).ready(function() {
 								<table class="nopad userx">
 									<tr valign="top">
 										<?php if($this->countModules('user21')) : ?>
-											<td>
+											<td class="row-fluid">
 												<jdoc:include type="modules" name="user21" style="xhtml" />
 											</td>
 										<?php endif; ?>
@@ -133,7 +133,7 @@ jQuery(document).ready(function() {
 											<td class="greyline">&nbsp;</td>
 										<?php endif; ?>
 										<?php if($this->countModules('user22')) : ?>
-											<td>
+											<td class="row-fluid">
 												<jdoc:include type="modules" name="user22" style="xhtml" />
 											</td>
 										<?php endif; ?>
@@ -141,7 +141,7 @@ jQuery(document).ready(function() {
 											<td class="greyline">&nbsp;</td>
 										<?php endif; ?>
 										<?php if($this->countModules('user23')) : ?>
-											<td>
+											<td class="row-fluid">
 												<jdoc:include type="modules" name="user23" style="xhtml" />
 											</td>
 										<?php endif; ?>
@@ -172,7 +172,7 @@ jQuery(document).ready(function() {
 								<table class="nopad userx">
 									<tr valign="top">
 										<?php if($this->countModules('user31')) : ?>
-											<td>
+											<td class="row-fluid">
 												<jdoc:include type="modules" name="user31" style="xhtml" />
 											</td>
 										<?php endif; ?>
@@ -180,7 +180,7 @@ jQuery(document).ready(function() {
 											<td class="greyline">&nbsp;</td>
 										<?php endif; ?>
 										<?php if($this->countModules('user32')) : ?>
-											<td>
+											<td class="row-fluid">
 												<jdoc:include type="modules" name="user32" style="xhtml" />
 											</td>
 										<?php endif; ?>
@@ -188,7 +188,7 @@ jQuery(document).ready(function() {
 											<td class="greyline">&nbsp;</td>
 										<?php endif; ?>
 										<?php if($this->countModules('user33')) : ?>
-											<td>
+											<td class="row-fluid">
 												<jdoc:include type="modules" name="user33" style="xhtml" />
 											</td>
 										<?php endif; ?>
@@ -206,7 +206,7 @@ jQuery(document).ready(function() {
 						<table class="nopad userx">
 							<tr valign="top">
 								<?php if($this->countModules('user41')) : ?>
-									<td>
+									<td class="row-fluid">
 										<jdoc:include type="modules" name="user41" style="xhtml" />
 									</td>
 								<?php endif; ?>
@@ -214,7 +214,7 @@ jQuery(document).ready(function() {
 									<td class="greyline">&nbsp;</td>
 								<?php endif; ?>
 								<?php if($this->countModules('user42')) : ?>
-									<td>
+									<td class="row-fluid">
 										<jdoc:include type="modules" name="user42" style="xhtml" />
 									</td>
 								<?php endif; ?>
@@ -222,7 +222,7 @@ jQuery(document).ready(function() {
 									<td class="greyline">&nbsp;</td>
 								<?php endif; ?>
 								<?php if($this->countModules('user43')) : ?>
-									<td>
+									<td class="row-fluid">
 										<jdoc:include type="modules" name="user43" style="xhtml" />
 									</td>
 								<?php endif; ?>

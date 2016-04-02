@@ -15,12 +15,15 @@ JHtml::_('jquery.framework', false);
 JHtmlBootstrap::loadCss();
 
 $doc = JFactory::getDocument();
+// Doctype HTML5
+$doc->setHtml5(true);
+
 $doc->addStyleSheet($this->baseurl . '/templates/' . $this->template . '/css/lightbox.css', $type = 'text/css');
 $doc->addScript($this->baseurl . '/templates/' . $this->template . '/js/lightbox.min.js', 'text/javascript');
 
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->language; ?>" lang="<?php echo $this->language; ?>" >
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->language; ?>" lang="<?php echo $this->language; ?>"  dir="<?php echo $this->direction; ?>" >
 <head>
 <jdoc:include type="head" />
 
@@ -35,7 +38,7 @@ jQuery(document).ready(function() {
 </script>
 
 <!--[if lt IE 9]>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js"></script>
+	<script src="<?php echo JUri::root(true); ?>/media/jui/js/html5.js"></script>
 <![endif]-->
 
 </head>

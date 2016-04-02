@@ -136,12 +136,10 @@ $presse = implode('<br />',$data); ?>
 <?php if( $this->item ) : ?>
 	<style>
 		div.einsatz {
-			width: 66%;
 			float: left;
 		}
 
 		div#einsatz_images {
-			width: 33%;
 			float: right;
 		}
 
@@ -162,11 +160,6 @@ $presse = implode('<br />',$data); ?>
 
 		div#einsatz_images img:hover {
 /*			background-color: #0C3A6D;*/
-		}
-
-		dl.half {
-			width: 50%;
-			float: left;
 		}
 
 		dl.einsatz dt {
@@ -194,9 +187,10 @@ $presse = implode('<br />',$data); ?>
 	</style>
 
 	<h3><?php echo $this->item->summary; ?></h3>
-	<div id="einsatz_images"><?php echo $img_html; ?></div>
-	<div class="einsatz">
-	<dl class="einsatz half">
+	<div class="row-fluid">
+	<div id="einsatz_images" class="span4"><?php echo $img_html; ?></div>
+	<div class="einsatz span8">
+	<dl class="einsatz span6">
 		<dt><?php echo JText::_('COM_EINSATZKOMPONENTE_FORM_LBL_EINSATZBERICHT_DATA1'); ?></dt>
 		<dd><?php echo $einsatzart; ?></dd>
 		<dt><?php echo JText::_('COM_EINSATZKOMPONENTE_FORM_LBL_EINSATZBERICHT_ADDRESS'); ?></dt>
@@ -212,7 +206,7 @@ $presse = implode('<br />',$data); ?>
 			<dd><?php echo $this->item->people; ?></dd>
 		<?php endif; ?>
 	</dl>
-	<dl class="einsatz half">
+	<dl class="einsatz span6">
 		<?php if ($this->item->auswahl_orga): ?>
 			<dt><?php echo 'alarmierte Einheiten'; ?></dt>
 			<dd><?php echo $auswahlorga; ?></dd>
@@ -222,7 +216,7 @@ $presse = implode('<br />',$data); ?>
 			<dd><?php echo $vehicles; ?></dd>
 		<?php endif; ?>
 	</dl>
-	<div class="clr"></div>
+	<div class="clearfix"></div>
 	<?php if ($presse): ?>
 	<hr class="einsatz" />
 	<dl class="einsatz">
@@ -234,8 +228,9 @@ $presse = implode('<br />',$data); ?>
 	<hr class="einsatz" />
 	<section class="einsatz"><?php echo $this->item->desc; ?></section>
 	<?php endif; ?>
-	<div>
-	<div class="clr"></div>
+	</div>
+	</div>
+	<div class="clearfix"></div>
 
 	<script>document.getElementById("einsatzChart").parentNode.style.display = "none";</script>
 

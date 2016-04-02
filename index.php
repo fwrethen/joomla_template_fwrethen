@@ -35,7 +35,7 @@ jQuery(document).ready(function() {
 </script>
 
 <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js"></script>
 <![endif]-->
 
 </head>
@@ -45,23 +45,26 @@ jQuery(document).ready(function() {
 	<div id="wrapper">
 		<div id="wrapper_shadow">
 			<div id="header">
-						<div id="logo">
-						  <table height="100" border="0" cellpadding="0" cellspacing="0" width="100%">
-						   <tr>
-						      <td width="235" height="86"  valign="bottom" vspace=0 hspace=0><img border="0" src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/images/balken_top1.gif" width="235" height="86"></td>
-						      <td valign="bottom" width="100%">
-						      <img border="0" src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/images/balken_top2.gif" style="height: 84px; width: 100%;"></td>
-						      <td width="119" height="86" valign="bottom"><img border="0" src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/images/balken_top3.gif" width="119" height="86"></td>
-						    </tr>
-						  </table>
-						</div>
-						<jdoc:include type="modules" name="top" />
+				<div id="logo">
+					<table height="100" border="0" cellpadding="0" cellspacing="0" width="100%">
+						<tr>
+							<td width="235" height="86"  valign="bottom" vspace=0 hspace=0><img border="0" src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/images/balken_top1.gif" width="235" height="86"></td>
+							<td valign="bottom" width="100%">
+								<img border="0" src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/images/balken_top2.gif" style="height: 84px; width: 100%;">
+							</td>
+							<td width="119" height="86" valign="bottom">
+								<img border="0" src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/images/balken_top3.gif" width="119" height="86">
+							</td>
+						</tr>
+					</table>
+				</div>
+				<jdoc:include type="modules" name="top" />
 			</div>
 
 			<div id="tabarea">
-        <nav id="pillmenu">
-          <jdoc:include type="modules" name="pillmenu" />
-        </nav>
+				<nav id="pillmenu">
+					<jdoc:include type="modules" name="pillmenu" />
+				</nav>
 			</div>
 
 			<div id="search">
@@ -76,173 +79,162 @@ jQuery(document).ready(function() {
 
 			<div id="whitebox">
 
-					<div id="area">
-									<jdoc:include type="message" />
-
-						<div id="leftcolumn">
+				<div id="area">
+					<jdoc:include type="message" />
+					<div id="leftcolumn">
 						<?php if($this->countModules('left')) : ?>
 							<jdoc:include type="modules" name="left" style="xhtml" />
 						<?php endif; ?>
-						</div>
-
-						<?php if($this->countModules('left')) : ?>
-						<div id="maincolumn">
-						<?php else: ?>
-
-						<div id="maincolumn_full">
-						<?php endif; ?>
-							<?php if($this->countModules('user11 or user12 or user13')) : ?>
-								<table class="nopad userx">
-									<tr valign="top">
-										<?php if($this->countModules('user11')) : ?>
-											<td class="row-fluid">
-												<jdoc:include type="modules" name="user11" style="xhtml" />
-											</td>
-										<?php endif; ?>
-										<?php if($this->countModules('user11 and user12')) : ?>
-											<td class="greyline">&nbsp;</td>
-										<?php endif; ?>
-										<?php if($this->countModules('user12')) : ?>
-											<td class="row-fluid">
-												<jdoc:include type="modules" name="user12" style="xhtml" />
-											</td>
-										<?php endif; ?>
-										<?php if($this->countModules('user12 and user13') or $this->countModules('user11 and user13')) : ?>
-											<td class="greyline">&nbsp;</td>
-										<?php endif; ?>
-										<?php if($this->countModules('user13')) : ?>
-											<td class="row-fluid">
-												<jdoc:include type="modules" name="user13" style="xhtml" />
-											</td>
-										<?php endif; ?>
-									</tr>
-								</table>
-
-								<div id="maindivider"></div>
-							<?php endif; ?>
-
-							<?php if($this->countModules('user21 or user22 or user23')) : ?>
-								<table class="nopad userx">
-									<tr valign="top">
-										<?php if($this->countModules('user21')) : ?>
-											<td class="row-fluid">
-												<jdoc:include type="modules" name="user21" style="xhtml" />
-											</td>
-										<?php endif; ?>
-										<?php if($this->countModules('user21 and user22')) : ?>
-											<td class="greyline">&nbsp;</td>
-										<?php endif; ?>
-										<?php if($this->countModules('user22')) : ?>
-											<td class="row-fluid">
-												<jdoc:include type="modules" name="user22" style="xhtml" />
-											</td>
-										<?php endif; ?>
-										<?php if($this->countModules('user22 and user23') or $this->countModules('user21 and user23')) : ?>
-											<td class="greyline">&nbsp;</td>
-										<?php endif; ?>
-										<?php if($this->countModules('user23')) : ?>
-											<td class="row-fluid">
-												<jdoc:include type="modules" name="user23" style="xhtml" />
-											</td>
-										<?php endif; ?>
-									</tr>
-								</table>
-
-								<div id="maindivider"></div>
-							<?php endif; ?>
-
-							<table class="nopad">
-								<tr valign="top">
-									<td>
-										<jdoc:include type="component" />
-										<jdoc:include type="modules" name="footer" style="xhtml"/>
-									</td>
-									<?php if($this->countModules('right') and JRequest::getCmd('layout') != 'form') : ?>
-										<td class="greyline">&nbsp;</td>
-										<td width="170">
-											<jdoc:include type="modules" name="right" style="xhtml"/>
-										</td>
-									<?php endif; ?>
-								</tr>
-							</table>
-
-							<?php if($this->countModules('user31 or user32 or user33')) : ?>
-								<div id="maindivider"></div>
-
-								<table class="nopad userx">
-									<tr valign="top">
-										<?php if($this->countModules('user31')) : ?>
-											<td class="row-fluid">
-												<jdoc:include type="modules" name="user31" style="xhtml" />
-											</td>
-										<?php endif; ?>
-										<?php if($this->countModules('user31 and user32')) : ?>
-											<td class="greyline">&nbsp;</td>
-										<?php endif; ?>
-										<?php if($this->countModules('user32')) : ?>
-											<td class="row-fluid">
-												<jdoc:include type="modules" name="user32" style="xhtml" />
-											</td>
-										<?php endif; ?>
-										<?php if($this->countModules('user32 and user33') or $this->countModules('user31 and user33')) : ?>
-											<td class="greyline">&nbsp;</td>
-										<?php endif; ?>
-										<?php if($this->countModules('user33')) : ?>
-											<td class="row-fluid">
-												<jdoc:include type="modules" name="user33" style="xhtml" />
-											</td>
-										<?php endif; ?>
-									</tr>
-								</table>
-							<?php endif; ?>
-
-						</div>
-						<div class="clr"></div>
 					</div>
 
-					<?php if($this->countModules('user41 or user42 or user43')) : ?>
+					<?php $id = ($this->countModules('left') ? 'maincolumn' : 'maincolumn_full'); ?>
+					<div id="<?php echo $id; ?>">
+					<?php if($this->countModules('user11 or user12 or user13')) : ?>
+						<table class="nopad userx">
+							<tr valign="top">
+								<?php if($this->countModules('user11')) : ?>
+									<td class="row-fluid">
+										<jdoc:include type="modules" name="user11" style="xhtml" />
+									</td>
+								<?php endif; ?>
+								<?php if($this->countModules('user11 and user12')) : ?>
+									<td class="greyline">&nbsp;</td>
+								<?php endif; ?>
+								<?php if($this->countModules('user12')) : ?>
+									<td class="row-fluid">
+										<jdoc:include type="modules" name="user12" style="xhtml" />
+									</td>
+								<?php endif; ?>
+								<?php if($this->countModules('user12 and user13') or $this->countModules('user11 and user13')) : ?>
+									<td class="greyline">&nbsp;</td>
+								<?php endif; ?>
+								<?php if($this->countModules('user13')) : ?>
+									<td class="row-fluid">
+										<jdoc:include type="modules" name="user13" style="xhtml" />
+									</td>
+								<?php endif; ?>
+							</tr>
+						</table>
+						<div id="maindivider"></div>
+					<?php endif; ?>
+
+					<?php if($this->countModules('user21 or user22 or user23')) : ?>
+						<table class="nopad userx">
+							<tr valign="top">
+								<?php if($this->countModules('user21')) : ?>
+									<td class="row-fluid">
+										<jdoc:include type="modules" name="user21" style="xhtml" />
+									</td>
+								<?php endif; ?>
+								<?php if($this->countModules('user21 and user22')) : ?>
+									<td class="greyline">&nbsp;</td>
+								<?php endif; ?>
+								<?php if($this->countModules('user22')) : ?>
+									<td class="row-fluid">
+										<jdoc:include type="modules" name="user22" style="xhtml" />
+									</td>
+								<?php endif; ?>
+								<?php if($this->countModules('user22 and user23') or $this->countModules('user21 and user23')) : ?>
+									<td class="greyline">&nbsp;</td>
+								<?php endif; ?>
+								<?php if($this->countModules('user23')) : ?>
+									<td class="row-fluid">
+										<jdoc:include type="modules" name="user23" style="xhtml" />
+									</td>
+								<?php endif; ?>
+							</tr>
+						</table>
+						<div id="maindivider"></div>
+					<?php endif; ?>
+
+					<table class="nopad">
+						<tr valign="top">
+							<td>
+								<jdoc:include type="component" />
+								<jdoc:include type="modules" name="footer" style="xhtml"/>
+							</td>
+							<?php if($this->countModules('right') and JRequest::getCmd('layout') != 'form') : ?>
+								<td class="greyline">&nbsp;</td>
+								<td width="170">
+									<jdoc:include type="modules" name="right" style="xhtml"/>
+								</td>
+							<?php endif; ?>
+						</tr>
+					</table>
+
+					<?php if($this->countModules('user31 or user32 or user33')) : ?>
 						<div id="maindivider"></div>
 
 						<table class="nopad userx">
 							<tr valign="top">
-								<?php if($this->countModules('user41')) : ?>
+								<?php if($this->countModules('user31')) : ?>
 									<td class="row-fluid">
-										<jdoc:include type="modules" name="user41" style="xhtml" />
+										<jdoc:include type="modules" name="user31" style="xhtml" />
 									</td>
 								<?php endif; ?>
-								<?php if($this->countModules('user41 and user42')) : ?>
+								<?php if($this->countModules('user31 and user32')) : ?>
 									<td class="greyline">&nbsp;</td>
 								<?php endif; ?>
-								<?php if($this->countModules('user42')) : ?>
+								<?php if($this->countModules('user32')) : ?>
 									<td class="row-fluid">
-										<jdoc:include type="modules" name="user42" style="xhtml" />
+										<jdoc:include type="modules" name="user32" style="xhtml" />
 									</td>
 								<?php endif; ?>
-								<?php if($this->countModules('user42 and user43') or $this->countModules('user41 and user43')) : ?>
+								<?php if($this->countModules('user32 and user33') or $this->countModules('user31 and user33')) : ?>
 									<td class="greyline">&nbsp;</td>
 								<?php endif; ?>
-								<?php if($this->countModules('user43')) : ?>
+								<?php if($this->countModules('user33')) : ?>
 									<td class="row-fluid">
-										<jdoc:include type="modules" name="user43" style="xhtml" />
+										<jdoc:include type="modules" name="user33" style="xhtml" />
 									</td>
 								<?php endif; ?>
 							</tr>
 						</table>
 					<?php endif; ?>
 
+					</div>
 					<div class="clr"></div>
+				</div>
+
+				<?php if($this->countModules('user41 or user42 or user43')) : ?>
+					<div id="maindivider"></div>
+					<table class="nopad userx">
+						<tr valign="top">
+							<?php if($this->countModules('user41')) : ?>
+								<td class="row-fluid">
+									<jdoc:include type="modules" name="user41" style="xhtml" />
+								</td>
+							<?php endif; ?>
+							<?php if($this->countModules('user41 and user42')) : ?>
+								<td class="greyline">&nbsp;</td>
+							<?php endif; ?>
+							<?php if($this->countModules('user42')) : ?>
+								<td class="row-fluid">
+									<jdoc:include type="modules" name="user42" style="xhtml" />
+								</td>
+							<?php endif; ?>
+							<?php if($this->countModules('user42 and user43') or $this->countModules('user41 and user43')) : ?>
+								<td class="greyline">&nbsp;</td>
+							<?php endif; ?>
+							<?php if($this->countModules('user43')) : ?>
+								<td class="row-fluid">
+									<jdoc:include type="modules" name="user43" style="xhtml" />
+								</td>
+							<?php endif; ?>
+						</tr>
+					</table>
+				<?php endif; ?>
+
+				<div class="clr"></div>
 			</div>
 
 			<div id="footerspacer"></div>
-
-
-		<div id="footer">
-      <p id="syndicate">
-        <jdoc:include type="modules" name="syndicate" />
-      </p>
+			<div id="footer">
+				<p id="syndicate">
+					<jdoc:include type="modules" name="syndicate" />
+				</p>
+			</div>
 		</div>
-
-	</div>
 	</div>
 </div>
 <jdoc:include type="modules" name="debug" />

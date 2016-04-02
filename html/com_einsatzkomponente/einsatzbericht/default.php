@@ -188,47 +188,47 @@ $presse = implode('<br />',$data); ?>
 
 	<h3><?php echo $this->item->summary; ?></h3>
 	<div class="row-fluid">
-	<div id="einsatz_images" class="span4"><?php echo $img_html; ?></div>
-	<div class="einsatz span8">
-	<dl class="einsatz span6">
-		<dt><?php echo JText::_('COM_EINSATZKOMPONENTE_FORM_LBL_EINSATZBERICHT_DATA1'); ?></dt>
-		<dd><?php echo $einsatzart; ?></dd>
-		<dt><?php echo JText::_('COM_EINSATZKOMPONENTE_FORM_LBL_EINSATZBERICHT_ADDRESS'); ?></dt>
-		<dd><?php echo $this->item->address; ?></dd>
-		<dt><?php echo JText::_('COM_EINSATZKOMPONENTE_FORM_LBL_EINSATZBERICHT_DATE1'); ?></dt>
-		<dd><?php echo date('d.m.Y, H:i', strtotime($this->item->date1)); ?> Uhr</dd>
-		<?php if ($this->item->boss): ?>
-			<dt><?php echo JText::_('COM_EINSATZKOMPONENTE_FORM_LBL_EINSATZBERICHT_BOSS'); ?></dt>
-			<dd><?php echo $this->item->boss; ?></dd>
-		<?php endif; ?>
-		<?php if ($this->item->people): ?>
-			<dt><?php echo JText::_('COM_EINSATZKOMPONENTE_FORM_LBL_EINSATZBERICHT_PEOPLE'); ?></dt>
-			<dd><?php echo $this->item->people; ?></dd>
-		<?php endif; ?>
-	</dl>
-	<dl class="einsatz span6">
-		<?php if ($this->item->auswahl_orga): ?>
-			<dt><?php echo 'alarmierte Einheiten'; ?></dt>
-			<dd><?php echo $auswahlorga; ?></dd>
-		<?php endif; ?>
-		<?php if ($this->item->vehicles): ?>
-			<dt><?php echo JText::_('COM_EINSATZKOMPONENTE_FORM_LBL_EINSATZBERICHT_VEHICLES'); ?></dt>
-			<dd><?php echo $vehicles; ?></dd>
-		<?php endif; ?>
-	</dl>
-	<div class="clearfix"></div>
-	<?php if ($presse): ?>
-	<hr class="einsatz" />
-	<dl class="einsatz">
-		<dt><?php echo 'Presseberichte'; ?></dt>
-		<dd><?php echo $presse; ?></dd>
-	</dl>
-	<?php endif; ?>
-	<?php if ($this->item->desc): ?>
-	<hr class="einsatz" />
-	<section class="einsatz"><?php echo $this->item->desc; ?></section>
-	<?php endif; ?>
-	</div>
+		<div id="einsatz_images" class="span4"><?php echo $img_html; ?></div>
+		<div class="einsatz span8">
+			<dl class="einsatz span6">
+				<dt><?php echo JText::_('COM_EINSATZKOMPONENTE_FORM_LBL_EINSATZBERICHT_DATA1'); ?></dt>
+				<dd><?php echo $einsatzart; ?></dd>
+				<dt><?php echo JText::_('COM_EINSATZKOMPONENTE_FORM_LBL_EINSATZBERICHT_ADDRESS'); ?></dt>
+				<dd><?php echo $this->item->address; ?></dd>
+				<dt><?php echo JText::_('COM_EINSATZKOMPONENTE_FORM_LBL_EINSATZBERICHT_DATE1'); ?></dt>
+				<dd><?php echo date('d.m.Y, H:i', strtotime($this->item->date1)); ?> Uhr</dd>
+				<?php if ($this->item->boss): ?>
+					<dt><?php echo JText::_('COM_EINSATZKOMPONENTE_FORM_LBL_EINSATZBERICHT_BOSS'); ?></dt>
+					<dd><?php echo $this->item->boss; ?></dd>
+				<?php endif; ?>
+				<?php if ($this->item->people): ?>
+					<dt><?php echo JText::_('COM_EINSATZKOMPONENTE_FORM_LBL_EINSATZBERICHT_PEOPLE'); ?></dt>
+					<dd><?php echo $this->item->people; ?></dd>
+				<?php endif; ?>
+			</dl>
+			<dl class="einsatz span6">
+				<?php if ($this->item->auswahl_orga): ?>
+					<dt><?php echo 'alarmierte Einheiten'; ?></dt>
+					<dd><?php echo $auswahlorga; ?></dd>
+				<?php endif; ?>
+				<?php if ($this->item->vehicles): ?>
+					<dt><?php echo JText::_('COM_EINSATZKOMPONENTE_FORM_LBL_EINSATZBERICHT_VEHICLES'); ?></dt>
+					<dd><?php echo $vehicles; ?></dd>
+				<?php endif; ?>
+			</dl>
+			<div class="clearfix"></div>
+			<?php if ($presse): ?>
+				<hr class="einsatz" />
+				<dl class="einsatz">
+					<dt><?php echo 'Presseberichte'; ?></dt>
+					<dd><?php echo $presse; ?></dd>
+				</dl>
+			<?php endif; ?>
+			<?php if ($this->item->desc): ?>
+				<hr class="einsatz" />
+				<section class="einsatz"><?php echo $this->item->desc; ?></section>
+			<?php endif; ?>
+		</div>
 	</div>
 	<div class="clearfix"></div>
 

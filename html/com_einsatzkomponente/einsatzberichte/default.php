@@ -137,6 +137,7 @@ if ($this->params->get('display_home_pagination')) :
      $i=count($this->reports)+1;
 	 endif;
 	 $m = '';
+	 if ($this->reports) :
      foreach ($this->reports as $item) :
 		   $i--; //print_r ($item);
 		   $curTime = strtotime($item->date1);
@@ -327,6 +328,7 @@ if ($this->params->get('display_home_pagination')) :
            <?php endif;?><?php endif;?><?php /* -- Filter Einsatzart -- */ ?>
 
     <?php endforeach; ?>
+  <?php endif; ?>
 
 <?php if(!$this->reports or !$show): ?>
 <span class="label label-info"><b>Es können zu dieser Auswahl keine Daten in der Datenbank gefunden werden</b></span>

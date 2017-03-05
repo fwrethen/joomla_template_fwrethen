@@ -62,7 +62,7 @@ $template_dir = JURI::base() . 'templates/' . JFactory::getApplication()->getTem
 <?php // Filter ------------------------------------------------------------------------------------
 
 
-?><div style="text-align: center; padding: 5px;"><form action="#" method=post><?php
+?><div style="text-align: center; padding: 5px;"><form action="<?php echo JRoute::_('index.php?option=com_einsatzkomponente&view=einsatzberichte&list=1'); ?>" method="post" name="adminForm" id="adminForm"><?php
 
 
 if (!$this->params->get('anzeigejahr','0') and $this->params->get('display_filter_jahre','1')) :
@@ -153,7 +153,7 @@ if ($this->params->get('display_home_pagination')) :
 		   <tr><td colspan="<?php echo $col;?>">
            <?php $m=date('n', $curTime);?>
 		   <?php echo '<h3>';?>
-           <?php echo $this->monate[$m];?>
+           <?php echo (new JDate)->monthToString($m);?>
 		   <?php if ($this->selectedYear == '9999') : echo date('Y', $curTime); endif;?>
            <?php echo '</h3>';?>
            </td></tr>

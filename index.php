@@ -73,7 +73,8 @@ if ($span > 0)
 	<header>
 		<div id="head-wrapper" style="margin: 0px auto; max-width: 1200px;">
 			<div id="logo" unselectable="on">
-				<h1 id="sitename"><?php echo $sitename; ?></h1>
+				<div><h1 id="sitename"><?php echo $sitename; ?></h1></div>
+				<div id="icon"><img src="<?php echo $this->baseurl . '/templates/' . $this->template . '/images/icon_tlf.svg'; ?>" width="42px" /></div>
 			</div>
 			<jdoc:include type="modules" name="top" />
 			<nav id="headernav">

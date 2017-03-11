@@ -1,0 +1,116 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto+Slab:700&text=FeurwhRtn/Li);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:600,700);
+
+body {
+	background-color: #eee;
+}
+
+header {
+	background-color: #003753;
+	color: #FFF;
+	margin: 0 0 1.5em;
+	box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.5);
+}
+
+footer, footer a, footer a:hover {
+	color: #666;
+}
+
+footer li {
+	display: inline-block;
+	margin: 0.5em 1em;
+}
+
+a {
+	color: #005580;
+}
+
+#logo {
+	font-weight: bold;
+	font-family: Roboto Slab, serif;
+	-webkit-user-select: none;
+	   -moz-user-select: none;
+	    -ms-user-select: none;
+	     -o-user-select: none;
+	        user-select: none;
+	cursor: default;
+	margin: 0 10px;
+}
+
+#sitename {
+	margin: 0;
+	padding: 0.25em;
+	/*TODO: make this an option:*/
+	/*word-spacing: 9999px;*/
+}
+
+#headernav {
+	display: table;
+	/*TODO: make this an option:*/
+	/*margin: 0 auto;*/
+}
+
+#headernav ul, #headernav li {
+	margin: 0;
+	padding: 0;
+	line-height: unset;
+}
+
+#headernav li {
+	display: inline;
+	background-color: #FFF;
+}
+
+#headernav a {
+	display: inline-block;
+	position: relative;
+	padding: 0 1.3em 0.5em;
+	color: #FFF;
+	background-color: #003753;
+	font-weight: 600;
+}
+
+#headernav a:hover:after, #headernav .current a:after {
+	content: '';
+	position: absolute;
+	bottom: 0px;
+	left: 10px;
+	right: 10px;
+	z-index: 1;
+	height: 5px;
+	background-color: #fff;
+}
+
+#sidenav a {
+	display: inline-block;
+	position: relative;
+	margin-left: -21px;
+	padding-left: 21px;
+}
+
+#sidenav a:hover, #sidenav .current a {
+	border-left: 5px solid #005580;
+	padding-left: 16px;
+}
+
+#content-wrapper {
+	padding: 1.5em;
+	background-color: #fff;
+	border-radius: 5px;
+	box-shadow: 0px 0px 8px -10px rgba(0,0,0,0.5);
+}
+
+.moduletable h3, .moduletable_menu h3 {
+	font-size: 1.5em;
+	line-height: unset;
+}
+
+.nav a {
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 700;
+}
+
+/* Bootstrap Overrides */
+.nav>li>a:hover,.nav>li>a:focus {
+	background-color: unset;
+}

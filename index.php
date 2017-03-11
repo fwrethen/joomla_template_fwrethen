@@ -54,9 +54,13 @@ if ($span > 0)
 <head>
 	<jdoc:include type="head" />
 	<script>
-		// add attribute rel=lightbox to direct links to image files
 		jQuery(document).ready(function() {
+			// add attribute rel=lightbox to direct links to image files
 			jQuery('a[href*=".png"], a[href*=".PNG"], a[href*=".gif"], a[href*=".GIF"], a[href*=".jpeg"], a[href*=".JPEG"], a[href*=".jpg"], a[href*=".JPG"]').not('[rel*="lightbox"]').attr('rel', 'lightbox');
+
+			// add class active to a in matching navbar header
+			var menu = jQuery('.nav-header').text();
+			if !(menu == '') jQuery('a:contains('+menu+')').parent().addClass('current active');
 		});
 	</script>
 	<!--[if lt IE 9]>
@@ -67,7 +71,7 @@ if ($span > 0)
 <body>
 <div id="page">
 	<header>
-		<div id="head-wrapper" style="margin: 0px auto; max-width: 1080px;">
+		<div id="head-wrapper" style="margin: 0px auto; max-width: 1200px;">
 			<div id="logo" unselectable="on">
 				<h1 id="sitename"><?php echo $sitename; ?></h1>
 			</div>
@@ -84,10 +88,10 @@ if ($span > 0)
 		</div>
 	</header>
 
-	<div id="content-wrapper" style="max-width: 960px; margin: 0px auto;">
+	<div id="content-wrapper" style="max-width: 1080px; margin: 0px auto;">
 		<section class="row-fluid">
 			<?php if ($this->countModules('left')) : ?>
-				<nav class="span2">
+				<nav id="sidenav" class="span2">
 					<jdoc:include type="modules" name="left" style="html5" />
 				</nav>
 			<?php endif; ?>
@@ -131,8 +135,8 @@ if ($span > 0)
 		<?php endif; ?>
 	</div>
 
-	<footer class="span6 offset3">
-		<jdoc:include type="modules" name="syndicate" />
+	<footer class="span6 offset3 text-center">
+		<jdoc:include type="modules" name="syndicate" style="none" />
 	</footer>
 </div>
 <div class="clearfix"></div>

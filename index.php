@@ -52,6 +52,7 @@ if ($span > 0)
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->language; ?>" lang="<?php echo $this->language; ?>"  dir="<?php echo $this->direction; ?>" >
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0, user-scalable=yes" />
 	<jdoc:include type="head" />
 	<script>
 		jQuery(document).ready(function() {
@@ -71,19 +72,30 @@ if ($span > 0)
 <body>
 <div id="page">
 	<header>
-		<div id="head-wrapper" style="margin: 0px auto; max-width: 1200px;">
+		<div id="head-wrapper" style="margin: 0px auto; min-height: 80px; max-width: 1200px;">
 			<div id="logo" unselectable="on">
 				<div><h1 id="sitename"><?php echo $sitename; ?></h1></div>
-				<div id="icon"><img src="<?php echo $this->baseurl . '/templates/' . $this->template . '/images/icon_tlf.svg'; ?>" width="42px" /></div>
+				<div id="icon" class="hidden-phone"><img src="<?php echo $this->baseurl . '/templates/' . $this->template . '/images/icon_tlf.svg'; ?>" width="42px" /></div>
+			</div>
+			<div class="nav-mobile visible-phone">
+				<button type="button" class="btn-nav" data-toggle="collapse" data-target=".nav-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<div class="nav-collapse collapse">
+					<jdoc:include type="modules" name="pillmenu" style="html5" />
+					<jdoc:include type="modules" name="left" style="html5" />
+				</div>
 			</div>
 			<jdoc:include type="modules" name="top" />
-			<nav id="headernav">
+			<nav id="headernav" class="hidden-phone">
 				<jdoc:include type="modules" name="pillmenu" style="none" />
 			</nav>
 			<div id="search">
 				<jdoc:include type="modules" name="search" />
 			</div>
-			<div id="pathway">
+			<div id="pathway" class="hidden-phone">
 				<jdoc:include type="modules" name="breadcrumb" />
 			</div>
 		</div>
@@ -92,7 +104,7 @@ if ($span > 0)
 	<div id="content-wrapper" style="max-width: 1080px; margin: 0px auto;">
 		<section class="row-fluid">
 			<?php if ($this->countModules('left')) : ?>
-				<nav id="sidenav" class="span2">
+				<nav id="sidenav" class="span2 hidden-phone">
 					<jdoc:include type="modules" name="left" style="html5" />
 				</nav>
 			<?php endif; ?>

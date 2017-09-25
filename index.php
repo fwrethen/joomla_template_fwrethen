@@ -39,8 +39,8 @@ $doc->addStyleSheet($this->baseurl . '/templates/' . $this->template . '/css/tem
 			jQuery('a[href*=".png"], a[href*=".PNG"], a[href*=".gif"], a[href*=".GIF"], a[href*=".jpeg"], a[href*=".JPEG"], a[href*=".jpg"], a[href*=".JPG"]').not('[rel*="lightbox"]').attr('rel', 'lightbox');
 
 			// add class active to a in matching navbar header
-			var menu = jQuery('.nav-header').text();
-			if !(menu == '') jQuery('a:contains('+menu+')').parent().addClass('current active');
+			var menu = jQuery('.nav-header')[0].textContent;
+			if (!menu == '') jQuery('#headernav').find('a:contains('+menu+')').parent().addClass('current active');
 		});
 	</script>
 	<!--[if lt IE 9]>

@@ -133,6 +133,10 @@ a {
 	font-weight: 700;
 }
 
+.nav-header {
+	display: none;
+}
+
 .nav-mobile ul {
 	padding: 10px;
 }

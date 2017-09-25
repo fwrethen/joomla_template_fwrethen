@@ -27,27 +27,6 @@ JHtml::_('bootstrap.loadCss');
 $doc->addStyleSheet($this->baseurl . '/templates/' . $this->template . '/css/lightbox.css', $type = 'text/css');
 $doc->addStyleSheet($this->baseurl . '/templates/' . $this->template . '/css/template.css', $type = 'text/css');
 
-// Adjusting content width
-$span = 0;
-if ($this->countModules('user41'))
-{
-	$span++;
-}
-if ($this->countModules('user42'))
-{
-	$span++;
-}
-if ($this->countModules('user43'))
-{
-	$span++;
-}
-if ($span > 0)
-{
-	$span = "span" . 12 / $span;
-} else {
-	$span = "span12";
-}
-
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->language; ?>" lang="<?php echo $this->language; ?>"  dir="<?php echo $this->direction; ?>" >
@@ -84,75 +63,75 @@ if ($span > 0)
 					<span class="icon-bar"></span>
 				</button>
 				<div class="nav-collapse collapse">
-					<jdoc:include type="modules" name="pillmenu" style="html5" />
-					<jdoc:include type="modules" name="left" style="html5" />
+					<jdoc:include type="modules" name="top-b" style="html5" />
+					<jdoc:include type="modules" name="menu" style="html5" />
 				</div>
 			</div>
-			<jdoc:include type="modules" name="top" />
+			<jdoc:include type="modules" name="top-a" />
 			<nav id="headernav" class="hidden-phone">
-				<jdoc:include type="modules" name="pillmenu" style="none" />
+				<jdoc:include type="modules" name="top-b" style="none" />
 			</nav>
 			<div id="search">
 				<jdoc:include type="modules" name="search" />
 			</div>
 			<div id="pathway" class="hidden-phone">
-				<jdoc:include type="modules" name="breadcrumb" />
+				<jdoc:include type="modules" name="breadcrumbs" />
 			</div>
 		</div>
 	</header>
 
+	<?php if ($this->countModules('banner')) : ?>
+		<div id="banner">
+			<jdoc:include type="modules" name="banner" style="html5" />
+		</div>
+	<?php endif; ?>
+
 	<div id="content-wrapper" style="max-width: 1080px; margin: 0px auto;">
 		<section class="row-fluid">
-			<?php if ($this->countModules('left')) : ?>
-				<nav id="sidenav" class="span2 hidden-phone">
-					<jdoc:include type="modules" name="left" style="html5" />
-				</nav>
+			<?php if ($this->countModules('menu') || $this->countModules('sidebar-left')) : ?>
+				<div class="span2">
+					<nav id="sidenav" class="hidden-phone">
+						<jdoc:include type="modules" name="menu" style="html5" />
+					</nav>
+					<jdoc:include type="modules" name="sidebar-left" style="html5" />
+				</div>
 			<?php endif; ?>
-			<?php if ($this->countModules('left') && $this->countModules('right')) : ?>
+			<?php if (($this->countModules('menu') || $this->countModules('sidebar-left')) && $this->countModules('sidebar-right')) : ?>
 				<main class="span8">
-			<?php elseif ($this->countModules('left') || $this->countModules('right')) : ?>
+			<?php elseif ($this->countModules('menu') || $this->countModules('sidebar-left') || $this->countModules('sidebar-right')) : ?>
 				<main class="span10">
 			<?php else: ?>
 				<main class="span12">
 			<?php endif; ?>
-					<jdoc:include type="modules" name="user11" style="xhtml" />
+					<jdoc:include type="modules" name="main-top" style="xhtml" />
 					<jdoc:include type="message" />
 					<jdoc:include type="component" />
-					<jdoc:include type="modules" name="footer" style="xhtml" />
+					<jdoc:include type="modules" name="main-bottom" style="xhtml" />
 				</main>
-			<?php if ($this->countModules('right')) : ?>
+			<?php if ($this->countModules('sidebar-right')) : ?>
 				<aside class="span2">
-					<jdoc:include type="modules" name="right" style="xhtml" />
+					<jdoc:include type="modules" name="sidebar-right" style="xhtml" />
 				</aside>
 			<?php endif; ?>
 		</section>
 
-		<?php if ($this->countModules('user41 + user42 + user43') > 0) : ?>
-			<aside class="row-fluid">
-				<?php if ($this->countModules('user41')) : ?>
-					<div class="<?php echo $span; ?>">
-						<jdoc:include type="modules" name="user41" style="html5" />
-					</div>
-				<?php endif; ?>
-				<?php if ($this->countModules('user42')) : ?>
-					<div class="<?php echo $span; ?>">
-						<jdoc:include type="modules" name="user42" style="html5" />
-					</div>
-				<?php endif; ?>
-				<?php if ($this->countModules('user43')) : ?>
-					<div class="<?php echo $span; ?>">
-						<jdoc:include type="modules" name="user43" style="html5" />
-					</div>
-				<?php endif; ?>
+		<?php if ($this->countModules('bottom-a')) : ?>
+			<aside id="bottom-a" class="row-fluid">
+				<jdoc:include type="modules" name="bottom-a" style="html5" />
+			</aside>
+		<?php endif; ?>
+		<?php if ($this->countModules('bottom-b')) : ?>
+			<aside id="bottom-b" class="row-fluid">
+				<jdoc:include type="modules" name="bottom-b" style="html5" />
 			</aside>
 		<?php endif; ?>
 	</div>
 
 	<footer class="span6 offset3 text-center">
-		<jdoc:include type="modules" name="syndicate" style="none" />
+		<jdoc:include type="modules" name="footer" style="none" />
 	</footer>
 </div>
-<div class="clearfix"></div>
+
 <jdoc:include type="modules" name="debug" style="none" />
 
 </body>

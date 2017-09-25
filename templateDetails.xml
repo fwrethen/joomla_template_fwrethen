@@ -22,26 +22,18 @@
 		<filename>error.php</filename>
 	</files>
 	<positions>
-		<position>breadcrumb</position>
-		<position>left</position>
-		<position>right</position>
-		<position>top</position>
-		<position>pillmenu</position>
+		<position>menu</position>
 		<position>search</position>
-		<position>user11</position>
-		<position>user12</position>
-		<position>user13</position>
-		<position>user21</position>
-		<position>user22</position>
-		<position>user23</position>
-		<position>user31</position>
-		<position>user32</position>
-		<position>user33</position>
-		<position>user41</position>
-		<position>user42</position>
-		<position>user43</position>
+		<position>banner</position>
+		<position>top-a</position>
+		<position>top-b</position>
+		<position>main-top</position>
+		<position>breadcrumbs</position>
+		<position>sidebar-left</position>
+		<position>sidebar-right</position>
+		<position>bottom-a</position>
+		<position>bottom-b</position>
 		<position>footer</position>
 		<position>debug</position>
-		<position>syndicate</position>
 	</positions>
 </extension>

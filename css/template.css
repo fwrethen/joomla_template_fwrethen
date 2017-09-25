@@ -105,6 +105,17 @@ a {
 	padding-left: 16px;
 }
 
+#banner, #content-wrapper, footer {
+	max-width: 1140px;
+	margin: 0px auto;
+}
+
+#head-wrapper {
+	margin: 0px auto;
+	min-height: 80px;
+	max-width: 1200px;
+}
+
 #content-wrapper {
 	padding: 1.5em;
 	background-color: #fff;

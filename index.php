@@ -51,7 +51,7 @@ $doc->addStyleSheet($this->baseurl . '/templates/' . $this->template . '/css/tem
 <body>
 <div id="page">
 	<header>
-		<div id="head-wrapper" style="margin: 0px auto; min-height: 80px; max-width: 1200px;">
+		<div id="head-wrapper">
 			<div id="logo" unselectable="on">
 				<div><h1 id="sitename"><?php echo $sitename; ?></h1></div>
 				<div id="icon" class="hidden-phone"><img src="<?php echo $this->baseurl . '/templates/' . $this->template . '/images/icon_tlf.svg'; ?>" width="42px" /></div>
@@ -86,7 +86,7 @@ $doc->addStyleSheet($this->baseurl . '/templates/' . $this->template . '/css/tem
 		</div>
 	<?php endif; ?>
 
-	<div id="content-wrapper" style="max-width: 1080px; margin: 0px auto;">
+	<div id="content-wrapper">
 		<section class="row-fluid">
 			<?php if ($this->countModules('menu') || $this->countModules('sidebar-left')) : ?>
 				<div class="span2">
@@ -127,7 +127,7 @@ $doc->addStyleSheet($this->baseurl . '/templates/' . $this->template . '/css/tem
 		<?php endif; ?>
 	</div>
 
-	<footer class="span6 offset3 text-center">
+	<footer class="text-center">
 		<jdoc:include type="modules" name="footer" style="none" />
 	</footer>
 </div>

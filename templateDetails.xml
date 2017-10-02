@@ -1,39 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="3.0" type="template" client="site" method="upgrade">
-	<name>FwRethen3</name>
-	<creationDate>January 2016</creationDate>
-	<author>Martin Matthaei</author>
-	<authorEmail>webmaster@fw-rethen.de</authorEmail>
-	<authorUrl>http://www.fw-rethen.de</authorUrl>
-	<copyright>(C) 2016 Martin Matthaei</copyright>
-	<license>GNU GPLv2</license>
-	<version>0.1</version>
-	<description>Feuerwehr-Rethen-Template</description>
-	<files>
-		<folder>css</folder>
-		<folder>html</folder>
-		<folder>images</folder>
-		<folder>js</folder>
-		<filename>index.php</filename>
-		<filename>templateDetails.xml</filename>
-		<filename>template_preview.png</filename>
-		<filename>template_thumbnail.png</filename>
-		<filename>favicon.ico</filename>
-		<filename>error.php</filename>
-	</files>
-	<positions>
-		<position>menu</position>
-		<position>search</position>
-		<position>banner</position>
-		<position>top-a</position>
-		<position>top-b</position>
-		<position>main-top</position>
-		<position>breadcrumbs</position>
-		<position>sidebar-left</position>
-		<position>sidebar-right</position>
-		<position>bottom-a</position>
-		<position>bottom-b</position>
-		<position>footer</position>
-		<position>debug</position>
-	</positions>
+  <name>FwRethen3</name>
+  <creationDate>January 2016</creationDate>
+  <author>Martin Matthaei</author>
+  <authorEmail>webmaster@fw-rethen.de</authorEmail>
+  <authorUrl>http://www.fw-rethen.de</authorUrl>
+  <copyright>(C) 2016 Martin Matthaei</copyright>
+  <license>GNU GPLv2</license>
+  <version>0.1</version>
+  <description>Feuerwehr-Rethen-Template</description>
+  <files>
+    <folder>css</folder>
+    <folder>html</folder>
+    <folder>images</folder>
+    <folder>js</folder>
+    <filename>index.php</filename>
+    <filename>templateDetails.xml</filename>
+    <filename>template_preview.png</filename>
+    <filename>template_thumbnail.png</filename>
+    <filename>favicon.ico</filename>
+    <filename>error.php</filename>
+  </files>
+  <positions>
+    <position>menu</position>
+    <position>search</position>
+    <position>banner</position>
+    <position>top-a</position>
+    <position>top-b</position>
+    <position>main-top</position>
+    <position>breadcrumbs</position>
+    <position>sidebar-left</position>
+    <position>sidebar-right</position>
+    <position>bottom-a</position>
+    <position>bottom-b</position>
+    <position>footer</position>
+    <position>debug</position>
+  </positions>
 </extension>

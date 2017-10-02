@@ -2,176 +2,176 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:600,700);
 
 body {
-	background-color: #eee;
+  background-color: #eee;
 }
 
 header {
-	background-color: #003753;
-	color: #FFF;
-	margin: 0 0 1.5em;
-	box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.5);
+  background-color: #003753;
+  color: #FFF;
+  margin: 0 0 1.5em;
+  box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.5);
 }
 
 footer, footer a, footer a:hover {
-	color: #666;
+  color: #666;
 }
 
 footer li {
-	display: inline-block;
-	margin: 0.5em 1em;
+  display: inline-block;
+  margin: 0.5em 1em;
 }
 
 a {
-	color: #005580;
+  color: #005580;
 }
 
 #logo {
-	font-weight: bold;
-	font-family: Roboto Slab, serif;
-	-webkit-user-select: none;
-	   -moz-user-select: none;
-	    -ms-user-select: none;
-	     -o-user-select: none;
-	        user-select: none;
-	cursor: default;
-	margin: 0 10px;
+  font-weight: bold;
+  font-family: Roboto Slab, serif;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+       -o-user-select: none;
+          user-select: none;
+  cursor: default;
+  margin: 0 10px;
 }
 
 #logo div {
-	display: inline-block;
+  display: inline-block;
 }
 
 #icon {
-	float: right;
-	border: 3px solid #fff;
-	border-radius: 50%;
-	margin: 0.5em;
-	padding: 0.5em;
+  float: right;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  margin: 0.5em;
+  padding: 0.5em;
 }
 
 #sitename {
-	margin: 0;
-	padding: 0.25em;
-	/*TODO: make this an option:*/
-	/*word-spacing: 9999px;*/
+  margin: 0;
+  padding: 0.25em;
+  /*TODO: make this an option:*/
+  /*word-spacing: 9999px;*/
 }
 
 #headernav {
-	display: table;
-	/*TODO: make this an option:*/
-	/*margin: 0 auto;*/
+  display: table;
+  /*TODO: make this an option:*/
+  /*margin: 0 auto;*/
 }
 
 #headernav ul, #headernav li {
-	margin: 0;
-	padding: 0;
-	line-height: unset;
+  margin: 0;
+  padding: 0;
+  line-height: unset;
 }
 
 #headernav li {
-	display: inline;
-	background-color: #FFF;
+  display: inline;
+  background-color: #FFF;
 }
 
 #headernav a {
-	display: inline-block;
-	position: relative;
-	padding: 0 1.3em 0.5em;
-	color: #FFF;
-	background-color: #003753;
-	font-weight: 600;
+  display: inline-block;
+  position: relative;
+  padding: 0 1.3em 0.5em;
+  color: #FFF;
+  background-color: #003753;
+  font-weight: 600;
 }
 
 #headernav a:hover:after, #headernav .current a:after {
-	content: '';
-	position: absolute;
-	bottom: 0px;
-	left: 10px;
-	right: 10px;
-	z-index: 1;
-	height: 5px;
-	background-color: #fff;
+  content: '';
+  position: absolute;
+  bottom: 0px;
+  left: 10px;
+  right: 10px;
+  z-index: 1;
+  height: 5px;
+  background-color: #fff;
 }
 
 #sidenav a {
-	display: inline-block;
-	position: relative;
-	margin-left: -21px;
-	padding-left: 21px;
+  display: inline-block;
+  position: relative;
+  margin-left: -21px;
+  padding-left: 21px;
 }
 
 #sidenav a:hover, #sidenav .current a {
-	border-left: 5px solid #005580;
-	padding-left: 16px;
+  border-left: 5px solid #005580;
+  padding-left: 16px;
 }
 
 #banner, #content-wrapper, footer {
-	max-width: 1140px;
-	margin: 0px auto;
+  max-width: 1140px;
+  margin: 0px auto;
 }
 
 #head-wrapper {
-	margin: 0px auto;
-	min-height: 80px;
-	max-width: 1200px;
+  margin: 0px auto;
+  min-height: 80px;
+  max-width: 1200px;
 }
 
 #content-wrapper {
-	padding: 1.5em;
-	background-color: #fff;
-	border-radius: 5px;
-	box-shadow: 0px 0px 8px -10px rgba(0,0,0,0.5);
+  padding: 1.5em;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0px 0px 8px -10px rgba(0,0,0,0.5);
 }
 
 .moduletable h3, .moduletable_menu h3 {
-	font-size: 1.5em;
-	line-height: unset;
+  font-size: 1.5em;
+  line-height: unset;
 }
 
 .nav a {
-	font-family: 'Open Sans', sans-serif;
-	font-weight: 700;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
 }
 
 .nav-header {
-	display: none;
+  display: none;
 }
 
 .nav-mobile ul {
-	padding: 10px;
+  padding: 10px;
 }
 
 .btn-nav {
-	display: block;
-	float: right;
-	width: 45px;
-	height: 45px;
-	margin: 8px;
-	border: 2px solid #fff;
-	border-radius: 4px;
-	background-color: #003753;
+  display: block;
+  float: right;
+  width: 45px;
+  height: 45px;
+  margin: 8px;
+  border: 2px solid #fff;
+  border-radius: 4px;
+  background-color: #003753;
 }
 
 .btn-nav .icon-bar {
-	display: block;
-	width: 24px;
-	height: 3px;
-	background-color: #f5f5f5;
+  display: block;
+  width: 24px;
+  height: 3px;
+  background-color: #f5f5f5;
 }
 
 .btn-nav .icon-bar + .icon-bar {
-	margin-top: 4px;
+  margin-top: 4px;
 }
 
 /* Bootstrap Overrides */
 .nav>li>a:hover,.nav>li>a:focus {
-	background-color: unset;
+  background-color: unset;
 }
 
 .nav-collapse .nav>li>a {
-	color:#fff;
+  color:#fff;
 }
 
 .nav-collapse .nav>li>a:hover {
-	color:#003753;
+  color:#003753;
 }

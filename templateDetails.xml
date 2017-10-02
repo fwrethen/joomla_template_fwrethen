@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="3.0" type="template" client="site" method="upgrade">
   <name>FwRethen3</name>
-  <creationDate>January 2016</creationDate>
+  <creationDate>October 2017</creationDate>
   <author>Martin Matthaei</author>
   <authorEmail>webmaster@fw-rethen.de</authorEmail>
   <authorUrl>http://www.fw-rethen.de</authorUrl>
-  <copyright>(C) 2016 Martin Matthaei</copyright>
-  <license>GNU GPLv2</license>
+  <copyright>(C) 2016-2017 Martin Matthaei</copyright>
+  <license>GNU General Public License version 2 or later</license>
   <version>0.1</version>
   <description>Feuerwehr-Rethen-Template</description>
   <files>
@@ -19,6 +19,7 @@
     <filename>template_preview.png</filename>
     <filename>template_thumbnail.png</filename>
     <filename>favicon.ico</filename>
+    <filename>favicon-96x96.png</filename>
     <filename>error.php</filename>
   </files>
   <positions>

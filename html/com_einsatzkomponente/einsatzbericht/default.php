@@ -42,17 +42,14 @@ endfor;
 $img_html = '';
 // wenn kein erstes Element im Array, Platzhalterbild nutzen
 if (!$images):
-	$img_html = '<img src="'. $template_dir .'/images/default_image.jpg" id="title_image" />';
+	$img_html = '<li class="span12"><img src="'. $template_dir .'/images/default_image.jpg" class="img-rounded" /></li>';
 else:
 	foreach($images as $i=>$img):
-		$class = '';
-		if ($i == 0):
-			$class = ' id="title_image"';
-		endif;
+		$class = ($i == 0) ? 'class="span12"' : 'class="span6"';
 		if ($thumbs[$i]):
-			$img_html .= '<a rel="lightbox[gallery]" href="'. $img .'"><img src="'. $thumbs[$i] .'" '. $class .' /></a>';
+			$img_html .= '<li '. $class .'><a rel="lightbox[gallery]" href="'. $img .'"><img src="'. $thumbs[$i] .'" class="img-rounded" /></a></li>';
 		else:
-			$img_html .= '<a rel="lightbox[gallery]" href="'. $img .'"><img src="'. $img .'" '. $class .' /></a>';
+			$img_html .= '<li '. $class .'><a rel="lightbox[gallery]" href="'. $img .'"><img src="'. $img .'" class="img-rounded" /></a></li>';
 		endif;
 	endforeach;
 endif;
@@ -135,68 +132,21 @@ $presse = implode('<br />',$data); ?>
 
 <?php if( $this->item ) : ?>
 	<style>
-		div.einsatz {
-			width: 66%;
-			float: left;
+		.thumbnails [class*="span"]:nth-child(even){
+			margin-left: 0;
 		}
 
-		div#einsatz_images {
-			width: 33%;
-			float: right;
-		}
-
-		div#einsatz_images img {
-			width: 40%;
-			padding: 5%;
-/*			padding: 2px;
-			-webkit-transition: all 0.5s ease;
-			   -moz-transition: all 0.5s ease;
-			     -o-transition: all 0.5s ease;
-			    -ms-transition: all 0.5s ease;
-			        transition: all 0.5s ease;*/
-		}
-
-		div#einsatz_images #title_image {
-			width: 90%;
-		}
-
-		div#einsatz_images img:hover {
-/*			background-color: #0C3A6D;*/
-		}
-
-		dl.half {
-			width: 50%;
-			float: left;
-		}
-
-		dl.einsatz dt {
-			font-weight: bold;
-		}
-
-		dl.einsatz dt::after {
-			content: ":";
-		}
-
-		dl.einsatz dd {
-			margin-bottom: 0.8em;
-		}
-
-		hr.einsatz {
-			border: 0;
-			height: 1px;
-			background-color: #CCC;
-		}
-
-		section.einsatz {
-			margin-top: 1em;
-			text-align: justify;
+		.thumbnails img{
+			width: 100%;
 		}
 	</style>
 
 	<h3><?php echo $this->item->summary; ?></h3>
-	<div id="einsatz_images"><?php echo $img_html; ?></div>
-	<div class="einsatz">
-		<dl class="einsatz half">
+	<div class="row-fluid">
+	<div class="span9">
+	<div class="row-fluid">
+	<div class="span6">
+		<dl class="dl-horizontal">
 			<dt><?php echo JText::_('COM_EINSATZKOMPONENTE_FORM_LBL_EINSATZBERICHT_DATA1'); ?></dt>
 			<dd><?php echo $einsatzart; ?></dd>
 			<dt><?php echo JText::_('COM_EINSATZKOMPONENTE_FORM_LBL_EINSATZBERICHT_ADDRESS'); ?></dt>
@@ -212,7 +162,9 @@ $presse = implode('<br />',$data); ?>
 				<dd><?php echo $this->item->people; ?></dd>
 			<?php endif; ?>
 		</dl>
-		<dl class="einsatz half">
+	</div>
+	<div class="span6">
+		<dl class="dl-horizontal">
 			<?php if ($this->item->auswahl_orga): ?>
 				<dt><?php echo 'alarmierte Einheiten'; ?></dt>
 				<dd><?php echo $auswahlorga; ?></dd>
@@ -222,24 +174,34 @@ $presse = implode('<br />',$data); ?>
 				<dd><?php echo $vehicles; ?></dd>
 			<?php endif; ?>
 		</dl>
-		<div class="clr"></div>
+	</div>
+	</div>
+	<div class="row-fluid">
+	<div class="span12">
 		<?php if ($presse): ?>
-			<hr class="einsatz" />
-			<dl class="einsatz">
+			<hr />
+			<dl>
 				<dt><?php echo 'Presseberichte'; ?></dt>
 				<dd><?php echo $presse; ?></dd>
 			</dl>
 		<?php endif; ?>
 		<?php if ($this->item->desc): ?>
-			<hr class="einsatz" />
-			<section class="einsatz"><?php echo $this->item->desc; ?></section>
+			<hr />
+			<section><?php echo $this->item->desc; ?></section>
 		<?php endif; ?>
 	</div>
-	<div class="clr"></div>
+	</div>
+	</div>
+	<div class="span3">
+		<ul class="thumbnails">
+			<?php echo $img_html; ?>
+		</ul>
+	</div>
+	</div>
 
 	<script>document.getElementById("einsatzChart").parentNode.style.display = "none";</script>
 
 
 <?php else: ?>
-    Could not load the item
+	<span class="label label-important">Einsatz kann nicht angezeigt werden</span>
 <?php endif; ?>

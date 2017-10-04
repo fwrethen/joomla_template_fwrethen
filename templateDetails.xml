@@ -1,52 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension version="2.5" type="template" client="site" method="upgrade">
-	<name>fwrethen_2.5</name>
-	<creationDate>October 2017</creationDate>
-	<author>Florian Paetz</author>
-	<authorEmail>webmaster@fw-rethen.de</authorEmail>
-	<authorUrl>http://www.fw-rethen.de</authorUrl>
-	<copyright></copyright>
-	<license>GNU/GPL</license>
-	<version>1.99-migration1</version>
-	<description>Feuerwehr-Rethen-Template</description>
-	<files>
-		<folder>css</folder>
-		<folder>html</folder>
-		<folder>images</folder>
-		<folder>js</folder>
-		<filename>index.php</filename>
-		<filename>templateDetails.xml</filename>
-		<filename>template_preview.png</filename>
-		<filename>template_thumbnail.png</filename>
-		<filename>favicon.ico</filename>
-		<filename>error.php</filename>
-	</files>
-	<positions>
-		<position>menu</position>
-		<position>search</position>
-		<position>banner</position>
-		<position>top-a</position>
-		<position>top-b</position>
-		<position>main-top</position>
-		<position>main-bottom</position>
-		<position>breadcrumbs</position>
-		<position>sidebar-left</position>
-		<position>sidebar-right</position>
-		<position>bottom-a</position>
-		<position>bottom-b</position>
-		<position>footer</position>
-		<position>debug</position>
-	</positions>
-	<config>
-		<fields name="params">
-			<fieldset name="advanced">
-				<field name="widthStyle" type="list" default="fmax" label="Template Width" description="Width style of the template">
-					<option value="fmax">Fluid with maximum</option>
-					<option value="medium">Medium</option>
-					<option value="small">Small</option>
-					<option value="fluid">Fluid</option>
-				</field>
-			</fieldset>
-		</fields>
-	</config>
+<extension version="3.0" type="template" client="site" method="upgrade">
+  <name>FwRethen3</name>
+  <creationDate>October 2017</creationDate>
+  <author>Martin Matthaei</author>
+  <authorEmail>webmaster@fw-rethen.de</authorEmail>
+  <authorUrl>http://www.fw-rethen.de</authorUrl>
+  <copyright>(C) 2016-2017 Martin Matthaei</copyright>
+  <license>GNU General Public License version 2 or later</license>
+  <version>0.1</version>
+  <description>Feuerwehr-Rethen-Template</description>
+  <files>
+    <folder>css</folder>
+    <folder>html</folder>
+    <folder>images</folder>
+    <folder>js</folder>
+    <filename>index.php</filename>
+    <filename>templateDetails.xml</filename>
+    <filename>template_preview.png</filename>
+    <filename>template_thumbnail.png</filename>
+    <filename>favicon.ico</filename>
+    <filename>favicon-96x96.png</filename>
+    <filename>error.php</filename>
+  </files>
+  <positions>
+    <position>menu</position>
+    <position>search</position>
+    <position>banner</position>
+    <position>top-a</position>
+    <position>top-b</position>
+    <position>main-top</position>
+    <position>breadcrumbs</position>
+    <position>sidebar-left</position>
+    <position>sidebar-right</position>
+    <position>bottom-a</position>
+    <position>bottom-b</position>
+    <position>footer</position>
+    <position>debug</position>
+  </positions>
 </extension>

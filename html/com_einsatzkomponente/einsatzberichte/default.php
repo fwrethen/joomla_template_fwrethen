@@ -66,10 +66,48 @@ $template_dir = JURI::base() . 'templates/' . JFactory::getApplication()->getTem
 
 
 if (!$this->params->get('anzeigejahr','0') and $this->params->get('display_filter_jahre','1')) :
-	$years[] = JHTML::_('select.option', '9999', JTEXT::_('- Alle Einsätze anzeigen -')  , 'id', 'title');
-	$years = array_merge($years, (array)$this->years);
+	$years = array();
+	foreach ($this->years as $year)
+		array_push($years, $year->id);
+	$urlEinsatzberichte = 'index.php?option=com_einsatzkomponente&view=einsatzberichte&list=1';
 
-	echo JHTML::_('select.genericlist',  $years, 'year', ' onchange=submit(); ', 'id', 'title', $this->selectedYear);?>
+	/* Reference: JHtmlDropdown (libraries/cms/html/dropdown.php) */
+	echo JHTML::_('dropdown.init'); ?>
+	<div class="btn-group" style="<?php if (!in_array($this->selectedYear - 1, $years)) echo 'visibility:hidden;'; ?>">
+		<button name="year" value="<?php echo $this->selectedYear - 1; ?>" class="btn btn-large">
+			<a href="<?php echo $urlEinsatzberichte; ?>">
+				<i class="icon-backward"></i>
+			</a>
+		</button>
+	</div>
+	<div class="btn-group">
+		<a href="#" data-toggle="dropdown" class="btn btn-large dropdown-toggle" style="min-width:122px;">
+			<i class=" icon-calendar"></i>
+			<b style="margin:4px;"><?php echo ($this->selectedYear == 9999) ? 'alle' : $this->selectedYear; ?></b>
+			<i class="icon-chevron-down"></i>
+		</a>
+		<ul class="dropdown-menu">
+			<li class="text-center">
+				<a href="<?php echo $urlEinsatzberichte; ?>&year=9999">
+					Alle Einsätze
+				</a>
+			</li>
+			<?php foreach ($years as $year): ?>
+				<li class="text-center">
+					<a href="<?php echo $urlEinsatzberichte . '&year=' . $year; ?>">
+						<?php echo $year; ?>
+					</a>
+				</li>
+			<?php endforeach; ?>
+		</ul>
+	</div>
+	<div class="btn-group" style="<?php if (!in_array($this->selectedYear + 1, $years)) echo 'visibility:hidden;'; ?>">
+		<button name="year" value="<?php echo $this->selectedYear + 1; ?>" class="btn btn-large">
+			<a href="<?php echo $urlEinsatzberichte; ?>">
+				<i class="icon-forward"></i>
+			</a>
+		</button>
+	</div>
 
     <?php
 endif;

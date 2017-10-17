@@ -247,22 +247,6 @@ if ($this->params->get('display_home_pagination')) :
            <?php endif;?>
 		   <?php echo $item->einsatzart; ?>
 
-
-			<?php if ($this->params->get('display_home_info','1')) : ?>
-			<br /><button class="btn-home" onClick="jQuery.toggle<?php echo $item->id;?>(div<?php echo $item->id;?>)">Kurzinfo</button>
-           <?php if ($this->params->get('display_home_links','1')) : ?>
-            <a class="btn-home" href="<?php echo JRoute::_('index.php?option=com_einsatzkomponente'.$this->layout_detail_link.'&view=einsatzbericht&id=' . (int)$item->id); ?>">Details</a>
-           <?php endif;?>
-
-            <script type="text/javascript">
-			jQuery.toggle<?php echo $item->id;?> = function(query)
-				{
-        		jQuery(query).slideToggle("5000");
-				jQuery("#tr<?php echo $item->id;?>").fadeToggle("fast");
-				}
-			</script>
-            <?php endif;?>
-
            </td>
 
 			<?php if ($this->params->get('display_home_links','1')) : ?>
@@ -309,59 +293,6 @@ if ($this->params->get('display_home_pagination')) :
            <?php endif;?>
            <?php endif;?>
 		   </tr>
-
-           <?php /*  Zusatzinformation */ ?>
-			<?php if ($this->params->get('display_home_info','1')) : ?>
-			<?php		$data = array();
-					foreach(explode(',',$item->auswahl_orga) as $value):
-						$db = JFactory::getDbo();
-						$query	= $db->getQuery(true);
-						$query
-							->select('name')
-							->from('`#__eiko_organisationen`')
-							->where('id = "' .$value.'"');
-						$db->setQuery($query);
-						$results = $db->loadObjectList();
-						if(count($results)){
-							$data[] = $results[0]->name;
-						}
-					endforeach;
-					$auswahl_orga=  implode(' +++ ',$data); ?>
-            <tr id="tr<?php echo $item->id;?>" style=" display:none;" >
-
-           <?php if ($this->params->get('display_home_marker','1')) : ?>
-           <?php $rgba = hex2rgba($item->marker,0.7);?>
-            <style>
-				.td<?php echo $item->id;?> {
-				background: -moz-linear-gradient(top,  <?php echo $rgba;?> 0%, rgba(125,185,232,0) 100%); /* FF3.6+ */
-				background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,<?php echo $rgba;?>), color-stop(100%,rgba(125,185,232,0))); /* Chrome,Safari4+ */
-				background: -webkit-linear-gradient(top,  <?php echo $rgba;?> 0%,rgba(125,185,232,0) 100%); /* Chrome10+,Safari5.1+ */
-				background: -o-linear-gradient(top,  <?php echo $rgba;?> 0%,rgba(125,185,232,0) 100%); /* Opera 11.10+ */
-				background: -ms-linear-gradient(top,  <?php echo $rgba;?> 0%,rgba(125,185,232,0) 100%); /* IE10+ */
-				background: linear-gradient(to bottom,  <?php echo $rgba;?> 0%,rgba(125,185,232,0) 100%); /* W3C */
-				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='<?php echo $item->marker;?>', endColorstr='#007db9e8',GradientType=0 ); /* IE6-9 */
-				}
-			</style>
-		   <td class="td<?php echo $item->id;?>" >
-           <?php else:?>
-		   <td>
-           <?php endif;?>
-            </td>
-            <td colspan="<?php echo $col;?>">
-			<div id ="div<?php echo $item->id;?>" style="display:none;">
-            <h3>Alarmierungszeit :</h3><?php echo date('d.m.Y', $curTime);?> um <?php echo date('H:i', $curTime);?> Uhr
-            <h3>alarmierte Organisationen :</h3><?php echo $auswahl_orga;?><br/>
-		   <?php if ($item->desc) : ?>
-			<h3>Einsatzbericht :</h3><?php echo $item->desc;?>
-            <?php endif;?>
-            <br /><button class="btn-home" onClick="jQuery.toggle<?php echo $item->id;?>(div<?php echo $item->id;?>)">Info schliessen</button>
-           <?php if ($this->params->get('display_home_links','1')) : ?>
-            <a class="btn-home" href="<?php echo JRoute::_('index.php?option=com_einsatzkomponente'.$this->layout_detail_link.'&view=einsatzbericht&id=' . (int)$item->id); ?>">zur Detailansicht</a>
-           <?php endif;?>
-           </div>
-           </td>
-           </tr>
-            <?php endif;?>
 
            <?php endif;?><?php endif;?><?php /* -- Filter Einsatzart -- */ ?>
 
@@ -413,37 +344,3 @@ if ($this->params->get('display_home_pagination')) :
 
 <?php if(JFactory::getUser()->authorise('core.create','com_einsatzkomponente.einsatzbericht'.$item->id)): ?><a href="<?php echo JRoute::_('index.php?option=com_einsatzkomponente&view=einsatzberichtform&layout=edit&id=0'); ?>">Einsatz eintragen</a>
 	<?php endif; ?>
-
-
-    <?php function hex2rgba($color, $opacity = false) {  // Farbe von HEX zu RGBA umwandeln
-
-	$default = 'rgb(0,0,0)';
-	//Return default if no color provided
-	if(empty($color))
-          return $default;
-	//Sanitize $color if "#" is provided
-        if ($color[0] == '#' ) {
-        	$color = substr( $color, 1 );
-        }
-        //Check if color has 6 or 3 characters and get values
-        if (strlen($color) == 6) {
-                $hex = array( $color[0] . $color[1], $color[2] . $color[3], $color[4] . $color[5] );
-        } elseif ( strlen( $color ) == 3 ) {
-                $hex = array( $color[0] . $color[0], $color[1] . $color[1], $color[2] . $color[2] );
-        } else {
-                return $default;
-        }
-        //Convert hexadec to rgb
-        $rgb =  array_map('hexdec', $hex);
-        //Check if opacity is set(rgba or rgb)
-        if($opacity){
-        	if(abs($opacity) > 1)
-        		$opacity = 1.0;
-        	$output = 'rgba('.implode(",",$rgb).','.$opacity.')';
-        } else {
-        	$output = 'rgb('.implode(",",$rgb).')';
-        }
-        //Return rgb(a) color string
-        return $output;
-
-}?>

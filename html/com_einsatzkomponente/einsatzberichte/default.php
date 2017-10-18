@@ -19,25 +19,29 @@ $template_dir = JURI::base() . 'templates/' . JFactory::getApplication()->getTem
 <style>
 	table#einsaetze {
 		margin: 10px 0 0 0;
-		border-style: solid;
-		border-width: 0 0 1px 1px;
-		border-color: #999;
+	}
+
+	table#einsaetze h3 {
+		margin: 0;
+	}
+
+	table#einsaetze tr.link:nth-of-type(odd) {
+		background-color: #f9f9f9;
 	}
 
 	table#einsaetze tr.link:hover {
-		background-color: #F5F5FF;
+		background-color: #e9f5ff;
 		cursor: pointer;
 	}
 
 	table#einsaetze td, table#einsaetze th {
 		padding: 10px;
-		border-style: solid;
-		border-width: 1px 1px 0 0;
-		border-color: #999;
 	}
 
-	table#einsaetze td h3 {
-		margin: 0;
+	@media(max-width:767px) {
+		table#einsaetze td:nth-of-type(n+2), table#einsaetze th:nth-of-type(n+2) {
+			display: inline-block;
+		}
 	}
 </style>
 <div>
@@ -156,7 +160,7 @@ endif;
 ?>
 
 
-<table id="einsaetze" width="100%" cellspacing="0" cellpadding="0">
+<table id="einsaetze" class="table table-bordered" width="100%" cellspacing="0" cellpadding="0">
  <tbody>
 	 <?php
 $show = false;

@@ -15,9 +15,6 @@ $lang->load('com_einsatzkomponente', JPATH_ADMINISTRATOR);
 
 $template_dir = JURI::base() . 'templates/' . JFactory::getApplication()->getTemplate('template')->template;
 
-//print_r ($this->organisationen);
-
-//echo $this->selectedYear;
 ?>
 <style>
 	table#einsaetze {
@@ -53,9 +50,7 @@ $template_dir = JURI::base() . 'templates/' . JFactory::getApplication()->getTem
 
 <!--Page Heading-->
 <?php if ($this->params->get('show_page_heading', 1)) : ?>
-<div class="page-header">
 <h1> <?php echo $this->escape($this->params->get('page_heading')); ?> </h1>
-</div>
 <?php endif;?>
 
 
@@ -162,10 +157,6 @@ endif;
 
 
 <table id="einsaetze" width="100%" cellspacing="0" cellpadding="0">
-    <thead style="display: none;">
-		<tr><?php echo $theader; ?></tr>
-    </thead>
-
  <tbody>
 	 <?php
 $show = false;
@@ -177,7 +168,7 @@ if ($this->params->get('display_home_pagination')) :
 	 $m = '';
 	 if ($this->reports) :
      foreach ($this->reports as $item) :
-		   $i--; //print_r ($item);
+		   $i--;
 		   $curTime = strtotime($item->date1);
 		   ?>
           <?php /* -- Filter Einsatzart -- */ ?>
@@ -314,8 +305,6 @@ if ($this->params->get('display_home_pagination')) :
             <?php endif;?>
 			<?php if ($this->params->get('gmap_action','0') == '2') :?>
 <body onLoad="drawmap();">
-				<!--<div id="descriptionToggle" onClick="toggleInfo()">Informationen zur Karte anzeigen</div>
-				<div id="description" class="">Einsatzkarte</div>-->
    				<div id="map" style="width:100%; height:<?php echo $this->params->get('home_map_height','300px');?>;"></div>
     		<noscript>Dieser Teil der Seite erfordert die JavaScript Unterstützung Ihres Browsers!</noscript>
             <?php endif;?>

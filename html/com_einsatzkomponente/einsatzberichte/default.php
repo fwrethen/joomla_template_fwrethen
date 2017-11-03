@@ -13,7 +13,9 @@ defined('_JEXEC') or die;
 $lang = JFactory::getLanguage();
 $lang->load('com_einsatzkomponente', JPATH_ADMINISTRATOR);
 
-$template_dir = JURI::base() . 'templates/' . JFactory::getApplication()->getTemplate('template')->template;
+$url = 'index.php?option=com_einsatzkomponente&view=einsatzberichte';
+$url_bericht = 'index.php?option=com_einsatzkomponente&view=einsatzbericht';
+$template_dir = 'templates/' . JFactory::getApplication()->getTemplate('template')->template;
 
 ?>
 <style>
@@ -48,7 +50,7 @@ $template_dir = JURI::base() . 'templates/' . JFactory::getApplication()->getTem
 
 <!--RSS-Feed Imag-->
 <?php if ($this->params->get('display_home_rss','1')) : ?>
-<div style="float:right; height:16px" class="eiko_rss" ><a href="<?php JURI::base();?>index.php?option=com_einsatzkomponente&view=einsatzberichte&format=feed&type=rss"><img src="<?php echo $template_dir;?>/images/rss.svg" alt="RSS-Feed abonieren" height="16px" width="16px" style="height: 16px; width: 16px;"></a></div>
+<div style="float:right; height:16px" class="eiko_rss" ><a href="<?php echo $url; ?>&format=feed&type=rss"><img src="<?php echo $template_dir;?>/images/rss.svg" alt="RSS-Feed abonieren" height="16px" width="16px" style="height: 16px; width: 16px;"></a></div>
 <?php endif; ?>
 
 
@@ -60,21 +62,21 @@ $template_dir = JURI::base() . 'templates/' . JFactory::getApplication()->getTem
 
 <?php // Filter ------------------------------------------------------------------------------------
 
+$url = $url . '&list=1';
 
-?><div style="text-align: center; padding: 5px;"><form action="<?php echo JRoute::_('index.php?option=com_einsatzkomponente&view=einsatzberichte&list=1'); ?>" method="post" name="adminForm" id="adminForm"><?php
+?><div style="text-align: center; padding: 5px;"><form action="<?php echo JRoute::_($url); ?>" method="post" name="adminForm" id="adminForm"><?php
 
 
 if (!$this->params->get('anzeigejahr','0') and $this->params->get('display_filter_jahre','1')) :
 	$years = array();
 	foreach ($this->years as $year)
 		array_push($years, $year->id);
-	$urlEinsatzberichte = 'index.php?option=com_einsatzkomponente&view=einsatzberichte&list=1';
 
 	/* Reference: JHtmlDropdown (libraries/cms/html/dropdown.php) */
 	echo JHTML::_('dropdown.init'); ?>
 	<div class="btn-group" style="<?php if (!in_array($this->selectedYear - 1, $years)) echo 'visibility:hidden;'; ?>">
 		<button name="year" value="<?php echo $this->selectedYear - 1; ?>" class="btn btn-large">
-			<a href="<?php echo $urlEinsatzberichte; ?>">
+			<a href="<?php echo JRoute::_($url); ?>">
 				<i class="icon-backward"></i>
 			</a>
 		</button>
@@ -87,13 +89,13 @@ if (!$this->params->get('anzeigejahr','0') and $this->params->get('display_filte
 		</a>
 		<ul class="dropdown-menu">
 			<li class="text-center">
-				<a href="<?php echo $urlEinsatzberichte; ?>&year=9999">
+				<a href="<?php echo JRoute::_($url . '&year=9999'); ?>">
 					Alle Einsätze
 				</a>
 			</li>
 			<?php foreach ($years as $year): ?>
 				<li class="text-center">
-					<a href="<?php echo $urlEinsatzberichte . '&year=' . $year; ?>">
+					<a href="<?php echo JRoute::_($url . '&year=' . $year); ?>">
 						<?php echo $year; ?>
 					</a>
 				</li>
@@ -102,7 +104,7 @@ if (!$this->params->get('anzeigejahr','0') and $this->params->get('display_filte
 	</div>
 	<div class="btn-group" style="<?php if (!in_array($this->selectedYear + 1, $years)) echo 'visibility:hidden;'; ?>">
 		<button name="year" value="<?php echo $this->selectedYear + 1; ?>" class="btn btn-large">
-			<a href="<?php echo $urlEinsatzberichte; ?>">
+			<a href="<?php echo JRoute::_($url); ?>">
 				<i class="icon-forward"></i>
 			</a>
 		</button>
@@ -196,7 +198,7 @@ if ($this->params->get('display_home_pagination')) :
            <?php /* -- Anzeige des Monatsnamens ENDE -- */ ?>
 
 		   <?php if ($this->params->get('display_home_links','1')) : ?>
-		   <tr class="link" onClick="parent.location='<?php echo JRoute::_('index.php?option=com_einsatzkomponente'.$this->layout_detail_link.'&view=einsatzbericht&id=' . (int)$item->id); ?>'">
+		   <tr class="link" onClick="parent.location='<?php echo JRoute::_($url_bericht . $this->layout_detail_link.'&id=' . (int)$item->id); ?>'">
 		   <?php else:?>
 		   <tr>
            <?php endif;?>
@@ -211,14 +213,14 @@ if ($this->params->get('display_home_pagination')) :
             <?php echo $i;?>
            <?php endif;?>
            <?php if ($this->params->get('display_home_alertimage_num','0')) : ?>
-           <br/><img class="img-rounded" style="width:30px; height:30px;" src="<?php echo JURI::Root();?><?php echo $item->image;?>" title="<?php echo $item->alarmierungsart;?>" />
+           <br/><img class="img-rounded" style="width:30px; height:30px;" src="<?php echo $item->image;?>" title="<?php echo $item->alarmierungsart;?>" />
            <?php endif;?>
             </td>
            <?php endif;?>
 
            <?php if ($this->params->get('display_home_alertimage','0')) : ?>
 		   <td style=" text-align:center;" >
-           <img class="img-rounded" style="width:50px; height:50px;margin-right:2px;" src="<?php echo JURI::Root();?><?php echo $item->image;?>" title="<?php echo $item->alarmierungsart;?>" />
+           <img class="img-rounded" style="width:50px; height:50px;margin-right:2px;" src="<?php echo $item->image;?>" title="<?php echo $item->alarmierungsart;?>" />
            </td>
            <?php endif;?>
 
@@ -238,14 +240,14 @@ if ($this->params->get('display_home_pagination')) :
 		   <td>
 
 		   <?php if ($this->params->get('display_list_icon')) : ?>
-           <img class="img-rounded" style="float:<?php echo $this->params->get('float_list_icon');?>;width:50px; height:50px;margin-right:2px;" src="<?php echo JURI::Root();?><?php echo $item->list_icon;?>" />
+           <img class="img-rounded" style="float:<?php echo $this->params->get('float_list_icon');?>;width:50px; height:50px;margin-right:2px;" src="<?php echo $item->list_icon;?>" />
            <?php endif;?>
 		   <?php echo $item->einsatzart; ?>
 
            </td>
 
 			<?php if ($this->params->get('display_home_links','1')) : ?>
-			<td><a href="<?php echo JRoute::_('index.php?option=com_einsatzkomponente'.$this->layout_detail_link.'&view=einsatzbericht&id=' . (int)$item->id); ?>">
+			<td><a href="<?php echo JRoute::_($url_bericht . $this->layout_detail_link.'&id=' . (int)$item->id); ?>">
 			<?php echo $item->summary;?>
 			</a></td>
 			<?php else: ?>
@@ -277,11 +279,11 @@ if ($this->params->get('display_home_pagination')) :
 
            <?php if ($this->params->get('display_home_image')) : ?>
 		   <?php if ($item->foto) : ?>
-		   <td class="mobile_image"> <img  class="img-rounded" style="width:<?php echo $this->params->get('display_home_image_width','80px');?>;" src="<?php echo JURI::Root();?><?php echo $item->foto;?>"/></td>
+		   <td class="mobile_image"> <img  class="img-rounded" style="width:<?php echo $this->params->get('display_home_image_width','80px');?>;" src="<?php echo $item->foto;?>"/></td>
            <?php endif;?>
 		   <?php if (!$item->foto) : ?>
            <?php if ($this->params->get('display_home_image_nopic','0')) : ?>
-		   <td class="mobile_image"> <img  class="img-rounded" style="width:<?php echo $this->params->get('display_home_image_width','80px');?>;" src="<?php echo JURI::Root().'images/com_einsatzkomponente/einsatzbilder/nopic.png';?>"/></td>
+		   <td class="mobile_image"> <img  class="img-rounded" style="width:<?php echo $this->params->get('display_home_image_width','80px');?>;" src="<?php echo 'images/com_einsatzkomponente/einsatzbilder/nopic.png';?>"/></td>
            <?php else:?>
 			<td class="mobile_image">&nbsp;</td>
 		   <?php endif;?>

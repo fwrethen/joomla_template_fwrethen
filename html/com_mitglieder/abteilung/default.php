@@ -6,13 +6,13 @@ JHtml::_('bootstrap.loadCss');
 
 
 <h1><?php echo $this->abteilung->name; ?></h1>
-<p><?php echo $this->abteilung->description; ?></p>
+<div><?php echo $this->abteilung->description; ?></div>
 
 <?php if(is_array($this->abteilung->mitglieder)):
 	$n = 1;
 ?>
 
-<table class="table table-condensed table-striped">
+<table class="table table-condensed table-striped hidden-phone">
 	<tr>
 		<?php foreach($this->abteilung->mitglieder as $mitglied):
 			$name = $mitglied->name . ", " . $mitglied->vorname;
@@ -27,5 +27,19 @@ JHtml::_('bootstrap.loadCss');
 		<?php endforeach; ?>
 	</tr>
 </table>
+
+<div class="visible-phone">
+	<table class="table table-condensed table-striped">
+		<?php foreach($this->abteilung->mitglieder as $mitglied): ?>
+			<tr>
+				<td>
+					<a href="index.php?option=com_mitglieder&layout=default&view=mitglied&id=<?php echo $mitglied->id;?>">
+						<?php echo $mitglied->name . ", " . $mitglied->vorname; ?>
+					</a>
+				</td>
+			</tr>
+		<?php endforeach; ?>
+	</table>
+</div>
 
 <?php endif; ?>

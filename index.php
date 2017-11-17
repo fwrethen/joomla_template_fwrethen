@@ -9,23 +9,35 @@
 
 defined('_JEXEC') or die;
 
-$doc = JFactory::getDocument();
-
 $app = JFactory::getApplication();
 $sitename = $app->get('sitename');
+$template_root = 'templates/' . $app->getTemplate('template')->template;
+
+$doc = JFactory::getDocument();
 
 // Doctype HTML5
 $doc->setHtml5(true);
 
 // Javascript
+$js = <<<JS
+  jQuery(document).ready(function() {
+    // add attribute rel=lightbox to direct links to image files
+    jQuery('a[href*=".png"], a[href*=".PNG"], a[href*=".gif"], a[href*=".GIF"], a[href*=".jpeg"], a[href*=".JPEG"], a[href*=".jpg"], a[href*=".JPG"]').not('[rel*="lightbox"]').attr('rel', 'lightbox');
+
+    // add class active to a in matching navbar header
+    var menu = jQuery('.nav-header')[0].textContent;
+    if (!menu == '') jQuery('#headernav').find('a:contains('+menu+')').parent().addClass('current active');
+  });
+JS;
 JHtml::_('jquery.framework', false);
 JHtml::_('bootstrap.framework');
-$doc->addScript($this->baseurl . '/templates/' . $this->template . '/js/lightbox.min.js', 'text/javascript');
+$doc->addScript($template_root . '/js/lightbox.min.js', 'text/javascript');
+$doc->addScriptDeclaration($js);
 
 // Stylesheets
 JHtml::_('bootstrap.loadCss');
-$doc->addStyleSheet($this->baseurl . '/templates/' . $this->template . '/css/lightbox.css', $type = 'text/css');
-$doc->addStyleSheet($this->baseurl . '/templates/' . $this->template . '/css/template.css', $type = 'text/css');
+$doc->addStyleSheet($template_root . '/css/lightbox.css', $type = 'text/css');
+$doc->addStyleSheet($template_root . '/css/template.css', $type = 'text/css');
 
 ?>
 <!DOCTYPE html>
@@ -33,16 +45,7 @@ $doc->addStyleSheet($this->baseurl . '/templates/' . $this->template . '/css/tem
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0, user-scalable=yes" />
   <jdoc:include type="head" />
-  <script>
-    jQuery(document).ready(function() {
-      // add attribute rel=lightbox to direct links to image files
-      jQuery('a[href*=".png"], a[href*=".PNG"], a[href*=".gif"], a[href*=".GIF"], a[href*=".jpeg"], a[href*=".JPEG"], a[href*=".jpg"], a[href*=".JPG"]').not('[rel*="lightbox"]').attr('rel', 'lightbox');
-
-      // add class active to a in matching navbar header
-      var menu = jQuery('.nav-header')[0].textContent;
-      if (!menu == '') jQuery('#headernav').find('a:contains('+menu+')').parent().addClass('current active');
-    });
-  </script>
+  <link rel="shortcut icon" href="<?php echo $template_root . '/favicon-96x96.png' ?>" type="image/png" />
   <!--[if lt IE 9]>
     <script src="<?php echo JUri::root(true); ?>/media/jui/js/html5.js"></script>
   <![endif]-->
@@ -54,7 +57,7 @@ $doc->addStyleSheet($this->baseurl . '/templates/' . $this->template . '/css/tem
     <div id="head-wrapper">
       <div id="logo" unselectable="on">
         <div><h1 id="sitename"><?php echo $sitename; ?></h1></div>
-        <div id="icon" class="hidden-phone"><img src="<?php echo $this->baseurl . '/templates/' . $this->template . '/images/icon_tlf.svg'; ?>" width="42px" /></div>
+        <div id="icon" class="hidden-phone"><img src="<?php echo $template_root . '/images/icon_tlf.svg'; ?>" width="42px" /></div>
       </div>
       <div class="nav-mobile visible-phone">
         <button type="button" class="btn-nav" data-toggle="collapse" data-target=".nav-collapse">

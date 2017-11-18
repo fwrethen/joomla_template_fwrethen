@@ -78,11 +78,9 @@ $doc->addStyleSheet($template_root . '/css/template.css', $type = 'text/css');
       </div>
       <div class="nav-mobile visible-phone">
         <button type="button" class="btn-nav" data-toggle="collapse" data-target=".nav-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
+          Menü &nbsp; &#9776;
         </button>
-        <div class="nav-collapse collapse">
+        <div class="nav-collapse collapse text-right">
           <jdoc:include type="modules" name="top-b" style="html5" />
           <jdoc:include type="modules" name="menu" style="html5" />
         </div>

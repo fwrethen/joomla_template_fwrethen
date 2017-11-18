@@ -19,6 +19,7 @@ footer, footer a, footer a:hover {
 footer li {
   display: inline-block;
   margin: 0.5em 1em;
+  text-transform: uppercase;
 }
 
 a {
@@ -144,23 +145,15 @@ a {
 .btn-nav {
   display: block;
   float: right;
-  width: 45px;
-  height: 45px;
   margin: 8px;
+  padding: 10px;
   border: 2px solid #fff;
   border-radius: 4px;
   background-color: #003753;
-}
-
-.btn-nav .icon-bar {
-  display: block;
-  width: 24px;
-  height: 3px;
-  background-color: #f5f5f5;
-}
-
-.btn-nav .icon-bar + .icon-bar {
-  margin-top: 4px;
+  color: #fff;
+  font-size: 1.5em;
+  font-weight: 700;
+  text-transform: uppercase;
 }
 
 /* Bootstrap Overrides */

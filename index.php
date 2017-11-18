@@ -27,6 +27,23 @@ $js = <<<JS
     // add class active to a in matching navbar header
     var menu = jQuery('.nav-header')[0].textContent;
     if (!menu == '') jQuery('#headernav').find('a:contains('+menu+')').parent().addClass('current active');
+
+    // if page is called with parameter 'templateStyle', append it to all links
+    var id = window.location.href;
+    var p = id.indexOf('templateStyle=');
+    if (p >= 0) {
+      var id = id.slice(p + 14);
+      if (id.indexOf('&') >= 0)
+        id = id.slice(0, id.indexOf('&'));
+      console.log(id);
+      jQuery('a[href^="/"]').each(function() {
+        var _href = jQuery(this).attr('href');
+        if (_href.indexOf('?') >= 0)
+          jQuery(this).attr('href', _href + '&templateStyle=' + id);
+        else
+          jQuery(this).attr('href', _href + '?templateStyle=' + id);
+      });
+    }
   });
 JS;
 JHtml::_('jquery.framework', false);

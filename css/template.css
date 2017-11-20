@@ -44,10 +44,7 @@ a {
 
 #icon {
   float: right;
-  border: 3px solid #fff;
-  border-radius: 50%;
   margin: 0.5em;
-  padding: 0.5em;
 }
 
 #sitename {

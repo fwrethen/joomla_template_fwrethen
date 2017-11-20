@@ -74,7 +74,7 @@ $doc->addStyleSheet($template_root . '/css/template.css', $type = 'text/css');
     <div id="head-wrapper">
       <div id="logo" unselectable="on">
         <div><h1 id="sitename"><?php echo $sitename; ?></h1></div>
-        <div id="icon" class="hidden-phone"><img src="<?php echo $template_root . '/images/icon_tlf.svg'; ?>" width="42px" /></div>
+        <div id="icon" class="hidden-phone"><img src="<?php echo $template_root . '/images/icon_tlf.svg'; ?>" width="62px" /></div>
       </div>
       <div class="nav-mobile visible-phone">
         <button type="button" class="btn-nav" data-toggle="collapse" data-target=".nav-collapse">

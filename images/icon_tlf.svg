@@ -1,8 +1,9 @@
-<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" version="1.2" width="60" height="60">
-  <g id="tlf" fill="#fff">
+<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" version="1.2" width="100" height="100">
+  <g id="tlf" fill="#fff" transform="translate(17,17) scale(1.1)">
     <polygon points="2 16, 40 16, 43 20, 40 20, 46 20, 46 17, 49 17, 49 20, 53 20, 59 27, 59 38, 60 38, 60 38, 2 38"/>
     <circle cx="13" cy="40" r="5"/>
     <circle cx="50" cy="40" r="5"/>
     <circle cx="47.5" cy="17" r="1.5"/>
   </g>
+  <circle cx="50" cy="50" r="47" stroke="#fff" stroke-width="5" fill="none"/>
 </svg>

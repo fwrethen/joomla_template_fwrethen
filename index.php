@@ -53,7 +53,7 @@ $doc->addScriptDeclaration($js);
 
 // Stylesheets
 JHtml::_('bootstrap.loadCss');
-$doc->addStyleSheet($template_root . '/css/lightbox.css', $type = 'text/css');
+$doc->addStyleSheet($template_root . '/css/lightbox.min.css', $type = 'text/css');
 $doc->addStyleSheet($template_root . '/css/template.css', $type = 'text/css');
 
 ?>

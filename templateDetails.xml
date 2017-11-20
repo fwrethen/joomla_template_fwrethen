@@ -19,7 +19,10 @@
     <filename>template_preview.png</filename>
     <filename>template_thumbnail.png</filename>
     <filename>favicon.ico</filename>
-    <filename>favicon-96x96.png</filename>
+    <filename>favicon-16.png</filename>
+    <filename>favicon-32.png</filename>
+    <filename>favicon-96.png</filename>
+    <filename>apple-touch-icon.png</filename>
     <filename>error.php</filename>
   </files>
   <positions>

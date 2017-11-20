@@ -62,7 +62,10 @@ $doc->addStyleSheet($template_root . '/css/template.css', $type = 'text/css');
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0, user-scalable=yes" />
   <jdoc:include type="head" />
-  <link rel="shortcut icon" href="<?php echo $template_root . '/favicon-96x96.png' ?>" type="image/png" />
+  <link rel="icon" href="<?php echo $template_root; ?>/favicon-16.png" type="image/png" sizes="16x16" />
+  <link rel="icon" href="<?php echo $template_root; ?>/favicon-32.png" type="image/png" sizes="32x32" />
+  <link rel="icon" href="<?php echo $template_root; ?>/favicon-96.png" type="image/png" sizes="96x96" />
+  <link rel="apple-touch-icon" href="<?php echo $template_root; ?>/apple-touch-icon.png" sizes="180x180" />
   <!--[if lt IE 9]>
     <script src="<?php echo JUri::root(true); ?>/media/jui/js/html5.js"></script>
   <![endif]-->

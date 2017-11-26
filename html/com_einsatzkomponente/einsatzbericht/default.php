@@ -76,23 +76,23 @@ if ($this->item->auswahl_orga):
 	$db = JFactory::getDbo();
 	$query	= $db->getQuery(true);
 	$query
-		->select('name, link')
+		->select('id, name, link')
 		->from('`#__eiko_organisationen`')
 		->where('id IN (' .$orgas.') AND state="1" ORDER BY ordering');
 	$db->setQuery($query);
 	$results = $db->loadObjectList();
 	$data = array();
 	foreach($results as $result):
+		$data[$result->id]->name = $result->name;
 		if (($result->link) && ($this->params->get('display_detail_orga_links','1'))):
-			$data[] = '<a target="_blank" href="'. $result->link .'">'. $result->name .'</a>';
-		else:
-			$data[] = $result->name;
+			$data[$result->id]->link = $result->link;
 		endif;
+		$data[$result->id]->vehicles = array();
 	endforeach;
-	$auswahlorga = implode('<br />',$data);
+	$orga_vehicles = $data;
 endif;
 
-if ($this->item->vehicles):
+if ($orga_vehicles && $this->item->vehicles):
 	// if $this->item->vehicles is a JObject, getProperties() returns its content.
 	if (is_a($this->item->vehicles, 'JObject'))
 		$vehicles = implode(',', $this->item->vehicles->getProperties());
@@ -101,20 +101,27 @@ if ($this->item->vehicles):
 	$db = JFactory::getDbo();
 	$query	= $db->getQuery(true);
 	$query
-		->select('name, link')
+		->select('name, link, department')
 		->from('`#__eiko_fahrzeuge`')
 		->where('id IN (' .$vehicles.') AND state="1" ORDER BY ordering');
 	$db->setQuery($query);
 	$results = $db->loadObjectList();
-	$data = array();
 	foreach($results as $result):
+		$vehicle = new stdClass();
+		$vehicle->name = $result->name;
 		if (($result->link) && ($this->params->get('display_detail_fhz_links','1'))):
-			$data[] = '<a target="_blank" href="'. $result->link .'">'. $result->name .'</a>';
+			$vehicle->link = $result->link;
+		endif;
+		if ($result->department):
+			array_push($orga_vehicles[$result->department]->vehicles, $vehicle);
 		else:
-			$data[] = $result->name;
+			if (!array_key_exists(-1, $orga_vehicles)):
+				$orga_vehicles[-1]->name = 'sonstige';
+				$orga_vehicles[-1]->vehicles = array();
+			endif;
+			array_push($orga_vehicles[-1]->vehicles, $vehicle);
 		endif;
 	endforeach;
-	$vehicles = implode('<br />',$data);
 endif;
 
 $presse1 = $this->item->presse;
@@ -164,16 +171,37 @@ $presse = implode('<br />',$data); ?>
 		</dl>
 	</div>
 	<div class="span6">
-		<dl class="dl-horizontal">
-			<?php if ($this->item->auswahl_orga): ?>
-				<dt><?php echo 'alarmierte Einheiten'; ?></dt>
-				<dd><?php echo $auswahlorga; ?></dd>
-			<?php endif; ?>
-			<?php if ($this->item->vehicles): ?>
-				<dt><?php echo JText::_('COM_EINSATZKOMPONENTE_FORM_LBL_EINSATZBERICHT_VEHICLES'); ?></dt>
-				<dd><?php echo $vehicles; ?></dd>
-			<?php endif; ?>
-		</dl>
+		<?php if ($orga_vehicles): ?>
+			<h5><?php echo JText::_('COM_EINSATZKOMPONENTE_FORM_LBL_EINSATZBERICHT_ORGAS'); ?></h5>
+			<dl>
+				<?php foreach ($orga_vehicles as $orga): ?>
+
+					<dt>
+						<?php if ($orga->link): ?>
+							<a target="_blank" href="<?php echo $orga->link; ?>">
+								<?php echo $orga->name; ?>
+							</a>
+						<?php else: ?>
+							<?php echo $orga->name; ?>
+						<?php endif; ?>
+					</dt>
+
+					<dd>
+						<?php foreach ($orga->vehicles as $vehicle): ?>
+							<?php if ($vehicle->link): ?>
+								<a target="_blank" href="<?php echo $vehicle->link; ?>">
+									<?php echo $vehicle->name; ?>
+								</a>
+							<?php else: ?>
+								<?php echo $vehicle->name; ?>
+							<?php endif; ?>
+							<br />
+						<?php endforeach; ?>
+					</dd>
+
+				<?php endforeach; ?>
+			</dl>
+		<?php endif; ?>
 	</div>
 	</div>
 	<div class="row-fluid">

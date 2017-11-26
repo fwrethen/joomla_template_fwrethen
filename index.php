@@ -48,13 +48,14 @@ $js = <<<JS
 JS;
 JHtml::_('jquery.framework', false);
 JHtml::_('bootstrap.framework');
-$doc->addScript($template_root . '/js/lightbox.min.js', 'text/javascript');
+$doc->addScript($template_root . '/js/lightbox.min.js');
 $doc->addScriptDeclaration($js);
+$doc->addScript(JUri::root(true) . '/media/jui/js/html5.js', array('conditional' => 'lt IE 9'));
 
 // Stylesheets
 JHtml::_('bootstrap.loadCss');
-$doc->addStyleSheet($template_root . '/css/lightbox.min.css', $type = 'text/css');
-$doc->addStyleSheet($template_root . '/css/template.css', $type = 'text/css');
+$doc->addStyleSheet($template_root . '/css/lightbox.min.css');
+$doc->addStyleSheet($template_root . '/css/template.css');
 
 ?>
 <!DOCTYPE html>
@@ -66,9 +67,6 @@ $doc->addStyleSheet($template_root . '/css/template.css', $type = 'text/css');
   <link rel="icon" href="<?php echo $template_root; ?>/favicon-32.png" type="image/png" sizes="32x32" />
   <link rel="icon" href="<?php echo $template_root; ?>/favicon-96.png" type="image/png" sizes="96x96" />
   <link rel="apple-touch-icon" href="<?php echo $template_root; ?>/apple-touch-icon.png" sizes="180x180" />
-  <!--[if lt IE 9]>
-    <script src="<?php echo JUri::root(true); ?>/media/jui/js/html5.js"></script>
-  <![endif]-->
 </head>
 
 <body>

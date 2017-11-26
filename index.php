@@ -70,12 +70,12 @@ $doc->addStyleSheet($template_root . '/css/template.css');
 </head>
 
 <body>
-<div id="page">
+<div>
   <header>
     <div id="head-wrapper">
       <div id="logo" unselectable="on">
         <div><h1 id="sitename"><?php echo $sitename; ?></h1></div>
-        <div id="icon" class="hidden-phone"><img src="<?php echo $template_root . '/images/icon_tlf.svg'; ?>" width="62px" /></div>
+        <div id="icon" class="hidden-phone"><img src="<?php echo $template_root . '/images/icon_tlf.svg'; ?>" width="70px" /></div>
       </div>
       <div class="nav-mobile visible-phone">
         <button type="button" class="btn-nav" data-toggle="collapse" data-target=".nav-collapse">
@@ -108,7 +108,7 @@ $doc->addStyleSheet($template_root . '/css/template.css');
     <div id="content-wrapper">
       <section class="row-fluid">
         <?php if ($this->countModules('menu') || $this->countModules('sidebar-left')) : ?>
-          <div class="span2">
+          <div id="sidebar-left" class="span2">
             <nav id="sidenav" class="hidden-phone">
               <jdoc:include type="modules" name="menu" style="html5" />
             </nav>

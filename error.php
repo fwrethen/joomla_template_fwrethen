@@ -8,14 +8,10 @@
 */
 
 defined('_JEXEC') or die;
-if (!isset($this->error)) {
-  $this->error = JError::raiseWarning(404, JText::_('JERROR_ALERTNOAUTHOR'));
-  $this->debug = false;
-}
 
 $app = JFactory::getApplication();
 $sitename = $app->get('sitename');
-$template_root = 'templates/' . $app->getTemplate('template')->template;
+$template_root = JUri::root(true) . '/templates/' . $app->getTemplate('template')->template;
 ?>
 
 <!DOCTYPE html>
@@ -23,10 +19,10 @@ $template_root = 'templates/' . $app->getTemplate('template')->template;
 <head>
   <title><?php echo $this->error->getCode(); ?> - <?php echo $this->title; ?></title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0, user-scalable=yes" />
-  <link rel="shortcut icon" href="<?php echo $template_root ?>/favicon.ico" type="image/vnd.microsoft.icon" />
-  <link rel="shortcut icon" href="<?php echo $template_root ?>/favicon-96x96.png" type="image/png" />
+  <link rel="shortcut icon" href="<?php echo $template_root; ?>/favicon.ico" type="image/vnd.microsoft.icon" />
+  <link rel="shortcut icon" href="<?php echo $template_root; ?>/favicon-96x96.png" type="image/png" />
   <link rel="stylesheet" href="<?php echo JUri::root(true); ?>/media/jui/css/bootstrap.min.css" type="text/css" />
-  <link rel="stylesheet" href="<?php echo $template_root ?>/css/template.css" type="text/css" />
+  <link rel="stylesheet" href="<?php echo $template_root; ?>/css/template.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="<?php echo JUri::root(true); ?>/media/jui/js/html5.js"></script>
   <![endif]-->

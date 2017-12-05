@@ -72,6 +72,11 @@ div[class^="item"] {
   margin: 0.5em;
 }
 
+#icon, #icon img {
+  height: 70px;
+  width: 70px;
+}
+
 #sitename {
   margin: 0;
   padding: 0.25em;

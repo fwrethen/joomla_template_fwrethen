@@ -7,7 +7,7 @@
   <authorUrl>http://www.fw-rethen.de</authorUrl>
   <copyright>(C) 2016-2017 Martin Matthaei</copyright>
   <license>GNU General Public License version 2 or later</license>
-  <version>0.4</version>
+  <version>0.5</version>
   <description>Feuerwehr-Rethen-Template</description>
   <files>
     <folder>css</folder>

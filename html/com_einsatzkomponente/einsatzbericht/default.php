@@ -172,11 +172,11 @@ $presse = implode('<br />',$data); ?>
 	</div>
 	<div class="span6">
 		<?php if ($orga_vehicles): ?>
-			<h5><?php echo JText::_('COM_EINSATZKOMPONENTE_FORM_LBL_EINSATZBERICHT_ORGAS'); ?></h5>
-			<dl>
+			<h5 style="margin:14px 0 0 0;"><?php echo JText::_('COM_EINSATZKOMPONENTE_FORM_LBL_EINSATZBERICHT_ORGAS'); ?></h5>
+			<dl style="margin:0;">
 				<?php foreach ($orga_vehicles as $orga): ?>
 
-					<dt>
+					<dt style="font-weight:inherit;">
 						<?php if ($orga->link): ?>
 							<a target="_blank" href="<?php echo $orga->link; ?>">
 								<?php echo $orga->name; ?>
@@ -186,7 +186,7 @@ $presse = implode('<br />',$data); ?>
 						<?php endif; ?>
 					</dt>
 
-					<dd>
+					<dd style="margin-left:20px;">
 						<?php foreach ($orga->vehicles as $vehicle): ?>
 							<?php if ($vehicle->link): ?>
 								<a target="_blank" href="<?php echo $vehicle->link; ?>">

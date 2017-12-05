@@ -50,7 +50,7 @@ $template_dir = 'templates/' . JFactory::getApplication()->getTemplate('template
 
 <!--RSS-Feed Imag-->
 <?php if ($this->params->get('display_home_rss','1')) : ?>
-<div style="float:right; height:16px" class="eiko_rss" ><a href="<?php echo $url; ?>&format=feed&type=rss"><img src="<?php echo $template_dir;?>/images/rss.svg" alt="RSS-Feed abonieren" height="16px" width="16px" style="height: 16px; width: 16px;"></a></div>
+<div style="height:16px" class="eiko_rss text-right"><a href="<?php echo $url; ?>&format=feed&type=rss"><img src="<?php echo $template_dir;?>/images/rss.svg" alt="RSS-Feed abonieren" height="16px" width="16px" style="height: 16px; width: 16px;"></a></div>
 <?php endif; ?>
 
 

@@ -8,16 +8,73 @@
  */
 // no direct access
 defined('_JEXEC') or die;
-//echo count ($this->items).' - '.count($this->all_items);
-//print_r ($this->all_items);
 ?>
+
+<style>
+	table#einsaetze {
+		margin: 10px 0 0 0;
+	}
+
+	table#einsaetze h3 {
+		margin: 0;
+	}
+
+	table#einsaetze tr.row0 {
+		background-color: #f9f9f9;
+	}
+
+	table#einsaetze tr.link:hover {
+		background-color: #e9f5ff;
+		cursor: pointer;
+	}
+
+	table#einsaetze td, table#einsaetze th {
+		padding: 10px;
+	}
+
+	@media(max-width:767px) {
+		table#einsaetze td:nth-of-type(n+2), table#einsaetze th:nth-of-type(n+2) {
+			display: inline-block;
+		}
+	}
+</style>
 
 <?php echo '<span class="mobile_hide_320">'.$this->modulepos_2.'</span>';?>
 
-<form action="<?php echo JRoute::_('index.php?option=com_einsatzkomponente&view=einsatzarchiv&Itemid='.$this->params->get('homelink','').''); ?>" method="post" name="adminForm" id="adminForm">
+<form action="#" method="post" name="adminForm" id="adminForm">
 
     <?php echo JLayoutHelper::render('default_filter', array('view' => $this), dirname(__FILE__)); ?>
-    <table class="table" id = "einsatzberichtList" >
+
+  <?php /* create table header */
+  $theader = '<tr class="hidden-phone">';
+  $col = 0;
+  if ($this->params->get('display_home_number','1')) :
+    $theader .= '<th>Nr.</th>';
+    $col++;
+  endif;
+  if ($this->params->get('display_home_alertimage','0')) :
+    $theader .= '<th>Alarm über</th>';
+    $col++;
+  endif;
+  $theader .= '<th>Datum</th>';
+  $theader .= '<th colspan="2">Beschreibung</th>';
+  $theader .= '<th>Einsatzort</th>';
+  $col += 4;
+  if ($this->params->get('display_home_orga','0')) :
+    $theader .= '<th>Organisationen</th>';
+    $col++;
+  endif;
+  if ($this->params->get('display_home_image')) :
+    $theader .= '<th>Bild</th>';
+    $col++;
+  endif;
+  $theader .= '</tr>';
+  ?>
+
+
+
+    <table id="einsaetze" class="table table-bordered">
+		<?php /*
         <thead >
             <tr class="mobile_hide_480 ">
 
@@ -117,11 +174,13 @@ defined('_JEXEC') or die;
 		</td></tr>
     <?php endif; ?>
     </thead>
+		*/ ?>
 
     <tbody>
 
 	<?php 	$m ='';
 			$y=''; //print_r ($this->items);
+			$eiko_col = $col;
 	?>
     <?php foreach ($this->items as $i => $item) : ?>
         <?php $canEdit = $user->authorise('core.edit', 'com_einsatzkomponente'); ?>
@@ -130,39 +189,40 @@ defined('_JEXEC') or die;
 					<?php $canEdit = JFactory::getUser()->id == $item->created_by; ?>
 				<?php endif; ?>
 
+           <?php /*
            <!--Anzeige des Jahres-->
            <?php if ($item->date1_year != $y&& $this->params->get('display_home_jahr','1')) : ?>
 		   <tr class="eiko_einsatzarchiv_jahr_tr"><td class="eiko_einsatzarchiv_jahr_td" colspan="<?php echo $eiko_col; ?>">
            <?php $y= $item->date1_year;?>
-           <?php $m= ''; /* reset month for new year */ ?>
+           <?php $m= ''; ?>
 		   <?php echo '<div class="eiko_einsatzarchiv_jahr_div">';?>
            <?php echo 'Einsatzberichte '. $item->date1_year.'';?>
            <?php echo '</div>';?>
            </td></tr>
            <?php endif;?>
            <!--Anzeige des Jahres ENDE-->
+           */ ?>
 
            <!--Anzeige des Monatsnamen-->
            <?php if (($item->date1_month != $m || $item->date1_year != $y) && $this->params->get('display_home_monat','1')) : ?>
-		   <tr class="eiko_einsatzarchiv_monat_tr"><td class="eiko_einsatzarchiv_monat_td" colspan="<?php echo $eiko_col; ?>">
+           <?php $y = $item->date1_year; // $y may not have been set before if display_home_jahr is 0 ?>
+		       <tr><td colspan="<?php echo $col; ?>">
            <?php $m= $item->date1_month;?>
-		   <?php echo '<div class="eiko_einsatzarchiv_monat_div">';?>
-           <?php echo '<b>'.(new JDate)->monthToString($m).'</b>';?>
-           <?php echo '</div>';?>
+           <?php echo '<h3>'.(new JDate)->monthToString($m).'</h3>';?>
            </td></tr>
+           <?php echo $theader; ?>
            <?php endif;?>
            <!--Anzeige des Monatsnamen ENDE-->
 
-		   <tr class="row<?php echo $i % 2; ?>">
+		   <tr class="link row<?php echo $i % 2; ?>" onClick="parent.location='<?php echo JRoute::_('index.php?option=com_einsatzkomponente&view=einsatzbericht&id='.(int) $item->id); ?>'">
 
            <?php if ($this->params->get('display_home_number','1') ) : ?>
            <?php if ($this->params->get('display_home_marker','1')) : ?>
-		   <td class="eiko_td_marker_main_1" style="background-color:<?php echo $item->marker;?>;" >
+						 <?php $bg = 'style="background-color:' . $item->marker . ';"'; ?>
            <?php else:?>
-		   <td class="eiko_td_marker_main_1">
-           <?php endif;?>
-			<?php echo '<span style="white-space: nowrap;" class="eiko_span_marker_main_1">Nr. '.EinsatzkomponenteHelper::ermittle_einsatz_nummer($item->date1,$item->data1_id).'</span>';?>
-			</td>
+						 <?php $bg = ''; ?>
+	          <?php endif;?>
+				   <td <?php echo $bg ?>><?php echo EinsatzkomponenteHelper::ermittle_einsatz_nummer($item->date1,$item->data1_id); ?></td>
            <?php endif;?>
 
 
@@ -176,10 +236,10 @@ defined('_JEXEC') or die;
            </td>
            <?php endif;?>
            <?php if ($this->params->get('display_home_date_image','1')=='2') : ?>
-		   <td class="eiko_td_datum_main_1"> <?php echo '<i class="icon-calendar" ></i> '.date('d.m.Y ', $item->date1);?><br /><?php echo '<i class="icon-clock" ></i> '.date('H:i ', $item->date1); ?>Uhr</td>
+		   <td class="eiko_td_datum_main_1"> <?php echo date('d.m.Y ', $item->date1);?><br /><?php echo date('H:i ', $item->date1); ?>Uhr</td>
            <?php endif;?>
            <?php if ($this->params->get('display_home_date_image','1')=='0') : ?>
-		   <td class="eiko_td_datum_main_1"> <?php echo '<i class="icon-calendar" ></i> '.date('d.m.Y ', $item->date1);?></td>
+		   <td class="eiko_td_datum_main_1"> <?php echo date('d.m.Y ', $item->date1);?></td>
            <?php endif;?>
            <?php if ($this->params->get('display_home_date_image','1')=='3') : ?>
 		   <td class="eiko_td_kalender_main_1">
@@ -211,17 +271,13 @@ defined('_JEXEC') or die;
 					<img class="eiko_icon " src="<?php echo JURI::Root();?><?php echo $item->tickerkat_image;?>" alt="<?php echo $item->tickerkat;?>" title="Kategorie: <?php echo $item->tickerkat;?>"/>
 					<?php endif;?>
 
-					<span class="eiko_nowrap"><b><?php echo $item->data1; ?></b></span>
+					<span class="eiko_nowrap"><?php echo $item->data1; ?></span>
 
 					<?php if ($this->params->get('display_home_links_2','1')) : ?>
 					</a>
 					<?php endif;?>
 
 					<br/>
-					<?php if ($item->address): ?>
-					<?php echo '<i class="icon-location" ></i> '.$this->escape($item->address); ?>
-					<br/>
-					<?php endif;?>
 					<!-- Einsatzstärke -->
 					<?php if ($this->params->get('display_home_einsatzstaerke','1')) { ?>
 					<?php if ($item->people) : $people = $item->people; endif;?>
@@ -259,6 +315,11 @@ defined('_JEXEC') or die;
 					<br/>
 				</td>
 
+				<td>
+					<a href="<?php echo JRoute::_('index.php?option=com_einsatzkomponente&view=einsatzbericht&id='.(int) $item->id); ?>">
+						<?php echo $item->summary; ?>
+					</a>
+				</td>
 
 					<!-- Einsatzbild -->
            <?php if ($this->params->get('display_home_image')) : ?>
@@ -301,9 +362,10 @@ defined('_JEXEC') or die;
 					<!-- Einsatzbild ENDE -->
 
 
-				<td class="mobile_hide_480">
-
-					<?php echo $item->summary; ?>
+				<td>
+					<?php if ($item->address): ?>
+						<?php echo $this->escape($item->address); ?>
+					<?php endif;?>
 				</td>
 
 
@@ -354,7 +416,7 @@ defined('_JEXEC') or die;
                 </td> -->
             <?php endif; ?>
 
-
+            <?php /*
             <?php if (isset($this->items[0]->state)): ?>
                 <?php $class = ($canEdit || $canChange) ? 'active' : 'disabled'; ?>
                 <td class="center">
@@ -376,6 +438,7 @@ defined('_JEXEC') or die;
 						<?php endif; ?>
                 </td>
             <?php endif; ?>
+            */ ?>
 
         </tr>
 
@@ -443,12 +506,6 @@ defined('_JEXEC') or die;
 					</td></tr>
 		   			<?php endif;?><!--Prüfen, ob Pagination angezeigt werden soll   ENDE -->
 
-		<?php if (!$this->params->get('eiko')) : ?>
-        <tr><!-- Bitte das Copyright nicht entfernen. Danke. -->
-        <td colspan="<?php echo $eiko_col; ?>">
-			<span class="copyright">Einsatzkomponente V<?php echo $this->version; ?>  (C) 2017 by Ralf Meyer ( <a class="copyright_link" href="https://einsatzkomponente.de" target="_blank">www.einsatzkomponente.de</a> )</span></td>
-        </tr>
-	<?php endif; ?>
     </tfoot>
 
 

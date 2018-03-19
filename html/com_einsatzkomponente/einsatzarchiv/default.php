@@ -20,6 +20,7 @@ JHtml::_('behavior.multiselect');
 JHtml::_('formbehavior.chosen', '.multipleOrganisations', null, array('placeholder_text_multiple' => JText::_('COM_EINSATZKOMPONENTE_ORGANISATIONEN_AUSWAEHLEN')));
 JHtml::_('formbehavior.chosen', 'select');
 
+$app = JFactory::getApplication();
 $user = JFactory::getUser();
 $userId = $user->get('id');
 $listOrder = $this->state->get('list.ordering');
@@ -29,6 +30,11 @@ $canEdit = $user->authorise('core.edit', 'com_einsatzkomponente');
 $canCheckin = $user->authorise('core.manage', 'com_einsatzkomponente');
 $canChange = $user->authorise('core.edit.state', 'com_einsatzkomponente');
 $canDelete = $user->authorise('core.delete', 'com_einsatzkomponente');
+
+$url = JUri::getInstance();
+$url->setQuery('');
+$url_bericht = 'index.php?option=com_einsatzkomponente&view=einsatzbericht';
+$template_dir = 'templates/' . $app->getTemplate('template')->template;
 ?>
 
 <!--Page Heading-->

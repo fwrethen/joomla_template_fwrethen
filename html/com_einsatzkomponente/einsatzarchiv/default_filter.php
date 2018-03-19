@@ -13,7 +13,9 @@ defined('JPATH_BASE') or die;
 $app = JFactory::getApplication();
 $params = $app->getParams('com_einsatzkomponente');
 
-
+$url = JUri::getInstance();
+$url->setQuery('');
+$template_dir = 'templates/' . $app->getTemplate('template')->template;
 
 
 $data = $displayData;
@@ -43,11 +45,8 @@ if (isset($data['view']->filterForm)) {
 
 <!--RSS-Feed Imag-->
 <?php if ($params->get('display_home_rss','1')) : ?>
-<div class="btn-wrapper  eiko_rss_main_1" ><a href="<?php JURI::base();?>index.php?option=com_einsatzkomponente&view=einsatzarchiv&format=feed&type=rss"><span class="icon-feed" style="color:#cccccc;font-size:24px;"> </span> </a></div>
-
- <!--<div class="btn-wrapper  eiko_rss_main_1" ><a href="<?php JURI::base();?>index.php?option=com_einsatzkomponente&view=einsatzarchiv&format=json&type=json"><span class="icon-feed" style="color:#000000;font-size:24px;"> </span></a></div> -->
-
-<?php endif;?>
+<div style="height:16px" class="eiko_rss_main_1"><a href="<?php echo $url; ?>&amp;format=feed&amp;type=rss"><img src="<?php echo $template_dir;?>/images/rss.svg" alt="RSS-Feed abonieren" height="16px" width="16px" style="height: 16px; width: 16px;"></a></div>
+<?php endif; ?>
 
 <?php
 
@@ -102,7 +101,7 @@ JHtml::_('searchtools.form', $formSelector, $data['options']);
 		<?php echo '<br/><br/>';?>
 		<?php endif; ?>
 
-		<?php if ($params->get('show_filter_year','1')) : ?>
+		<?php if ($params->get('show_filter_year','1') && false) : ?>
 		<?php echo $filters['filter_year']->input; ?>
 		<?php if ($params->get('show_filter_linebreak','0')) :echo '<br/>'; endif;?>
 		<?php endif; ?>
@@ -160,3 +159,60 @@ JHtml::_('searchtools.form', $formSelector, $data['options']);
 </div>
 
 <?php } ?>
+
+<div style="text-align: center; padding: 5px;">
+<?php if ($params->get('show_filter_year','1')) :
+  /* Retrieve years from database */
+  $db = JFactory::getDbo();
+  $query = $db->getQuery(true);
+  $query->select('YEAR(date1) AS year');
+  $query->from($db->quoteName('#__eiko_einsatzberichte'));
+  $query->where($db->quoteName('state') . ' = ' . $db->quote('1'), 'OR');
+  $query->where($db->quoteName('state') . ' = ' . $db->quote('2'));
+  $query->group($db->quoteName('year'));
+  $query->order('year DESC');
+  $db->setQuery($query);
+
+  $years = array();
+  foreach ($db->loadObjectList() as $result)
+    array_push($years, $result->year);
+
+  $selectedYear = $filters['filter_year']->value;
+  $selectedYear = ($selectedYear ? $selectedYear : $years[0]);
+
+  /* Reference: JHtmlDropdown (libraries/cms/html/dropdown.php) */
+  echo JHTML::_('dropdown.init'); ?>
+  <div class="btn-group" style="<?php if (!in_array($selectedYear - 1, $years)) echo 'visibility:hidden;'; ?>">
+    <button name="filter[year]" value="<?php echo $selectedYear - 1; ?>" class="btn btn-large">
+      <a href="<?php echo JRoute::_($url); ?>">
+        <i class="icon-backward"></i>
+      </a>
+    </button>
+  </div>
+  <div class="btn-group">
+    <a href="#" data-toggle="dropdown" class="btn btn-large dropdown-toggle" style="min-width:122px;">
+      <i class="icon-calendar"></i>
+      <b style="margin:4px;"><?php echo ($selectedYear == 9999) ? 'alle' : $selectedYear; ?></b>
+      <i class="icon-chevron-down"></i>
+    </a>
+    <ul class="dropdown-menu">
+      <?php foreach ($years as $year): ?>
+        <li class="text-center" data="<?php echo $year; ?>">
+          <a href="<?php echo JRoute::_($url . '?filter[year]=' . $year) ?>"><?php echo $year; ?></a>
+        </li>
+      <?php endforeach; ?>
+    </ul>
+  </div>
+  <div class="btn-group" style="<?php if (!in_array($selectedYear + 1, $years)) echo 'visibility:hidden;'; ?>">
+    <button name="filter[year]" value="<?php echo $selectedYear + 1; ?>" class="btn btn-large">
+      <a href="<?php echo JRoute::_($url); ?>">
+        <i class="icon-forward"></i>
+      </a>
+    </button>
+  </div>
+
+<?php endif; ?>
+</div>
+
+<?php /* Hidden input to keep compatibility with mod_einsatz_stats */ ?>
+<input id="year" name="year" value="<?php echo $selectedYear; ?>" type="hidden">

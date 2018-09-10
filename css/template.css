@@ -138,6 +138,10 @@ div[class^="item"] {
   min-height: 0;
 }
 
+#sidebar-left > .moduletable {
+  margin-top: 3em;
+}
+
 #banner, #content-wrapper, footer {
   max-width: 1140px;
   margin: 0px auto;

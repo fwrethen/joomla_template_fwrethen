@@ -45,7 +45,7 @@ if (isset($data['view']->filterForm)) {
 
 <!--RSS-Feed Imag-->
 <?php if ($params->get('display_home_rss','1')) : ?>
-<div style="height:16px" class="eiko_rss_main_1"><a href="<?php echo $url; ?>&amp;format=feed&amp;type=rss"><img src="<?php echo $template_dir;?>/images/rss.svg" alt="RSS-Feed abonieren" height="16px" width="16px" style="height: 16px; width: 16px;"></a></div>
+<div style="height:16px" class="eiko_rss_main_1"><a href="<?php echo $url; ?>&quest;format=feed&amp;type=rss"><img src="<?php echo $template_dir;?>/images/rss.svg" alt="RSS-Feed abonieren" height="16px" width="16px" style="height: 16px; width: 16px;"></a></div>
 <?php endif; ?>
 
 <?php

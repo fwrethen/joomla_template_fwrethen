@@ -46,7 +46,7 @@ if (!$images):
 else:
 	foreach($images as $i=>$img):
 		$class = ($i == 0) ? 'class="span12"' : 'class="span6"';
-		if ($thumbs[$i]):
+		if (array_key_exists($i, $thumbs)):
 			$img_html .= '<li '. $class .'><a rel="lightbox[gallery]" href="'. $img .'"><img src="'. $thumbs[$i] .'" class="img-rounded" /></a></li>';
 		else:
 			$img_html .= '<li '. $class .'><a rel="lightbox[gallery]" href="'. $img .'"><img src="'. $img .'" class="img-rounded" /></a></li>';
@@ -83,6 +83,7 @@ if ($this->item->auswahl_orga):
 	$results = $db->loadObjectList();
 	$data = array();
 	foreach($results as $result):
+		$data[$result->id] = new StdClass;
 		$data[$result->id]->name = $result->name;
 		if (($result->link) && ($this->params->get('display_detail_orga_links','1'))):
 			$data[$result->id]->link = $result->link;
@@ -116,6 +117,7 @@ if ($orga_vehicles && $this->item->vehicles):
 			array_push($orga_vehicles[$result->department]->vehicles, $vehicle);
 		else:
 			if (!array_key_exists(-1, $orga_vehicles)):
+				$orga_vehicles[-1] = new StdClass;
 				$orga_vehicles[-1]->name = 'sonstige';
 				$orga_vehicles[-1]->vehicles = array();
 			endif;
@@ -177,7 +179,7 @@ $presse = implode('<br />',$data); ?>
 				<?php foreach ($orga_vehicles as $orga): ?>
 
 					<dt style="font-weight:inherit;">
-						<?php if ($orga->link): ?>
+						<?php if (property_exists($orga, 'link')): ?>
 							<a target="_blank" href="<?php echo $orga->link; ?>">
 								<?php echo $orga->name; ?>
 							</a>
@@ -188,7 +190,7 @@ $presse = implode('<br />',$data); ?>
 
 					<dd style="margin-left:20px;">
 						<?php foreach ($orga->vehicles as $vehicle): ?>
-							<?php if ($vehicle->link): ?>
+							<?php if (property_exists($vehicle, 'link')): ?>
 								<a target="_blank" href="<?php echo $vehicle->link; ?>">
 									<?php echo $vehicle->name; ?>
 								</a>

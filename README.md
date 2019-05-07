@@ -12,7 +12,7 @@ Requires Joomla v3.7 or later.
 - [com_phocagallery](https://www.phoca.cz/phocagallery) v4.3.x
 
 ### Libraries used
-- [Lightbox](https://github.com/lokesh/lightbox2) v2.10.0
+- [Lightbox](https://github.com/lokesh/lightbox2) v2.11.0
 - Bootstrap 2 (Joomla!-embedded)
 - jQuery (Joomla!-embedded)
 

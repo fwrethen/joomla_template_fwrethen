@@ -76,9 +76,7 @@ if (!$this->params->get('anzeigejahr','0') and $this->params->get('display_filte
 	echo JHTML::_('dropdown.init'); ?>
 	<div class="btn-group" style="<?php if (!in_array($this->selectedYear - 1, $years)) echo 'visibility:hidden;'; ?>">
 		<button name="year" value="<?php echo $this->selectedYear - 1; ?>" class="btn btn-large">
-			<a href="<?php echo JRoute::_($url); ?>">
-				<i class="icon-backward"></i>
-			</a>
+			<i class="icon-backward"></i>
 		</button>
 	</div>
 	<div class="btn-group">
@@ -104,9 +102,7 @@ if (!$this->params->get('anzeigejahr','0') and $this->params->get('display_filte
 	</div>
 	<div class="btn-group" style="<?php if (!in_array($this->selectedYear + 1, $years)) echo 'visibility:hidden;'; ?>">
 		<button name="year" value="<?php echo $this->selectedYear + 1; ?>" class="btn btn-large">
-			<a href="<?php echo JRoute::_($url); ?>">
-				<i class="icon-forward"></i>
-			</a>
+			<i class="icon-forward"></i>
 		</button>
 	</div>
 

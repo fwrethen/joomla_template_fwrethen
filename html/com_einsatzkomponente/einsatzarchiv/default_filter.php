@@ -184,9 +184,7 @@ JHtml::_('searchtools.form', $formSelector, $data['options']);
   echo JHTML::_('dropdown.init'); ?>
   <div class="btn-group" style="<?php if (!in_array($selectedYear - 1, $years)) echo 'visibility:hidden;'; ?>">
     <button name="filter[year]" value="<?php echo $selectedYear - 1; ?>" class="btn btn-large">
-      <a href="<?php echo JRoute::_($url); ?>">
-        <i class="icon-backward"></i>
-      </a>
+      <i class="icon-backward"></i>
     </button>
   </div>
   <div class="btn-group">
@@ -205,9 +203,7 @@ JHtml::_('searchtools.form', $formSelector, $data['options']);
   </div>
   <div class="btn-group" style="<?php if (!in_array($selectedYear + 1, $years)) echo 'visibility:hidden;'; ?>">
     <button name="filter[year]" value="<?php echo $selectedYear + 1; ?>" class="btn btn-large">
-      <a href="<?php echo JRoute::_($url); ?>">
-        <i class="icon-forward"></i>
-      </a>
+      <i class="icon-forward"></i>
     </button>
   </div>
 

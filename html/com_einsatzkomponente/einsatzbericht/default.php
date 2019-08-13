@@ -93,7 +93,7 @@ if ($this->item->auswahl_orga):
 	$orga_vehicles = $data;
 endif;
 
-if ($orga_vehicles && $this->item->vehicles):
+if (!empty($orga_vehicles) && !empty($this->item->vehicles)):
 	// if $this->item->vehicles is a JObject, getProperties() returns its content.
 	if (is_a($this->item->vehicles, 'JObject'))
 		$vehicles = implode(',', $this->item->vehicles->getProperties());
@@ -173,7 +173,7 @@ $presse = implode('<br />',$data); ?>
 		</dl>
 	</div>
 	<div class="span6">
-		<?php if ($orga_vehicles): ?>
+		<?php if (!empty($orga_vehicles)): ?>
 			<h5 style="margin:14px 0 0 0;"><?php echo JText::_('COM_EINSATZKOMPONENTE_FORM_LBL_EINSATZBERICHT_ORGAS'); ?></h5>
 			<dl style="margin:0;">
 				<?php foreach ($orga_vehicles as $orga): ?>

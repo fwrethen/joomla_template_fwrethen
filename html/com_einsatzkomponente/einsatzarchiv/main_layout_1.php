@@ -318,7 +318,10 @@ defined('_JEXEC') or die;
 					<a href="<?php echo JRoute::_('index.php?option=com_einsatzkomponente&view=einsatzbericht&id='.(int) $item->id); ?>">
 						<?php echo $item->summary; ?>
 					</a>
-				</td>
+                    <?php if ($item->image) : ?>
+                        <i class="icon-picture"></i>
+                    <?php endif; ?>
+                </td>
 
 					<!-- Einsatzbild -->
            <?php if ($this->params->get('display_home_image')) : ?>

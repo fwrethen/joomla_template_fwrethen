@@ -217,12 +217,11 @@ defined('_JEXEC') or die;
 		   <tr class="link row<?php echo $i % 2; ?>" onClick="parent.location='<?php echo JRoute::_('index.php?option=com_einsatzkomponente&view=einsatzbericht&id='.(int) $item->id); ?>'">
 
            <?php if ($this->params->get('display_home_number','1') ) : ?>
-           <?php if ($this->params->get('display_home_marker','1')) : ?>
-						 <?php $bg = 'style="background-color:' . $item->marker . ';"'; ?>
-           <?php else:?>
-						 <?php $bg = ''; ?>
-	          <?php endif;?>
-				   <td <?php echo $bg ?>><?php echo EinsatzkomponenteHelper::ermittle_einsatz_nummer($item->date1,$item->data1_id); ?></td>
+               <?php $style = ''; ?>
+               <?php if ($this->params->get('display_home_marker','1')) : ?>
+                   <?php $style = sprintf('style="border-left: 3px solid %s;"', $item->marker); ?>
+               <?php endif;?>
+               <td <?= $style ?>><?= EinsatzkomponenteHelper::ermittle_einsatz_nummer($item->date1,$item->data1_id); ?></td>
            <?php endif;?>
 
 

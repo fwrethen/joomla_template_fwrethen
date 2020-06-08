@@ -25,23 +25,17 @@ $js = <<<JS
     jQuery('a[href*=".png"], a[href*=".PNG"], a[href*=".gif"], a[href*=".GIF"], a[href*=".jpeg"], a[href*=".JPEG"], a[href*=".jpg"], a[href*=".JPG"]').not('[rel*="lightbox"]').attr('rel', 'lightbox');
 
     // add class active to a in matching navbar header
-    var menu = jQuery('.nav-header')[0].textContent;
+    let menu = jQuery('.nav-header')[0].textContent;
     if (!menu == '') jQuery('#headernav').find('a:contains('+menu+')').parent().addClass('current active');
 
     // if page is called with parameter 'templateStyle', append it to all links
-    var id = window.location.href;
-    var p = id.indexOf('templateStyle=');
-    if (p >= 0) {
-      var id = id.slice(p + 14);
-      if (id.indexOf('&') >= 0)
-        id = id.slice(0, id.indexOf('&'));
-      console.log(id);
+    let url = new URL(window.location.href);
+    let templateId = url.searchParams.get('templateStyle');
+    if (templateId !== null) {
       jQuery('a[href^="/"]').each(function() {
-        var _href = jQuery(this).attr('href');
-        if (_href.indexOf('?') >= 0)
-          jQuery(this).attr('href', _href + '&templateStyle=' + id);
-        else
-          jQuery(this).attr('href', _href + '?templateStyle=' + id);
+        let target = new URL(jQuery(this).attr('href'), url.origin);
+        target.searchParams.append('templateStyle', templateId);
+        jQuery(this).attr('href', target.href);
       });
     }
   });

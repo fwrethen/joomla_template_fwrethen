@@ -41,4 +41,29 @@
     <position>footer</position>
     <position>debug</position>
   </positions>
+
+  <config>
+    <fields name="params">
+      <fieldset name="advanced">
+        <field name="sidebarLeftWidth"
+               type="radio"
+               label="Breite linke Layoutspalte"
+               default="2"
+               class="btn-group">
+          <option value="1">1/12</option>
+          <option value="2">2/12</option>
+          <option value="3">3/12</option>
+        </field>
+        <field name="sidebarRightWidth"
+               type="radio"
+               label="Breite rechte Layoutspalte"
+               default="2"
+               class="btn-group">
+          <option value="1">1/12</option>
+          <option value="2">2/12</option>
+          <option value="3">3/12</option>
+        </field>
+      </fieldset>
+    </fields>
+  </config>
 </extension>

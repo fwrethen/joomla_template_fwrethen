@@ -3,7 +3,7 @@
 * @package     Joomla.Site
 * @subpackage  Templates.fwrethen3
 *
-* @copyright   Copyright (C) 2016 Martin Matthaei
+* @copyright   Copyright (C) 2016-2021 Martin Matthaei
 * @license     GNU General Public License version 2 or later; see LICENSE.txt
 */
 
@@ -11,7 +11,9 @@ defined('_JEXEC') or die;
 
 $app = JFactory::getApplication();
 $sitename = $app->get('sitename');
-$template_root = 'templates/' . $app->getTemplate('template')->template;
+$template = $app->getTemplate(true);
+$template_root = 'templates/' . $template->template;
+$params = $template->params;
 
 $doc = JFactory::getDocument();
 
@@ -50,6 +52,10 @@ $doc->addScript(JUri::root(true) . '/media/jui/js/html5.js', array('conditional'
 JHtml::_('bootstrap.loadCss');
 $doc->addStyleSheet($template_root . '/css/lightbox.min.css');
 $doc->addStyleSheet($template_root . '/css/template.css');
+
+$spanLeft = $this->countModules('menu') || $this->countModules('sidebar-left') ? $params->get('sidebarLeftWidth', 2) : 0;
+$spanRight = $this->countModules('sidebar-right') ? $params->get('sidebarRightWidth', 2) : 0;
+$spanMain = 12 - $spanLeft - $spanRight;
 
 ?>
 <!DOCTYPE html>
@@ -101,28 +107,22 @@ $doc->addStyleSheet($template_root . '/css/template.css');
 
     <div id="content-wrapper">
       <section class="row-fluid">
-        <?php if ($this->countModules('menu') || $this->countModules('sidebar-left')) : ?>
-          <div id="sidebar-left" class="span2">
+        <?php if ($spanLeft) : ?>
+          <div id="sidebar-left" class="span<?= $spanLeft; ?>">
             <nav id="sidenav" class="hidden-phone">
               <jdoc:include type="modules" name="menu" style="html5" />
             </nav>
             <jdoc:include type="modules" name="sidebar-left" style="html5" />
           </div>
         <?php endif; ?>
-        <?php if (($this->countModules('menu') || $this->countModules('sidebar-left')) && $this->countModules('sidebar-right')) : ?>
-          <main class="span8">
-        <?php elseif ($this->countModules('menu') || $this->countModules('sidebar-left') || $this->countModules('sidebar-right')) : ?>
-          <main class="span10">
-        <?php else: ?>
-          <main class="span12">
-        <?php endif; ?>
+        <main class="span<?= $spanMain; ?>">
           <jdoc:include type="modules" name="main-top" style="xhtml" />
           <jdoc:include type="message" />
           <jdoc:include type="component" />
           <jdoc:include type="modules" name="main-bottom" style="xhtml" />
         </main>
-        <?php if ($this->countModules('sidebar-right')) : ?>
-          <aside class="span2">
+        <?php if ($spanRight) : ?>
+          <aside class="span<?= $spanRight; ?>">
             <jdoc:include type="modules" name="sidebar-right" style="xhtml" />
           </aside>
         <?php endif; ?>

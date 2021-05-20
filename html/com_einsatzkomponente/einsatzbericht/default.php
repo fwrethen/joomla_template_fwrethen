@@ -133,7 +133,15 @@ $data = array();
 for ($i=1;$i<=3;$i++):
 	$var = 'presse'.$i;
 	if ($$var):
-		$data[] = '<a href="'.$$var.'" target="_blank" rel="nofollow"><img src="https://www.google.com/s2/favicons?domain='.parse_url($$var, PHP_URL_HOST).'" style="margin: 0px 8px 0px 0px; vertical-align: bottom;" />'.parse_url($$var, PHP_URL_HOST).'</a>';
+        $host = parse_url($$var, PHP_URL_HOST);
+        $favicon_url = 'https://icons.duckduckgo.com/ip3/'.$host.'.ico';
+
+		$data[] = sprintf(
+		        "<a href=\"%s\" target=\"_blank\" rel=\"nofollow\"><img src=\"%s\" style=\"width:16px;height:16px;margin:0px 8px 0px 0px;vertical-align:bottom;\" />%s</a>",
+                $$var,
+                $favicon_url,
+                $host
+        );
 	endif;
 endfor;
 $presse = implode('<br />',$data); ?>

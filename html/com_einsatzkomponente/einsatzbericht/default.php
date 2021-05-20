@@ -229,10 +229,17 @@ endfor; ?>
                 <?php endforeach; ?>
             </div>
         <?php endif; ?>
-		<?php if ($this->item->desc): ?>
-			<hr />
-			<section><?php echo $this->item->desc; ?></section>
-		<?php endif; ?>
+        <?php if ($this->item->desc): ?>
+            <?php
+            // naively strip class and style tags
+            $desc = preg_replace('/class=".*?"/', '', $this->item->desc);
+            $desc = preg_replace('/style=".*?"/', '', $desc);
+            // as well as comments, as they are used for Microsoft's style definition garbage
+            $desc = preg_replace('/<!--.*?-->/s', '', $desc);
+            ?>
+            <hr />
+            <section style="font-size: 16px;"><?= $desc; ?></section>
+        <?php endif; ?>
 	</div>
 	</div>
 	</div>

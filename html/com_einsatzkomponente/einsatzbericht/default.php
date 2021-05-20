@@ -129,22 +129,19 @@ endif;
 $presse1 = $this->item->presse;
 $presse2 = $this->item->presse2;
 $presse3 = $this->item->presse3;
-$data = array();
-for ($i=1;$i<=3;$i++):
-	$var = 'presse'.$i;
-	if ($$var):
-        $host = parse_url($$var, PHP_URL_HOST);
-        $favicon_url = 'https://icons.duckduckgo.com/ip3/'.$host.'.ico';
+$presse = [];
 
-		$data[] = sprintf(
-		        "<a href=\"%s\" target=\"_blank\" rel=\"nofollow\"><img src=\"%s\" style=\"width:16px;height:16px;margin:0px 8px 0px 0px;vertical-align:bottom;\" />%s</a>",
-                $$var,
-                $favicon_url,
-                $host
-        );
-	endif;
-endfor;
-$presse = implode('<br />',$data); ?>
+for ($i=1;$i<=3;$i++):
+    $var = 'presse'.$i;
+    if ($$var):
+        $host = parse_url($$var, PHP_URL_HOST);
+        $presse[] = [
+            'url' => $$var,
+            'favicon' => 'https://icons.duckduckgo.com/ip3/'.$host.'.ico',
+            'label' => $host,
+        ];
+    endif;
+endfor; ?>
 
 
 <?php if( $this->item ) : ?>
@@ -218,11 +215,20 @@ $presse = implode('<br />',$data); ?>
 	<div class="span12">
 		<?php if ($presse): ?>
 			<hr />
-			<dl>
-				<dt><?php echo 'Presseberichte'; ?></dt>
-				<dd><?php echo $presse; ?></dd>
-			</dl>
-		<?php endif; ?>
+            <h4><?php echo 'Presseberichte'; ?></h4>
+            <div class="media">
+                <?php foreach ($presse as $link): ?>
+                    <a class="pull-left" href="<?= $link['url'] ?>" target=\"_blank\" rel=\"nofollow\">
+                        <img class="media-object" src="<?= $link['favicon'] ?>" style="width:18px;height:18px;" />
+                    </a>
+                    <div class="media-body">
+                        <a class="pull-left" href="<?= $link['url'] ?>" target=\"_blank\" rel=\"nofollow\">
+                            <?= $link['label'] ?>
+                        </a>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
 		<?php if ($this->item->desc): ?>
 			<hr />
 			<section><?php echo $this->item->desc; ?></section>

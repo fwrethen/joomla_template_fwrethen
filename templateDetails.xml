@@ -53,6 +53,7 @@
           <option value="1">1/12</option>
           <option value="2">2/12</option>
           <option value="3">3/12</option>
+          <option value="4">4/12</option>
         </field>
         <field name="sidebarRightWidth"
                type="radio"
@@ -62,6 +63,7 @@
           <option value="1">1/12</option>
           <option value="2">2/12</option>
           <option value="3">3/12</option>
+          <option value="4">4/12</option>
         </field>
       </fieldset>
     </fields>

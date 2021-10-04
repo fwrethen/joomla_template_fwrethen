@@ -116,7 +116,9 @@ div[class^="item"] {
   font-weight: 600;
 }
 
-#headernav a:hover:after, #headernav .current a:after {
+#headernav a:hover:after,
+#headernav .active a:after,
+#headernav .current a:after {
   content: '';
   position: absolute;
   bottom: 0px;

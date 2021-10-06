@@ -27,8 +27,11 @@ $js = <<<JS
     jQuery('a[href*=".png"], a[href*=".PNG"], a[href*=".gif"], a[href*=".GIF"], a[href*=".jpeg"], a[href*=".JPEG"], a[href*=".jpg"], a[href*=".JPG"]').not('[rel*="lightbox"]').attr('rel', 'lightbox');
 
     // add class active to a in matching navbar header
-    let menu = jQuery('.nav-header')[0].textContent;
-    if (!menu == '') jQuery('#headernav').find('a:contains('+menu+')').parent().addClass('current active');
+    let menu = jQuery('.nav-header');
+    if (menu.length > 0 && menu[0].textContent != '') {
+        let title = menu[0].textContent;
+        jQuery('#headernav').find('a:contains('+title+')').parent().addClass('current active');
+    }
 
     // if page is called with parameter 'templateStyle', append it to all links
     let url = new URL(window.location.href);

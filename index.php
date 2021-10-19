@@ -29,8 +29,11 @@ $js = <<<JS
     // add class active to a in matching navbar header
     let menu = jQuery('.nav-header');
     if (menu.length > 0 && menu[0].textContent != '') {
-        let title = menu[0].textContent;
-        jQuery('#headernav').find('a:contains('+title+')').parent().addClass('current active');
+        const title = menu[0].textContent;
+        const nav = jQuery('#headernav');
+        
+        nav.find('li.active').removeClass('current active');
+        nav.find('a:contains('+title+')').parent().addClass('current active');
     }
 
     // if page is called with parameter 'templateStyle', append it to all links

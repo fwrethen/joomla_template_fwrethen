@@ -173,12 +173,12 @@ JHtml::_('searchtools.form', $formSelector, $data['options']);
   $query->order('year DESC');
   $db->setQuery($query);
 
-  $years = array();
-  foreach ($db->loadObjectList() as $result)
-    array_push($years, $result->year);
+  $years = array_map(function ($result) {
+      return $result->year;
+  }, $db->loadObjectList());
 
   $selectedYear = $filters['filter_year']->value;
-  $selectedYear = ($selectedYear ? $selectedYear : $years[0]);
+  $selectedYear = is_numeric($selectedYear) ? $selectedYear : $years[0];
 
   /* Reference: JHtmlDropdown (libraries/cms/html/dropdown.php) */
   echo JHTML::_('dropdown.init'); ?>
@@ -207,8 +207,8 @@ JHtml::_('searchtools.form', $formSelector, $data['options']);
     </button>
   </div>
 
+  <?php /* Hidden input to keep compatibility with mod_einsatz_stats */ ?>
+  <input id="year" name="year" value="<?php echo $selectedYear; ?>" type="hidden">
+
 <?php endif; ?>
 </div>
-
-<?php /* Hidden input to keep compatibility with mod_einsatz_stats */ ?>
-<input id="year" name="year" value="<?php echo $selectedYear; ?>" type="hidden">
